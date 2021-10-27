@@ -7,7 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4355A1E3821A5BE5A76F2553 /* Pods_Casical_CasicalUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5689D0DB5A8446A5BC875798 /* Pods_Casical_CasicalUITests.framework */; };
+		1E09EE3AE8DFFBB9895B36D6 /* libPods-CasicalUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7114CBD50D481EF2B2F5D207 /* libPods-CasicalUITests.a */; };
+		3E9646FF843F32C16CE7EFB1 /* Pods_Casical.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F119E545C0EDBE24FB8BF090 /* Pods_Casical.framework */; };
+		AB2E84E2272994580082999C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB2E84E1272994580082999C /* GoogleService-Info.plist */; };
+		AB2E84E627299BFF0082999C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7AC678272985BA007069BC /* ViewController.swift */; };
+		AB2E84E727299BFF0082999C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7AC674272985BA007069BC /* AppDelegate.swift */; };
+		AB2E84E827299BFF0082999C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7AC676272985BA007069BC /* SceneDelegate.swift */; };
+		AB2E84EC27299BFF0082999C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB7AC67F272985BB007069BC /* LaunchScreen.storyboard */; };
+		AB2E84ED27299BFF0082999C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB7AC67D272985BB007069BC /* Assets.xcassets */; };
+		AB2E84EE27299BFF0082999C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB7AC67A272985BA007069BC /* Main.storyboard */; };
+		AB2E84EF27299BFF0082999C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB2E84E1272994580082999C /* GoogleService-Info.plist */; };
 		AB7AC675272985BA007069BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7AC674272985BA007069BC /* AppDelegate.swift */; };
 		AB7AC677272985BA007069BC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7AC676272985BA007069BC /* SceneDelegate.swift */; };
 		AB7AC679272985BA007069BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7AC678272985BA007069BC /* ViewController.swift */; };
@@ -17,7 +26,7 @@
 		AB7AC68C272985BC007069BC /* CasicalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7AC68B272985BC007069BC /* CasicalTests.swift */; };
 		AB7AC696272985BC007069BC /* CasicalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7AC695272985BC007069BC /* CasicalUITests.swift */; };
 		AB7AC698272985BC007069BC /* CasicalUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7AC697272985BC007069BC /* CasicalUITestsLaunchTests.swift */; };
-		CED3A5C469CE5AE7FD8B3501 /* Pods_CasicalTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A885CF36A7F7AD73F5C33A0 /* Pods_CasicalTests.framework */; };
+		CAC255DF3D1BE99A0BB62C9B /* libPods-CasicalTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C3254B2CABCA044ED2E7E139 /* libPods-CasicalTests.a */; };
 		E5ADF567EAEF87078AF02043 /* Pods_Casical.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F119E545C0EDBE24FB8BF090 /* Pods_Casical.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,13 +48,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		566A82D78F52C868C8592FFE /* Pods-Casical.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Casical.release.xcconfig"; path = "Target Support Files/Pods-Casical/Pods-Casical.release.xcconfig"; sourceTree = "<group>"; };
-		5689D0DB5A8446A5BC875798 /* Pods_Casical_CasicalUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Casical_CasicalUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A885CF36A7F7AD73F5C33A0 /* Pods_CasicalTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CasicalTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8CD65916AEDF96ADDDA9CDC8 /* Pods-Casical.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Casical.debug.xcconfig"; path = "Target Support Files/Pods-Casical/Pods-Casical.debug.xcconfig"; sourceTree = "<group>"; };
+		012299BCFDD627244F5A5D76 /* Pods-Casical.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Casical.debug.xcconfig"; path = "Target Support Files/Pods-Casical/Pods-Casical.debug.xcconfig"; sourceTree = "<group>"; };
+		683CC817455E8FBDBED57A20 /* Pods-Casical.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Casical.release.xcconfig"; path = "Target Support Files/Pods-Casical/Pods-Casical.release.xcconfig"; sourceTree = "<group>"; };
+		7114CBD50D481EF2B2F5D207 /* libPods-CasicalUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CasicalUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		76CA737CB72A47B018FA06F6 /* Pods-CasicalUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CasicalUITests.debug.xcconfig"; path = "Target Support Files/Pods-CasicalUITests/Pods-CasicalUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9185A252401887A593CE2ABB /* Pods-Casical-CasicalUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Casical-CasicalUITests.release.xcconfig"; path = "Target Support Files/Pods-Casical-CasicalUITests/Pods-Casical-CasicalUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9775327F2E2D5F650BDF695F /* Pods-CasicalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CasicalTests.release.xcconfig"; path = "Target Support Files/Pods-CasicalTests/Pods-CasicalTests.release.xcconfig"; sourceTree = "<group>"; };
 		A5073874244670B9A4854F28 /* Pods-CasicalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CasicalTests.debug.xcconfig"; path = "Target Support Files/Pods-CasicalTests/Pods-CasicalTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AB2E84E1272994580082999C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AB2E84F427299BFF0082999C /* Casical mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Casical mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB2E84F527299BFF0082999C /* Casical copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Casical copy-Info.plist"; path = "/Users/oonishireon/Desktop/Casical/Casical copy-Info.plist"; sourceTree = "<absolute>"; };
 		AB7AC671272985BA007069BC /* Casical.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Casical.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB7AC674272985BA007069BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB7AC676272985BA007069BC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,15 +73,25 @@
 		AB7AC697272985BC007069BC /* CasicalUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasicalUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		AB7AC6A4272985C1007069BC /* Casical.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Casical.entitlements; sourceTree = "<group>"; };
 		AEC13FA82DEA99E93F6EC3E9 /* Pods-Casical-CasicalUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Casical-CasicalUITests.debug.xcconfig"; path = "Target Support Files/Pods-Casical-CasicalUITests/Pods-Casical-CasicalUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C3254B2CABCA044ED2E7E139 /* libPods-CasicalTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CasicalTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F119E545C0EDBE24FB8BF090 /* Pods_Casical.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Casical.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD3AFB8E04B7117266C86667 /* Pods-CasicalUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CasicalUITests.release.xcconfig"; path = "Target Support Files/Pods-CasicalUITests/Pods-CasicalUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AB2E84E927299BFF0082999C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AB7AC66E272985BA007069BC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				E5ADF567EAEF87078AF02043 /* Pods_Casical.framework in Frameworks */,
+				3E9646FF843F32C16CE7EFB1 /* Pods_Casical.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,7 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CED3A5C469CE5AE7FD8B3501 /* Pods_CasicalTests.framework in Frameworks */,
+				CAC255DF3D1BE99A0BB62C9B /* libPods-CasicalTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,7 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4355A1E3821A5BE5A76F2553 /* Pods_Casical_CasicalUITests.framework in Frameworks */,
+				1E09EE3AE8DFFBB9895B36D6 /* libPods-CasicalUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +123,7 @@
 				AB7AC672272985BA007069BC /* Products */,
 				D3250E55E6021CB32062D2A7 /* Pods */,
 				BA995319C0F610C7BD8E9FC3 /* Frameworks */,
+				AB2E84F527299BFF0082999C /* Casical copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,6 +133,7 @@
 				AB7AC671272985BA007069BC /* Casical.app */,
 				AB7AC687272985BC007069BC /* CasicalTests.xctest */,
 				AB7AC691272985BC007069BC /* CasicalUITests.xctest */,
+				AB2E84F427299BFF0082999C /* Casical mac.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -125,6 +149,7 @@
 				AB7AC67D272985BB007069BC /* Assets.xcassets */,
 				AB7AC67F272985BB007069BC /* LaunchScreen.storyboard */,
 				AB7AC682272985BB007069BC /* Info.plist */,
+				AB2E84E1272994580082999C /* GoogleService-Info.plist */,
 			);
 			path = Casical;
 			sourceTree = "<group>";
@@ -150,8 +175,8 @@
 			isa = PBXGroup;
 			children = (
 				F119E545C0EDBE24FB8BF090 /* Pods_Casical.framework */,
-				5689D0DB5A8446A5BC875798 /* Pods_Casical_CasicalUITests.framework */,
-				8A885CF36A7F7AD73F5C33A0 /* Pods_CasicalTests.framework */,
+				C3254B2CABCA044ED2E7E139 /* libPods-CasicalTests.a */,
+				7114CBD50D481EF2B2F5D207 /* libPods-CasicalUITests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -159,20 +184,38 @@
 		D3250E55E6021CB32062D2A7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				8CD65916AEDF96ADDDA9CDC8 /* Pods-Casical.debug.xcconfig */,
-				566A82D78F52C868C8592FFE /* Pods-Casical.release.xcconfig */,
 				AEC13FA82DEA99E93F6EC3E9 /* Pods-Casical-CasicalUITests.debug.xcconfig */,
 				9185A252401887A593CE2ABB /* Pods-Casical-CasicalUITests.release.xcconfig */,
 				A5073874244670B9A4854F28 /* Pods-CasicalTests.debug.xcconfig */,
 				9775327F2E2D5F650BDF695F /* Pods-CasicalTests.release.xcconfig */,
+				76CA737CB72A47B018FA06F6 /* Pods-CasicalUITests.debug.xcconfig */,
+				FD3AFB8E04B7117266C86667 /* Pods-CasicalUITests.release.xcconfig */,
+				012299BCFDD627244F5A5D76 /* Pods-Casical.debug.xcconfig */,
+				683CC817455E8FBDBED57A20 /* Pods-Casical.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		AB2E84E327299BFF0082999C /* Casical mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB2E84F127299BFF0082999C /* Build configuration list for PBXNativeTarget "Casical mac" */;
+			buildPhases = (
+				AB2E84E527299BFF0082999C /* Sources */,
+				AB2E84E927299BFF0082999C /* Frameworks */,
+				AB2E84EB27299BFF0082999C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Casical mac";
+			productName = Casical;
+			productReference = AB2E84F427299BFF0082999C /* Casical mac.app */;
+			productType = "com.apple.product-type.application";
+		};
 		AB7AC670272985BA007069BC /* Casical */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AB7AC69B272985BC007069BC /* Build configuration list for PBXNativeTarget "Casical" */;
@@ -219,7 +262,6 @@
 				AB7AC68D272985BC007069BC /* Sources */,
 				AB7AC68E272985BC007069BC /* Frameworks */,
 				AB7AC68F272985BC007069BC /* Resources */,
-				8257EEEDA51AB2B9689A4CD8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -268,6 +310,7 @@
 			projectRoot = "";
 			targets = (
 				AB7AC670272985BA007069BC /* Casical */,
+				AB2E84E327299BFF0082999C /* Casical mac */,
 				AB7AC686272985BC007069BC /* CasicalTests */,
 				AB7AC690272985BC007069BC /* CasicalUITests */,
 			);
@@ -275,6 +318,17 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AB2E84EB27299BFF0082999C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB2E84EC27299BFF0082999C /* LaunchScreen.storyboard in Resources */,
+				AB2E84ED27299BFF0082999C /* Assets.xcassets in Resources */,
+				AB2E84EE27299BFF0082999C /* Main.storyboard in Resources */,
+				AB2E84EF27299BFF0082999C /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AB7AC66F272985BA007069BC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -282,6 +336,7 @@
 				AB7AC681272985BB007069BC /* LaunchScreen.storyboard in Resources */,
 				AB7AC67E272985BB007069BC /* Assets.xcassets in Resources */,
 				AB7AC67C272985BA007069BC /* Main.storyboard in Resources */,
+				AB2E84E2272994580082999C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,23 +379,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8257EEEDA51AB2B9689A4CD8 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Casical-CasicalUITests/Pods-Casical-CasicalUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Casical-CasicalUITests/Pods-Casical-CasicalUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Casical-CasicalUITests/Pods-Casical-CasicalUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		AC276D71C07D264106975156 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -373,7 +411,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Casical-CasicalUITests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-CasicalUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -405,6 +443,16 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		AB2E84E527299BFF0082999C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB2E84E627299BFF0082999C /* ViewController.swift in Sources */,
+				AB2E84E727299BFF0082999C /* AppDelegate.swift in Sources */,
+				AB2E84E827299BFF0082999C /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AB7AC66D272985BA007069BC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -467,6 +515,66 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		AB2E84F227299BFF0082999C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Casical/Casical.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 242KS3V77L;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Casical copy-Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = oonishireon.Casical;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AB2E84F327299BFF0082999C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Casical/Casical.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 242KS3V77L;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Casical copy-Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = oonishireon.Casical;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		AB7AC699272985BC007069BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -585,7 +693,7 @@
 		};
 		AB7AC69C272985BC007069BC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8CD65916AEDF96ADDDA9CDC8 /* Pods-Casical.debug.xcconfig */;
+			baseConfigurationReference = 012299BCFDD627244F5A5D76 /* Pods-Casical.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -616,7 +724,7 @@
 		};
 		AB7AC69D272985BC007069BC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 566A82D78F52C868C8592FFE /* Pods-Casical.release.xcconfig */;
+			baseConfigurationReference = 683CC817455E8FBDBED57A20 /* Pods-Casical.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -699,7 +807,7 @@
 		};
 		AB7AC6A2272985BC007069BC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AEC13FA82DEA99E93F6EC3E9 /* Pods-Casical-CasicalUITests.debug.xcconfig */;
+			baseConfigurationReference = 76CA737CB72A47B018FA06F6 /* Pods-CasicalUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -723,7 +831,7 @@
 		};
 		AB7AC6A3272985BC007069BC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9185A252401887A593CE2ABB /* Pods-Casical-CasicalUITests.release.xcconfig */;
+			baseConfigurationReference = FD3AFB8E04B7117266C86667 /* Pods-CasicalUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -748,6 +856,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AB2E84F127299BFF0082999C /* Build configuration list for PBXNativeTarget "Casical mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB2E84F227299BFF0082999C /* Debug */,
+				AB2E84F327299BFF0082999C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		AB7AC66C272985BA007069BC /* Build configuration list for PBXProject "Casical" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
