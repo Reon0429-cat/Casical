@@ -1,0 +1,34 @@
+PODS:
+  - BubbleTransition (4.0.0)
+  - Charts (3.6.0):
+    - Charts/Core (= 3.6.0)
+  - Charts/Core (3.6.0)
+  - lottie-ios (3.2.3)
+  - PKHUD (5.3.0)
+  - SideMenu (6.5.0)
+
+DEPENDENCIES:
+  - BubbleTransition
+  - Charts
+  - lottie-ios
+  - PKHUD
+  - SideMenu
+
+SPEC REPOS:
+  trunk:
+    - BubbleTransition
+    - Charts
+    - lottie-ios
+    - PKHUD
+    - SideMenu
+
+SPEC CHECKSUMS:
+  BubbleTransition: 9d96f31375e0db46684e2060d3a601fa47d9f9c1
+  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
+  lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
+  PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
+  SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
+
+PODFILE CHECKSUM: b1f26cffb6a529ecca0239adb9ed0cd5f4db7832
+
+COCOAPODS: 1.10.2
