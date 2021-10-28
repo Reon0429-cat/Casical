@@ -20,9 +20,6 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mailAddressTextField.backgroundColor = .lightColor
-        passwordTextField.backgroundColor = .lightColor
-        loginButton.backgroundColor = .darkColor
         twitterLoginButton.layer.borderColor = UIColor.lightColor.cgColor
         twitterLoginButton.layer.borderWidth = 1
         googleLoginButton.layer.borderColor = UIColor.lightColor.cgColor
