@@ -12,14 +12,16 @@ final class LoginViewController: UIViewController {
     @IBOutlet private weak var mailAddressTextField: CustomTextField!
     @IBOutlet private weak var passwordTextField: CustomTextField!
     @IBOutlet private weak var loginButton: UIButton!
-    @IBOutlet private weak var signUpButton: UIButton!
     @IBOutlet private weak var twitterLoginButton: UIButton!
     @IBOutlet private weak var googleLoginButton: UIButton!
     @IBOutlet private weak var appleLoginButton: UIButton!
+    @IBOutlet private weak var signUpButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mailAddressTextField.tintColor = .black
+        passwordTextField.tintColor = .black
         twitterLoginButton.layer.borderColor = UIColor.lightColor.cgColor
         twitterLoginButton.layer.borderWidth = 1
         googleLoginButton.layer.borderColor = UIColor.lightColor.cgColor

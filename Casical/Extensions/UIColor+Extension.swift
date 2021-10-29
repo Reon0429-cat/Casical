@@ -17,4 +17,8 @@ extension UIColor {
         UIColor(named: "darkColor")!
     }
     
+    static var moreDarkColor: UIColor {
+        UIColor(named: "moreDarkColor")!
+    }
+    
 }
