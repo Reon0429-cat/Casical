@@ -29,6 +29,8 @@
 		ABD46A8A272B2B1E006AB17A /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD46A89272B2B1E006AB17A /* UITextField+Extension.swift */; };
 		ABD46A95272BE524006AB17A /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABD46A94272BE524006AB17A /* Home.storyboard */; };
 		ABD46A97272BE52D006AB17A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD46A96272BE52D006AB17A /* HomeViewController.swift */; };
+		ABD46A9A272C0EBE006AB17A /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD46A98272C0EBE006AB17A /* ProfileCollectionViewCell.swift */; };
+		ABD46A9B272C0EBE006AB17A /* ProfileCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABD46A99272C0EBE006AB17A /* ProfileCollectionViewCell.xib */; };
 		CAC255DF3D1BE99A0BB62C9B /* libPods-CasicalTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C3254B2CABCA044ED2E7E139 /* libPods-CasicalTests.a */; };
 		E5ADF567EAEF87078AF02043 /* Pods_Casical.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F119E545C0EDBE24FB8BF090 /* Pods_Casical.framework */; };
 /* End PBXBuildFile section */
@@ -80,6 +82,8 @@
 		ABD46A89272B2B1E006AB17A /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		ABD46A94272BE524006AB17A /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		ABD46A96272BE52D006AB17A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		ABD46A98272C0EBE006AB17A /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
+		ABD46A99272C0EBE006AB17A /* ProfileCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCollectionViewCell.xib; sourceTree = "<group>"; };
 		AEC13FA82DEA99E93F6EC3E9 /* Pods-Casical-CasicalUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Casical-CasicalUITests.debug.xcconfig"; path = "Target Support Files/Pods-Casical-CasicalUITests/Pods-Casical-CasicalUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C3254B2CABCA044ED2E7E139 /* libPods-CasicalTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CasicalTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F119E545C0EDBE24FB8BF090 /* Pods_Casical.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Casical.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -212,6 +216,8 @@
 			children = (
 				ABD46A94272BE524006AB17A /* Home.storyboard */,
 				ABD46A96272BE52D006AB17A /* HomeViewController.swift */,
+				ABD46A98272C0EBE006AB17A /* ProfileCollectionViewCell.swift */,
+				ABD46A99272C0EBE006AB17A /* ProfileCollectionViewCell.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -379,6 +385,7 @@
 			files = (
 				ABD46A81272B03E5006AB17A /* Login.storyboard in Resources */,
 				ABD46A95272BE524006AB17A /* Home.storyboard in Resources */,
+				ABD46A9B272C0EBE006AB17A /* ProfileCollectionViewCell.xib in Resources */,
 				AB7AC681272985BB007069BC /* LaunchScreen.storyboard in Resources */,
 				AB7AC67E272985BB007069BC /* Assets.xcassets in Resources */,
 				AB2E84E2272994580082999C /* GoogleService-Info.plist in Resources */,
@@ -503,6 +510,7 @@
 			files = (
 				ABD46A82272B03E5006AB17A /* LoginViewController.swift in Sources */,
 				AB7AC675272985BA007069BC /* AppDelegate.swift in Sources */,
+				ABD46A9A272C0EBE006AB17A /* ProfileCollectionViewCell.swift in Sources */,
 				AB7AC677272985BA007069BC /* SceneDelegate.swift in Sources */,
 				ABD46A8A272B2B1E006AB17A /* UITextField+Extension.swift in Sources */,
 				ABD46A84272B2AD4006AB17A /* UIColor+Extension.swift in Sources */,
