@@ -197,7 +197,7 @@ private extension HomeViewController {
             layout.minimumLineSpacing = 20
             layout.minimumInteritemSpacing = 10
         } else {
-            layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
         }
         collectionView.collectionViewLayout = layout
     }
