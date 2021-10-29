@@ -27,6 +27,8 @@
 		ABD46A84272B2AD4006AB17A /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD46A83272B2AD4006AB17A /* UIColor+Extension.swift */; };
 		ABD46A88272B2AF4006AB17A /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD46A87272B2AF4006AB17A /* CustomTextField.swift */; };
 		ABD46A8A272B2B1E006AB17A /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD46A89272B2B1E006AB17A /* UITextField+Extension.swift */; };
+		ABD46A95272BE524006AB17A /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABD46A94272BE524006AB17A /* Home.storyboard */; };
+		ABD46A97272BE52D006AB17A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD46A96272BE52D006AB17A /* HomeViewController.swift */; };
 		CAC255DF3D1BE99A0BB62C9B /* libPods-CasicalTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C3254B2CABCA044ED2E7E139 /* libPods-CasicalTests.a */; };
 		E5ADF567EAEF87078AF02043 /* Pods_Casical.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F119E545C0EDBE24FB8BF090 /* Pods_Casical.framework */; };
 /* End PBXBuildFile section */
@@ -76,6 +78,8 @@
 		ABD46A83272B2AD4006AB17A /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		ABD46A87272B2AF4006AB17A /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		ABD46A89272B2B1E006AB17A /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		ABD46A94272BE524006AB17A /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		ABD46A96272BE52D006AB17A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		AEC13FA82DEA99E93F6EC3E9 /* Pods-Casical-CasicalUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Casical-CasicalUITests.debug.xcconfig"; path = "Target Support Files/Pods-Casical-CasicalUITests/Pods-Casical-CasicalUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C3254B2CABCA044ED2E7E139 /* libPods-CasicalTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CasicalTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F119E545C0EDBE24FB8BF090 /* Pods_Casical.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Casical.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,6 +149,7 @@
 		AB7AC673272985BA007069BC /* Casical */ = {
 			isa = PBXGroup;
 			children = (
+				ABD46A93272BE4DC006AB17A /* Home */,
 				ABD46A7E272B03E5006AB17A /* Login */,
 				ABD46A86272B2AEE006AB17A /* CustomViews */,
 				ABD46A85272B2AE5006AB17A /* Extensions */,
@@ -200,6 +205,15 @@
 				ABD46A87272B2AF4006AB17A /* CustomTextField.swift */,
 			);
 			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		ABD46A93272BE4DC006AB17A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				ABD46A94272BE524006AB17A /* Home.storyboard */,
+				ABD46A96272BE52D006AB17A /* HomeViewController.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		BA995319C0F610C7BD8E9FC3 /* Frameworks */ = {
@@ -364,6 +378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABD46A81272B03E5006AB17A /* Login.storyboard in Resources */,
+				ABD46A95272BE524006AB17A /* Home.storyboard in Resources */,
 				AB7AC681272985BB007069BC /* LaunchScreen.storyboard in Resources */,
 				AB7AC67E272985BB007069BC /* Assets.xcassets in Resources */,
 				AB2E84E2272994580082999C /* GoogleService-Info.plist in Resources */,
@@ -491,6 +506,7 @@
 				AB7AC677272985BA007069BC /* SceneDelegate.swift in Sources */,
 				ABD46A8A272B2B1E006AB17A /* UITextField+Extension.swift in Sources */,
 				ABD46A84272B2AD4006AB17A /* UIColor+Extension.swift in Sources */,
+				ABD46A97272BE52D006AB17A /* HomeViewController.swift in Sources */,
 				ABD46A88272B2AF4006AB17A /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -729,7 +745,7 @@
 				INFOPLIST_FILE = Casical/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Login;
+				INFOPLIST_KEY_UIMainStoryboardFile = Home;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -760,7 +776,7 @@
 				INFOPLIST_FILE = Casical/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Login;
+				INFOPLIST_KEY_UIMainStoryboardFile = Home;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

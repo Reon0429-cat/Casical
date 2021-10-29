@@ -63,7 +63,7 @@ final class LoginViewController: UIViewController {
             HUD.flash(.success,
                       onView: nil,
                       delay: 0) { _ in
-                print("DEBUG_PRINT: 成功")
+                self.dismiss(animated: true)
             }
         }
     }
