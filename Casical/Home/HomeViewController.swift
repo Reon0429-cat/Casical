@@ -48,6 +48,7 @@ final class HomeViewController: UIViewController {
     @IBOutlet private weak var sortButtonFollowView: UIView!
     @IBOutlet private weak var sortButtonFollowViewCenterConstraint: NSLayoutConstraint!
     @IBOutlet private weak var filterButton: UIButton!
+    @IBOutlet private weak var filterButtonTopCenterConstraint: NSLayoutConstraint!
     @IBOutlet private weak var settingButton: UIButton!
     
     private let sampleData = [[SampleModel]](repeating: SampleModel.data, count: 10).flatMap { $0 }
@@ -57,11 +58,11 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         let isNotLoggedIn = (Auth.auth().currentUser == nil)
-        if isNotLoggedIn {
+        if isNotLoggedIn && !isMac {
             presentLoginVC()
         }
         
-        setupCollectionView()
+        setupUI()
         
     }
     
@@ -105,17 +106,6 @@ final class HomeViewController: UIViewController {
         sortButtonFollowViewPosition = .register(destinationButton)
     }
     
-    private func setupCollectionView() {
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(ProfileCollectionViewCell.nib,
-                                forCellWithReuseIdentifier: ProfileCollectionViewCell.identifier)
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        collectionView.collectionViewLayout = layout
-    }
-    
 }
 
 extension HomeViewController: UICollectionViewDelegate {
@@ -153,3 +143,38 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     }
     
 }
+
+// MARK: - setup
+private extension HomeViewController {
+    
+    func setupUI() {
+        setupCollectionView()
+        sortScoreButton.setTitleColor(.black, for: .normal)
+        sortRegisterButton.setTitleColor(.black, for: .normal)
+        sortExperienceButton.setTitleColor(.black, for: .normal)
+        filterButton.setTitleColor(.black, for: .normal)
+        filterButton.tintColor = .black
+        if isMac {
+            filterButtonTopCenterConstraint.constant = 20
+            sortScoreButton.titleLabel?.font = .systemFont(ofSize: 22)
+            sortRegisterButton.titleLabel?.font = .systemFont(ofSize: 22)
+            sortExperienceButton.titleLabel?.font = .systemFont(ofSize: 20)
+            filterButton.titleLabel?.font = .systemFont(ofSize: 22)
+        }
+        collectionView.indicatorStyle = .black
+        settingButton.tintColor = .black
+    }
+    
+    func setupCollectionView() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(ProfileCollectionViewCell.nib,
+                                forCellWithReuseIdentifier: ProfileCollectionViewCell.identifier)
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        collectionView.collectionViewLayout = layout
+    }
+    
+}
+

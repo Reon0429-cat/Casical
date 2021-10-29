@@ -18,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="SN0-eO-aDf">
-                                <rect key="frame" x="47" y="54" width="320" height="35"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SN0-eO-aDf">
+                                <rect key="frame" x="49" y="54" width="316" height="35"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="90z-f5-xJS">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="35"/>
@@ -37,7 +37,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uL-xU-qSG">
-                                        <rect key="frame" x="110" y="0.0" width="100" height="35"/>
+                                        <rect key="frame" x="108" y="0.0" width="100" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -48,8 +48,8 @@
                                             <action selector="sortRegisterButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="7iR-N8-FbL"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gzt-Zo-fkH">
-                                        <rect key="frame" x="220" y="0.0" width="100" height="35"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gzt-Zo-fkH">
+                                        <rect key="frame" x="216" y="0.0" width="100" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -63,9 +63,13 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="evN-Iw-XRP">
-                                <rect key="frame" x="24" y="99" width="99" height="23"/>
+                                <rect key="frame" x="14" y="99" width="120" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="Pmk-ck-UM0"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="tintColor" systemColor="labelColor"/>
+                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="絞り込み" image="slider.horizontal.3" catalog="system">
                                     <color key="titleColor" systemColor="labelColor"/>
@@ -86,8 +90,8 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gAw-66-E4D">
-                                <rect key="frame" x="0.0" y="132" width="414" height="764"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="137" width="414" height="759"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZGG-j5-pyN">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -117,13 +121,13 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="evN-Iw-XRP" firstAttribute="top" secondItem="SN0-eO-aDf" secondAttribute="bottom" constant="10" id="6gk-eH-c8h"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="u9p-8W-Rde" secondAttribute="trailing" constant="10" id="Ca3-48-gCx"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="gAw-66-E4D" secondAttribute="trailing" id="DB0-jv-KPX"/>
                             <constraint firstAttribute="bottom" secondItem="gAw-66-E4D" secondAttribute="bottom" id="FjC-US-ee7"/>
-                            <constraint firstItem="gAw-66-E4D" firstAttribute="top" secondItem="evN-Iw-XRP" secondAttribute="bottom" constant="10" id="GQI-Xh-x1g"/>
+                            <constraint firstItem="gAw-66-E4D" firstAttribute="top" secondItem="evN-Iw-XRP" secondAttribute="bottom" constant="15" id="GQI-Xh-x1g"/>
                             <constraint firstItem="SN0-eO-aDf" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="HDS-MF-D0Z"/>
-                            <constraint firstItem="evN-Iw-XRP" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="Lwq-ze-0L7"/>
+                            <constraint firstItem="evN-Iw-XRP" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="55" id="Ioo-ke-FPx"/>
+                            <constraint firstItem="evN-Iw-XRP" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="14" id="Lwq-ze-0L7"/>
                             <constraint firstItem="0eY-th-0fg" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Qz1-iS-anu"/>
                             <constraint firstItem="SN0-eO-aDf" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="bNr-kv-UTm"/>
                             <constraint firstItem="u9p-8W-Rde" firstAttribute="centerY" secondItem="evN-Iw-XRP" secondAttribute="centerY" id="jcg-tR-NdG"/>
@@ -134,6 +138,7 @@
                     <connections>
                         <outlet property="collectionView" destination="gAw-66-E4D" id="YOe-S9-rAy"/>
                         <outlet property="filterButton" destination="evN-Iw-XRP" id="OFr-ZF-nPT"/>
+                        <outlet property="filterButtonTopCenterConstraint" destination="Ioo-ke-FPx" id="ZUE-sQ-CKd"/>
                         <outlet property="settingButton" destination="u9p-8W-Rde" id="t4L-Ag-MPW"/>
                         <outlet property="sortButtonFollowView" destination="0eY-th-0fg" id="7TM-nS-PfG"/>
                         <outlet property="sortButtonFollowViewCenterConstraint" destination="Qz1-iS-anu" id="s2C-F6-9Ez"/>
@@ -155,9 +160,6 @@
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
