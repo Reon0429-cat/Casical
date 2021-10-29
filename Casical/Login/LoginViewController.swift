@@ -22,9 +22,6 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mailAddressTextField.text = "oonishireon110@gmail.com"
-        passwordTextField.text = "123456"
-        
         mailAddressTextField.tintColor = .black
         passwordTextField.tintColor = .black
         passwordTextField.isSecureTextEntry = true
