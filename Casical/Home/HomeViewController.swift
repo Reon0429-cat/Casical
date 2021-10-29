@@ -24,6 +24,21 @@ private extension SampleModel {
                        SampleModel(image: UIImage(named: "asuka")!, name: "齋藤 飛鳥", language: "PHP", house: "東京", experience: "新卒未経験"),]
 }
 
+private enum SortButtonFollowViewPosition {
+    case score(UIButton)
+    case register(UIButton)
+    case experience(UIButton)
+    
+    var center: CGFloat {
+        switch self {
+            case .score(let button): return button.center.x
+            case .register(let button): return button.center.x
+            case .experience(let button): return button.center.x
+        }
+    }
+    
+}
+
 final class HomeViewController: UIViewController {
     
     @IBOutlet private weak var collectionView: UICollectionView!
@@ -31,10 +46,12 @@ final class HomeViewController: UIViewController {
     @IBOutlet private weak var sortRegisterButton: UIButton!
     @IBOutlet private weak var sortExperienceButton: UIButton!
     @IBOutlet private weak var sortButtonFollowView: UIView!
+    @IBOutlet private weak var sortButtonFollowViewCenterConstraint: NSLayoutConstraint!
     @IBOutlet private weak var filterButton: UIButton!
     @IBOutlet private weak var settingButton: UIButton!
     
     private let sampleData = [[SampleModel]](repeating: SampleModel.data, count: 10).flatMap { $0 }
+    private lazy var sortButtonFollowViewPosition: SortButtonFollowViewPosition = .register(sortRegisterButton)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,14 +61,27 @@ final class HomeViewController: UIViewController {
             presentLoginVC()
         }
         
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(ProfileCollectionViewCell.nib,
-                                forCellWithReuseIdentifier: ProfileCollectionViewCell.identifier)
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        collectionView.collectionViewLayout = layout
+        setupCollectionView()
+        
+    }
+    
+    @IBAction private func sortScoreButton(_ sender: Any) {
+        changeFollowViewPosition(to: sortScoreButton)
+    }
+    
+    @IBAction private func sortRegisterButton(_ sender: Any) {
+        changeFollowViewPosition(to: sortRegisterButton)
+    }
+    
+    @IBAction private func sortExperienceButton(_ sender: Any) {
+        changeFollowViewPosition(to: sortExperienceButton)
+    }
+    
+    @IBAction private func filterButton(_ sender: Any) {
+        
+    }
+    
+    @IBAction private func settingButton(_ sender: Any) {
         
     }
     
@@ -64,24 +94,26 @@ final class HomeViewController: UIViewController {
         }
     }
     
-    @IBAction private func sortScoreButton(_ sender: Any) {
-        
+    private func changeFollowViewPosition(to destinationButton: UIButton) {
+        let distance = sortButtonFollowViewPosition.center - destinationButton.center.x
+        sortButtonFollowViewCenterConstraint.constant -= distance
+        UIView.animate(withDuration: 0.3,
+                       delay: 0,
+                       options: .curveEaseInOut) {
+            self.view.layoutIfNeeded()
+        }
+        sortButtonFollowViewPosition = .register(destinationButton)
     }
     
-    @IBAction private func sortRegisterButton(_ sender: Any) {
-        
-    }
-    
-    @IBAction private func sortExperienceButton(_ sender: Any) {
-        
-    }
-    
-    @IBAction private func filterButton(_ sender: Any) {
-        
-    }
-    
-    @IBAction private func settingButton(_ sender: Any) {
-        
+    private func setupCollectionView() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(ProfileCollectionViewCell.nib,
+                                forCellWithReuseIdentifier: ProfileCollectionViewCell.identifier)
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        collectionView.collectionViewLayout = layout
     }
     
 }

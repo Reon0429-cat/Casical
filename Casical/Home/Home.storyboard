@@ -136,6 +136,7 @@
                         <outlet property="filterButton" destination="evN-Iw-XRP" id="OFr-ZF-nPT"/>
                         <outlet property="settingButton" destination="u9p-8W-Rde" id="t4L-Ag-MPW"/>
                         <outlet property="sortButtonFollowView" destination="0eY-th-0fg" id="7TM-nS-PfG"/>
+                        <outlet property="sortButtonFollowViewCenterConstraint" destination="Qz1-iS-anu" id="s2C-F6-9Ez"/>
                         <outlet property="sortExperienceButton" destination="gzt-Zo-fkH" id="vHs-v2-EPg"/>
                         <outlet property="sortRegisterButton" destination="7uL-xU-qSG" id="ief-aM-pec"/>
                         <outlet property="sortScoreButton" destination="90z-f5-xJS" id="9Po-DE-6h7"/>
