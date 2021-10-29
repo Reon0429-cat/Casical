@@ -1,5 +1,5 @@
 //
-//  ProfileCollectionViewCell.swift
+//  MacProfileCollectionViewCell.swift
 //  Casical
 //
 //  Created by 大西玲音 on 2021/10/29.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ProfileCollectionViewCell: UICollectionViewCell {
+final class MacProfileCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet private weak var baseView: UIView!
     @IBOutlet private weak var profileImageView: UIImageView!
@@ -29,7 +29,7 @@ final class ProfileCollectionViewCell: UICollectionViewCell {
         baseView.layer.shadowOpacity = 0.8
         
     }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         

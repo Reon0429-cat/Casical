@@ -32,6 +32,8 @@
 		ABD46A9A272C0EBE006AB17A /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD46A98272C0EBE006AB17A /* ProfileCollectionViewCell.swift */; };
 		ABD46A9B272C0EBE006AB17A /* ProfileCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABD46A99272C0EBE006AB17A /* ProfileCollectionViewCell.xib */; };
 		ABD46A9D272C21FA006AB17A /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD46A9C272C21FA006AB17A /* UIViewController+Extension.swift */; };
+		ABF5814E272C303C0086D60E /* MacProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF5814C272C303C0086D60E /* MacProfileCollectionViewCell.swift */; };
+		ABF5814F272C303C0086D60E /* MacProfileCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABF5814D272C303C0086D60E /* MacProfileCollectionViewCell.xib */; };
 		CAC255DF3D1BE99A0BB62C9B /* libPods-CasicalTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C3254B2CABCA044ED2E7E139 /* libPods-CasicalTests.a */; };
 		E5ADF567EAEF87078AF02043 /* Pods_Casical.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F119E545C0EDBE24FB8BF090 /* Pods_Casical.framework */; };
 /* End PBXBuildFile section */
@@ -86,6 +88,8 @@
 		ABD46A98272C0EBE006AB17A /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		ABD46A99272C0EBE006AB17A /* ProfileCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCollectionViewCell.xib; sourceTree = "<group>"; };
 		ABD46A9C272C21FA006AB17A /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		ABF5814C272C303C0086D60E /* MacProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacProfileCollectionViewCell.swift; sourceTree = "<group>"; };
+		ABF5814D272C303C0086D60E /* MacProfileCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MacProfileCollectionViewCell.xib; sourceTree = "<group>"; };
 		AEC13FA82DEA99E93F6EC3E9 /* Pods-Casical-CasicalUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Casical-CasicalUITests.debug.xcconfig"; path = "Target Support Files/Pods-Casical-CasicalUITests/Pods-Casical-CasicalUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C3254B2CABCA044ED2E7E139 /* libPods-CasicalTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CasicalTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F119E545C0EDBE24FB8BF090 /* Pods_Casical.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Casical.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -221,6 +225,8 @@
 				ABD46A96272BE52D006AB17A /* HomeViewController.swift */,
 				ABD46A98272C0EBE006AB17A /* ProfileCollectionViewCell.swift */,
 				ABD46A99272C0EBE006AB17A /* ProfileCollectionViewCell.xib */,
+				ABF5814C272C303C0086D60E /* MacProfileCollectionViewCell.swift */,
+				ABF5814D272C303C0086D60E /* MacProfileCollectionViewCell.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -390,6 +396,7 @@
 				ABD46A95272BE524006AB17A /* Home.storyboard in Resources */,
 				ABD46A9B272C0EBE006AB17A /* ProfileCollectionViewCell.xib in Resources */,
 				AB7AC681272985BB007069BC /* LaunchScreen.storyboard in Resources */,
+				ABF5814F272C303C0086D60E /* MacProfileCollectionViewCell.xib in Resources */,
 				AB7AC67E272985BB007069BC /* Assets.xcassets in Resources */,
 				AB2E84E2272994580082999C /* GoogleService-Info.plist in Resources */,
 			);
@@ -515,6 +522,7 @@
 				ABD46A82272B03E5006AB17A /* LoginViewController.swift in Sources */,
 				AB7AC675272985BA007069BC /* AppDelegate.swift in Sources */,
 				ABD46A9A272C0EBE006AB17A /* ProfileCollectionViewCell.swift in Sources */,
+				ABF5814E272C303C0086D60E /* MacProfileCollectionViewCell.swift in Sources */,
 				AB7AC677272985BA007069BC /* SceneDelegate.swift in Sources */,
 				ABD46A8A272B2B1E006AB17A /* UITextField+Extension.swift in Sources */,
 				ABD46A84272B2AD4006AB17A /* UIColor+Extension.swift in Sources */,

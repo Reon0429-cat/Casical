@@ -50,6 +50,7 @@ final class HomeViewController: UIViewController {
     @IBOutlet private weak var filterButton: UIButton!
     @IBOutlet private weak var filterButtonTopCenterConstraint: NSLayoutConstraint!
     @IBOutlet private weak var settingButton: UIButton!
+    @IBOutlet private weak var separatorView: UIView!
     
     private let sampleData = [[SampleModel]](repeating: SampleModel.data, count: 10).flatMap { $0 }
     private lazy var sortButtonFollowViewPosition: SortButtonFollowViewPosition = .register(sortRegisterButton)
@@ -121,13 +122,23 @@ extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: ProfileCollectionViewCell.identifier,
-            for: indexPath
-        ) as! ProfileCollectionViewCell
-        let model = sampleData[indexPath.row]
-        cell.configure(model: model)
-        return cell
+        if isMac {
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: MacProfileCollectionViewCell.identifier,
+                for: indexPath
+            ) as! MacProfileCollectionViewCell
+            let model = sampleData[indexPath.row]
+            cell.configure(model: model)
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: ProfileCollectionViewCell.identifier,
+                for: indexPath
+            ) as! ProfileCollectionViewCell
+            let model = sampleData[indexPath.row]
+            cell.configure(model: model)
+            return cell
+        }
     }
     
 }
@@ -137,9 +148,14 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellWidth = self.view.frame.width
-        let cellHeight: CGFloat = 120
-        return CGSize(width: cellWidth, height: cellHeight)
+        if isMac {
+            let cellWidth = self.view.frame.width / 6 - 20
+            return CGSize(width: cellWidth, height: cellWidth)
+        } else {
+            let cellWidth = self.view.frame.width
+            let cellHeight: CGFloat = 120
+            return CGSize(width: cellWidth, height: cellHeight)
+        }
     }
     
 }
@@ -160,6 +176,8 @@ private extension HomeViewController {
             sortRegisterButton.titleLabel?.font = .systemFont(ofSize: 22)
             sortExperienceButton.titleLabel?.font = .systemFont(ofSize: 20)
             filterButton.titleLabel?.font = .systemFont(ofSize: 22)
+            separatorView.isHidden = true
+            separatorView.backgroundColor = .separator
         }
         collectionView.indicatorStyle = .black
         settingButton.tintColor = .black
@@ -170,9 +188,17 @@ private extension HomeViewController {
         collectionView.dataSource = self
         collectionView.register(ProfileCollectionViewCell.nib,
                                 forCellWithReuseIdentifier: ProfileCollectionViewCell.identifier)
+        collectionView.register(MacProfileCollectionViewCell.nib,
+                                forCellWithReuseIdentifier: MacProfileCollectionViewCell.identifier)
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        if isMac {
+            layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+            layout.minimumLineSpacing = 20
+            layout.minimumInteritemSpacing = 10
+        } else {
+            layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        }
         collectionView.collectionViewLayout = layout
     }
     

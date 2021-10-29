@@ -91,7 +91,7 @@
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gAw-66-E4D">
                                 <rect key="frame" x="0.0" y="137" width="414" height="759"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZGG-j5-pyN">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -117,6 +117,13 @@
                                     <constraint firstAttribute="width" constant="80" id="dVg-kK-xNL"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fv0-j9-v8D">
+                                <rect key="frame" x="20" y="136.5" width="394" height="0.5"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.5" id="V4i-ZI-BJQ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -126,19 +133,23 @@
                             <constraint firstAttribute="bottom" secondItem="gAw-66-E4D" secondAttribute="bottom" id="FjC-US-ee7"/>
                             <constraint firstItem="gAw-66-E4D" firstAttribute="top" secondItem="evN-Iw-XRP" secondAttribute="bottom" constant="15" id="GQI-Xh-x1g"/>
                             <constraint firstItem="SN0-eO-aDf" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="HDS-MF-D0Z"/>
+                            <constraint firstItem="fv0-j9-v8D" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="IGR-fn-UfZ"/>
                             <constraint firstItem="evN-Iw-XRP" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="55" id="Ioo-ke-FPx"/>
                             <constraint firstItem="evN-Iw-XRP" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="14" id="Lwq-ze-0L7"/>
+                            <constraint firstAttribute="trailing" secondItem="fv0-j9-v8D" secondAttribute="trailing" id="Niv-B2-pqe"/>
                             <constraint firstItem="0eY-th-0fg" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Qz1-iS-anu"/>
                             <constraint firstItem="SN0-eO-aDf" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="bNr-kv-UTm"/>
                             <constraint firstItem="u9p-8W-Rde" firstAttribute="centerY" secondItem="evN-Iw-XRP" secondAttribute="centerY" id="jcg-tR-NdG"/>
                             <constraint firstItem="0eY-th-0fg" firstAttribute="top" secondItem="SN0-eO-aDf" secondAttribute="bottom" id="m42-6E-D78"/>
                             <constraint firstItem="gAw-66-E4D" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="mWD-DM-p3R"/>
+                            <constraint firstItem="gAw-66-E4D" firstAttribute="top" secondItem="fv0-j9-v8D" secondAttribute="bottom" id="r1d-ua-TaB"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="gAw-66-E4D" id="YOe-S9-rAy"/>
                         <outlet property="filterButton" destination="evN-Iw-XRP" id="OFr-ZF-nPT"/>
                         <outlet property="filterButtonTopCenterConstraint" destination="Ioo-ke-FPx" id="ZUE-sQ-CKd"/>
+                        <outlet property="separatorView" destination="fv0-j9-v8D" id="Xuc-WD-oOw"/>
                         <outlet property="settingButton" destination="u9p-8W-Rde" id="t4L-Ag-MPW"/>
                         <outlet property="sortButtonFollowView" destination="0eY-th-0fg" id="7TM-nS-PfG"/>
                         <outlet property="sortButtonFollowViewCenterConstraint" destination="Qz1-iS-anu" id="s2C-F6-9Ez"/>
