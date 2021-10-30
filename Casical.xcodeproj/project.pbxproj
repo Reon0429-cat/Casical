@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1E09EE3AE8DFFBB9895B36D6 /* libPods-CasicalUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7114CBD50D481EF2B2F5D207 /* libPods-CasicalUITests.a */; };
 		3E9646FF843F32C16CE7EFB1 /* Pods_Casical.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F119E545C0EDBE24FB8BF090 /* Pods_Casical.framework */; };
+		AB12F0F8272D60CC00A0FA60 /* SortTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB12F0F6272D60CC00A0FA60 /* SortTableViewCell.swift */; };
+		AB12F0F9272D60CC00A0FA60 /* SortTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB12F0F7272D60CC00A0FA60 /* SortTableViewCell.xib */; };
 		AB2E84E2272994580082999C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB2E84E1272994580082999C /* GoogleService-Info.plist */; };
 		AB2E84E727299BFF0082999C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7AC674272985BA007069BC /* AppDelegate.swift */; };
 		AB2E84E827299BFF0082999C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7AC676272985BA007069BC /* SceneDelegate.swift */; };
@@ -69,6 +71,8 @@
 		9185A252401887A593CE2ABB /* Pods-Casical-CasicalUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Casical-CasicalUITests.release.xcconfig"; path = "Target Support Files/Pods-Casical-CasicalUITests/Pods-Casical-CasicalUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9775327F2E2D5F650BDF695F /* Pods-CasicalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CasicalTests.release.xcconfig"; path = "Target Support Files/Pods-CasicalTests/Pods-CasicalTests.release.xcconfig"; sourceTree = "<group>"; };
 		A5073874244670B9A4854F28 /* Pods-CasicalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CasicalTests.debug.xcconfig"; path = "Target Support Files/Pods-CasicalTests/Pods-CasicalTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AB12F0F6272D60CC00A0FA60 /* SortTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortTableViewCell.swift; sourceTree = "<group>"; };
+		AB12F0F7272D60CC00A0FA60 /* SortTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortTableViewCell.xib; sourceTree = "<group>"; };
 		AB2E84E1272994580082999C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AB2E84F427299BFF0082999C /* Casical mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Casical mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB2E84F527299BFF0082999C /* Casical copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Casical copy-Info.plist"; path = "/Users/oonishireon/Desktop/Casical/Casical copy-Info.plist"; sourceTree = "<absolute>"; };
@@ -265,6 +269,8 @@
 			children = (
 				ABD46A98272C0EBE006AB17A /* ProfileCollectionViewCell.swift */,
 				ABD46A99272C0EBE006AB17A /* ProfileCollectionViewCell.xib */,
+				AB12F0F6272D60CC00A0FA60 /* SortTableViewCell.swift */,
+				AB12F0F7272D60CC00A0FA60 /* SortTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -491,6 +497,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABD46A81272B03E5006AB17A /* Login.storyboard in Resources */,
+				AB12F0F9272D60CC00A0FA60 /* SortTableViewCell.xib in Resources */,
 				ABD46A95272BE524006AB17A /* Home.storyboard in Resources */,
 				ABD46A9B272C0EBE006AB17A /* ProfileCollectionViewCell.xib in Resources */,
 				ABF5819B272D4D860086D60E /* MacHome.storyboard in Resources */,
@@ -622,6 +629,7 @@
 				ABD46A9D272C21FA006AB17A /* UIResponder+Extension.swift in Sources */,
 				ABF5819F272D4DA70086D60E /* MacHomeViewController.swift in Sources */,
 				ABD46A82272B03E5006AB17A /* LoginViewController.swift in Sources */,
+				AB12F0F8272D60CC00A0FA60 /* SortTableViewCell.swift in Sources */,
 				ABF581B2272D4FC80086D60E /* SettingViewController.swift in Sources */,
 				AB7AC675272985BA007069BC /* AppDelegate.swift in Sources */,
 				ABD46A9A272C0EBE006AB17A /* ProfileCollectionViewCell.swift in Sources */,

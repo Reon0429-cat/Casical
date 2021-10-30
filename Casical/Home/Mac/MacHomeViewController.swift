@@ -7,6 +7,24 @@
 
 import UIKit
 
+private enum SortType: CaseIterable {
+    case language
+    case prefecture
+    case experience
+    case github
+    case qiita
+    
+    var title: String {
+        switch self {
+            case .language: return "使用言語"
+            case .prefecture: return "都道府県"
+            case .experience: return "実務経験"
+            case .github: return "GitHub"
+            case .qiita: return "Qiita"
+        }
+    }
+}
+
 final class MacHomeViewController: UIViewController {
     
     @IBOutlet private weak var sortButton: UIButton!
@@ -14,6 +32,7 @@ final class MacHomeViewController: UIViewController {
     @IBOutlet private weak var profileCollectionView: UICollectionView!
     @IBOutlet private weak var settingButton: UIButton!
     @IBOutlet private weak var headerTitleLabel: UILabel!
+    @IBOutlet private weak var filterLabel: UILabel!
     
     private let sampleData = [[SampleModel]](repeating: SampleModel.data, count: 10).flatMap { $0 }
     
@@ -72,18 +91,28 @@ extension MacHomeViewController: UICollectionViewDelegateFlowLayout {
 
 extension MacHomeViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView,
+                   heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
+    
 }
 
 extension MacHomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return SortType.allCases.count
     }
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: SortTableViewCell.identifier
+        ) as! SortTableViewCell
+        let title = SortType.allCases[indexPath.row].title
+        cell.configure(title: title)
+        return cell
     }
     
 }
@@ -93,6 +122,12 @@ private extension MacHomeViewController {
     
     func setupUI() {
         self.view.backgroundColor = .white
+        headerTitleLabel.textColor = .darkColor
+        headerTitleLabel.font = .systemFont(ofSize: 60, weight: .bold)
+        settingButton.tintColor = .gray
+        sortButton.setTitleColor(.darkColor, for: .normal)
+        sortButton.tintColor = .darkColor
+        filterLabel.textColor = .gray
         setupProfileCollectionView()
         setupFilterTableView()
     }
@@ -114,6 +149,8 @@ private extension MacHomeViewController {
     func setupFilterTableView() {
         filterTableView.delegate = self
         filterTableView.dataSource = self
+        filterTableView.register(SortTableViewCell.nib,
+                                 forCellReuseIdentifier: SortTableViewCell.identifier)
     }
     
 }
