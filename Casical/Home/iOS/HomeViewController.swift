@@ -16,7 +16,7 @@ struct SampleModel {
     let experience: String
 }
 
-private extension SampleModel {
+extension SampleModel {
     static let data = [SampleModel(image: UIImage(named: "reon")!, name: "OONISHI REON", language: "Swift", house: "東京", experience: "1年"),
                        SampleModel(image: UIImage(named: "adu")!, name: "Azuki Yamada", language: "CSS", house: "大阪", experience: "6ヶ月"),
                        SampleModel(image: UIImage(named: "sakura")!, name: "宮脇 咲良", language: "JavaScript", house: "鹿児島", experience: "5年6ヶ月"),
@@ -59,7 +59,7 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         let isNotLoggedIn = (Auth.auth().currentUser == nil)
-        if isNotLoggedIn && !isMac {
+        if isNotLoggedIn {
             presentLoginVC()
         }
         
@@ -122,23 +122,13 @@ extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if isMac {
-            let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: MacProfileCollectionViewCell.identifier,
-                for: indexPath
-            ) as! MacProfileCollectionViewCell
-            let model = sampleData[indexPath.row]
-            cell.configure(model: model)
-            return cell
-        } else {
-            let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: ProfileCollectionViewCell.identifier,
-                for: indexPath
-            ) as! ProfileCollectionViewCell
-            let model = sampleData[indexPath.row]
-            cell.configure(model: model)
-            return cell
-        }
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: ProfileCollectionViewCell.identifier,
+            for: indexPath
+        ) as! ProfileCollectionViewCell
+        let model = sampleData[indexPath.row]
+        cell.configure(model: model)
+        return cell
     }
     
 }
@@ -148,14 +138,9 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if isMac {
-            let cellWidth = self.view.frame.width / 6 - 20
-            return CGSize(width: cellWidth, height: cellWidth)
-        } else {
-            let cellWidth = self.view.frame.width
-            let cellHeight: CGFloat = 120
-            return CGSize(width: cellWidth, height: cellHeight)
-        }
+        let cellWidth = self.view.frame.width
+        let cellHeight: CGFloat = 120
+        return CGSize(width: cellWidth, height: cellHeight)
     }
     
 }
@@ -170,15 +155,6 @@ private extension HomeViewController {
         sortExperienceButton.setTitleColor(.black, for: .normal)
         filterButton.setTitleColor(.black, for: .normal)
         filterButton.tintColor = .black
-        if isMac {
-            filterButtonTopCenterConstraint.constant = 20
-            sortScoreButton.titleLabel?.font = .systemFont(ofSize: 22)
-            sortRegisterButton.titleLabel?.font = .systemFont(ofSize: 22)
-            sortExperienceButton.titleLabel?.font = .systemFont(ofSize: 20)
-            filterButton.titleLabel?.font = .systemFont(ofSize: 22)
-            separatorView.isHidden = true
-            separatorView.backgroundColor = .separator
-        }
         collectionView.indicatorStyle = .black
         settingButton.tintColor = .black
     }
@@ -188,17 +164,9 @@ private extension HomeViewController {
         collectionView.dataSource = self
         collectionView.register(ProfileCollectionViewCell.nib,
                                 forCellWithReuseIdentifier: ProfileCollectionViewCell.identifier)
-        collectionView.register(MacProfileCollectionViewCell.nib,
-                                forCellWithReuseIdentifier: MacProfileCollectionViewCell.identifier)
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        if isMac {
-            layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
-            layout.minimumLineSpacing = 20
-            layout.minimumInteritemSpacing = 10
-        } else {
-            layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
-        }
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
         collectionView.collectionViewLayout = layout
     }
     

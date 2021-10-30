@@ -1,5 +1,5 @@
 //
-//  UIViewController+Extension.swift
+//  UIResponder+Extension.swift
 //  Casical
 //
 //  Created by 大西玲音 on 2021/10/29.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension UIViewController {
+extension UIResponder {
     
     var isMac: Bool {
       #if targetEnvironment(macCatalyst)
