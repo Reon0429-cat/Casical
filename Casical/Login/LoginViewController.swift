@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import PKHUD
 
 final class LoginViewController: UIViewController {
     
@@ -22,6 +24,7 @@ final class LoginViewController: UIViewController {
         
         mailAddressTextField.tintColor = .black
         passwordTextField.tintColor = .black
+        passwordTextField.isSecureTextEntry = true
         twitterLoginButton.layer.borderColor = UIColor.lightColor.cgColor
         twitterLoginButton.layer.borderWidth = 1
         googleLoginButton.layer.borderColor = UIColor.lightColor.cgColor
@@ -44,7 +47,22 @@ final class LoginViewController: UIViewController {
     }
     
     @IBAction private func loginButtonDidTapped(_ sender: Any) {
-        
+        guard let email = mailAddressTextField.text,
+              let password = passwordTextField.text else { return }
+        HUD.show(.progress)
+        Auth.auth().signIn(withEmail: email,
+                           password: password) { _, error in
+            if let error = error {
+                HUD.flash(.error)
+                print("DEBUG_PRINT: 失敗", error.localizedDescription)
+                return
+            }
+            HUD.flash(.success,
+                      onView: nil,
+                      delay: 0) { _ in
+                self.dismiss(animated: true)
+            }
+        }
     }
     
 }

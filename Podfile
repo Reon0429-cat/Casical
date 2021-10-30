@@ -12,6 +12,7 @@ target 'Casical' do
   pod 'PKHUD'
   pod 'lottie-ios'
   pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
 end
 
