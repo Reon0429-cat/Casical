@@ -23,6 +23,7 @@ final class MacPersonalPageViewController: UIViewController {
     @IBOutlet private weak var personalDataGraphBaseView: UIView!
     @IBOutlet private weak var githubDataBaseView: UIView!
     @IBOutlet private weak var qiitaDataBaseView: UIView!
+    @IBOutlet private weak var sendMessageBaseView: UIView!
     
     var sampleModel: SampleModel?
     
@@ -66,6 +67,7 @@ private extension MacPersonalPageViewController {
         bioLabel.text = sampleModel?.bio
         githubDataBaseView.layer.cornerRadius = 50
         qiitaDataBaseView.layer.cornerRadius = 50
+        sendMessageBaseView.layer.cornerRadius = 50
     }
     
 }

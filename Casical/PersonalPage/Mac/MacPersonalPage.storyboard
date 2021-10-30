@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="mac" appearance="light">
-        <simulatedSceneSize key="mac" width="1547" height="1049"/>
+        <simulatedSceneSize key="mac" width="1547" height="1051"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
@@ -16,7 +16,7 @@
             <objects>
                 <viewController storyboardIdentifier="MacPersonalPageViewController" id="Y6W-OH-hqX" customClass="MacPersonalPageViewController" customModule="Casical" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="1547" height="1049"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1547" height="1051"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffY-DG-dPp">
@@ -36,13 +36,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WHQ-tB-JQa">
-                                <rect key="frame" x="97" y="82" width="1400.5" height="947.5"/>
+                                <rect key="frame" x="97" y="82" width="1400.5" height="949.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eqQ-7W-Irh">
-                                        <rect key="frame" x="0.0" y="0.0" width="924.5" height="947.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="924.5" height="949.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lgI-7H-LkP">
-                                                <rect key="frame" x="40" y="40" width="844.5" height="568.5"/>
+                                                <rect key="frame" x="40" y="40" width="844.5" height="569.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GitHub" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VaR-T5-9ES">
                                                         <rect key="frame" x="40" y="30" width="141" height="51"/>
@@ -70,7 +70,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ZV-Gv-PIf">
-                                                        <rect key="frame" x="40" y="155" width="764.5" height="383.5"/>
+                                                        <rect key="frame" x="40" y="155" width="764.5" height="384.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GitHubの棒グラフ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qdt-2o-9wt">
                                                                 <rect key="frame" x="315" y="182" width="134.5" height="20.5"/>
@@ -112,11 +112,35 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7hJ-cn-Jq1">
-                                                <rect key="frame" x="40" y="639" width="185" height="269"/>
+                                                <rect key="frame" x="40" y="640" width="185" height="270"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9XQ-Sh-OWK">
+                                                        <rect key="frame" x="0.0" y="0.0" width="185" height="270"/>
+                                                        <color key="tintColor" name="darkColor"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="40"/>
+                                                        <state key="normal" image="envelope" catalog="system">
+                                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="80"/>
+                                                        </state>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send Message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZD-OT-QNJ">
+                                                        <rect key="frame" x="28" y="186" width="129.5" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <color key="textColor" name="darkColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
                                                 <color key="backgroundColor" name="mostLightColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="9XQ-Sh-OWK" firstAttribute="top" secondItem="7hJ-cn-Jq1" secondAttribute="top" id="07f-Dg-9zO"/>
+                                                    <constraint firstAttribute="bottom" secondItem="eZD-OT-QNJ" secondAttribute="bottom" constant="60" id="0KL-S2-ZCo"/>
+                                                    <constraint firstAttribute="bottom" secondItem="9XQ-Sh-OWK" secondAttribute="bottom" id="24p-mk-Eeu"/>
+                                                    <constraint firstItem="9XQ-Sh-OWK" firstAttribute="leading" secondItem="7hJ-cn-Jq1" secondAttribute="leading" id="8FA-gP-YzU"/>
+                                                    <constraint firstItem="eZD-OT-QNJ" firstAttribute="centerX" secondItem="7hJ-cn-Jq1" secondAttribute="centerX" id="cNU-4W-hc8"/>
+                                                    <constraint firstAttribute="trailing" secondItem="9XQ-Sh-OWK" secondAttribute="trailing" id="ntw-4Y-gRq"/>
+                                                </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0XZ-Vq-EhM">
-                                                <rect key="frame" x="255" y="639" width="629.5" height="269"/>
+                                                <rect key="frame" x="255" y="640" width="629.5" height="270"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Qiita" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iY8-JX-XVX">
                                                         <rect key="frame" x="30" y="15" width="89.5" height="48.5"/>
@@ -156,10 +180,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LhJ-ns-EYI">
-                                                        <rect key="frame" x="20" y="123" width="589.5" height="126.5"/>
+                                                        <rect key="frame" x="20" y="123" width="589.5" height="127.5"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Qiitaグラフ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X7P-im-3NP">
-                                                                <rect key="frame" x="252" y="53" width="84.5" height="20.5"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Qiita横棒グラフ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X7P-im-3NP">
+                                                                <rect key="frame" x="237" y="53" width="116" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -332,7 +356,7 @@
                                         <state key="normal" image="chevron.forward" catalog="system"/>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="700" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="gt2-D6-8ts">
-                                        <rect key="frame" x="964" y="414" width="396" height="513.5"/>
+                                        <rect key="frame" x="964" y="414" width="396" height="515.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skill Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PQ7-Nj-7rA">
                                                 <rect key="frame" x="0.0" y="0.0" width="396" height="35"/>
@@ -384,10 +408,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VXW-XN-Z30">
-                                                <rect key="frame" x="0.0" y="249" width="396" height="264.5"/>
+                                                <rect key="frame" x="0.0" y="249" width="396" height="266.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Languageの円グラフ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hji-0G-bne">
-                                                        <rect key="frame" x="120" y="122" width="156" height="20.5"/>
+                                                        <rect key="frame" x="120" y="123" width="156" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -485,17 +509,19 @@
                         <outlet property="profileImageView" destination="QYf-mS-g7h" id="elx-cu-HIi"/>
                         <outlet property="qiitaAccountLabel" destination="HUy-vQ-VAp" id="cbr-oh-o9h"/>
                         <outlet property="qiitaDataBaseView" destination="0XZ-Vq-EhM" id="MGM-Uc-1Dz"/>
+                        <outlet property="sendMessageBaseView" destination="7hJ-cn-Jq1" id="bHf-CF-AnC"/>
                         <outlet property="settingButton" destination="ffY-DG-dPp" id="o6p-lY-t4m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-111.50614091790563" y="491.61105815061967"/>
+            <point key="canvasLocation" x="-111.50614091790563" y="491.24643196955282"/>
         </scene>
     </scenes>
     <resources>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="chevron.forward" catalog="system" width="96" height="128"/>
+        <image name="envelope" catalog="system" width="128" height="93"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <namedColor name="darkColor">
             <color red="0.4779999852180481" green="0.3059999942779541" blue="0.60399997234344482" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
