@@ -31,9 +31,15 @@
 		ABD46A97272BE52D006AB17A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD46A96272BE52D006AB17A /* HomeViewController.swift */; };
 		ABD46A9A272C0EBE006AB17A /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD46A98272C0EBE006AB17A /* ProfileCollectionViewCell.swift */; };
 		ABD46A9B272C0EBE006AB17A /* ProfileCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABD46A99272C0EBE006AB17A /* ProfileCollectionViewCell.xib */; };
-		ABD46A9D272C21FA006AB17A /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD46A9C272C21FA006AB17A /* UIViewController+Extension.swift */; };
-		ABF5814E272C303C0086D60E /* MacProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF5814C272C303C0086D60E /* MacProfileCollectionViewCell.swift */; };
-		ABF5814F272C303C0086D60E /* MacProfileCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABF5814D272C303C0086D60E /* MacProfileCollectionViewCell.xib */; };
+		ABD46A9D272C21FA006AB17A /* UIResponder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD46A9C272C21FA006AB17A /* UIResponder+Extension.swift */; };
+		ABF5819B272D4D860086D60E /* MacHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABF5819A272D4D860086D60E /* MacHome.storyboard */; };
+		ABF5819F272D4DA70086D60E /* MacHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF5819E272D4DA70086D60E /* MacHomeViewController.swift */; };
+		ABF581A5272D4F320086D60E /* MacPersonalPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABF581A4272D4F320086D60E /* MacPersonalPage.storyboard */; };
+		ABF581A7272D4F380086D60E /* MacPersonalPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF581A6272D4F380086D60E /* MacPersonalPageViewController.swift */; };
+		ABF581AB272D4F930086D60E /* ProfileAdditional.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABF581AA272D4F930086D60E /* ProfileAdditional.storyboard */; };
+		ABF581AD272D4F970086D60E /* ProfileAdditionalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF581AC272D4F970086D60E /* ProfileAdditionalViewController.swift */; };
+		ABF581B0272D4FC10086D60E /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABF581AF272D4FC10086D60E /* Setting.storyboard */; };
+		ABF581B2272D4FC80086D60E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF581B1272D4FC80086D60E /* SettingViewController.swift */; };
 		CAC255DF3D1BE99A0BB62C9B /* libPods-CasicalTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C3254B2CABCA044ED2E7E139 /* libPods-CasicalTests.a */; };
 		E5ADF567EAEF87078AF02043 /* Pods_Casical.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F119E545C0EDBE24FB8BF090 /* Pods_Casical.framework */; };
 /* End PBXBuildFile section */
@@ -87,9 +93,15 @@
 		ABD46A96272BE52D006AB17A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		ABD46A98272C0EBE006AB17A /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		ABD46A99272C0EBE006AB17A /* ProfileCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCollectionViewCell.xib; sourceTree = "<group>"; };
-		ABD46A9C272C21FA006AB17A /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
-		ABF5814C272C303C0086D60E /* MacProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacProfileCollectionViewCell.swift; sourceTree = "<group>"; };
-		ABF5814D272C303C0086D60E /* MacProfileCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MacProfileCollectionViewCell.xib; sourceTree = "<group>"; };
+		ABD46A9C272C21FA006AB17A /* UIResponder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Extension.swift"; sourceTree = "<group>"; };
+		ABF5819A272D4D860086D60E /* MacHome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MacHome.storyboard; sourceTree = "<group>"; };
+		ABF5819E272D4DA70086D60E /* MacHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacHomeViewController.swift; sourceTree = "<group>"; };
+		ABF581A4272D4F320086D60E /* MacPersonalPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MacPersonalPage.storyboard; sourceTree = "<group>"; };
+		ABF581A6272D4F380086D60E /* MacPersonalPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacPersonalPageViewController.swift; sourceTree = "<group>"; };
+		ABF581AA272D4F930086D60E /* ProfileAdditional.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileAdditional.storyboard; sourceTree = "<group>"; };
+		ABF581AC272D4F970086D60E /* ProfileAdditionalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAdditionalViewController.swift; sourceTree = "<group>"; };
+		ABF581AF272D4FC10086D60E /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		ABF581B1272D4FC80086D60E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		AEC13FA82DEA99E93F6EC3E9 /* Pods-Casical-CasicalUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Casical-CasicalUITests.debug.xcconfig"; path = "Target Support Files/Pods-Casical-CasicalUITests/Pods-Casical-CasicalUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C3254B2CABCA044ED2E7E139 /* libPods-CasicalTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CasicalTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F119E545C0EDBE24FB8BF090 /* Pods_Casical.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Casical.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +171,9 @@
 		AB7AC673272985BA007069BC /* Casical */ = {
 			isa = PBXGroup;
 			children = (
+				ABF581AE272D4FAB0086D60E /* Setting */,
+				ABF581A8272D4F580086D60E /* ProfileAdditional */,
+				ABF581A2272D4F120086D60E /* PersonalPage */,
 				ABD46A93272BE4DC006AB17A /* Home */,
 				ABD46A7E272B03E5006AB17A /* Login */,
 				ABD46A86272B2AEE006AB17A /* CustomViews */,
@@ -194,8 +209,7 @@
 		ABD46A7E272B03E5006AB17A /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				ABD46A7F272B03E5006AB17A /* Login.storyboard */,
-				ABD46A80272B03E5006AB17A /* LoginViewController.swift */,
+				ABF581A1272D4DC70086D60E /* iOS */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -205,7 +219,7 @@
 			children = (
 				ABD46A83272B2AD4006AB17A /* UIColor+Extension.swift */,
 				ABD46A89272B2B1E006AB17A /* UITextField+Extension.swift */,
-				ABD46A9C272C21FA006AB17A /* UIViewController+Extension.swift */,
+				ABD46A9C272C21FA006AB17A /* UIResponder+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -221,14 +235,98 @@
 		ABD46A93272BE4DC006AB17A /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				ABD46A94272BE524006AB17A /* Home.storyboard */,
-				ABD46A96272BE52D006AB17A /* HomeViewController.swift */,
-				ABD46A98272C0EBE006AB17A /* ProfileCollectionViewCell.swift */,
-				ABD46A99272C0EBE006AB17A /* ProfileCollectionViewCell.xib */,
-				ABF5814C272C303C0086D60E /* MacProfileCollectionViewCell.swift */,
-				ABF5814D272C303C0086D60E /* MacProfileCollectionViewCell.xib */,
+				ABF5819C272D4D8B0086D60E /* iOS */,
+				ABF5819D272D4D980086D60E /* Mac */,
+				ABF581A0272D4DBC0086D60E /* Cell */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		ABF5819C272D4D8B0086D60E /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				ABD46A94272BE524006AB17A /* Home.storyboard */,
+				ABD46A96272BE52D006AB17A /* HomeViewController.swift */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		ABF5819D272D4D980086D60E /* Mac */ = {
+			isa = PBXGroup;
+			children = (
+				ABF5819A272D4D860086D60E /* MacHome.storyboard */,
+				ABF5819E272D4DA70086D60E /* MacHomeViewController.swift */,
+			);
+			path = Mac;
+			sourceTree = "<group>";
+		};
+		ABF581A0272D4DBC0086D60E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				ABD46A98272C0EBE006AB17A /* ProfileCollectionViewCell.swift */,
+				ABD46A99272C0EBE006AB17A /* ProfileCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		ABF581A1272D4DC70086D60E /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				ABD46A7F272B03E5006AB17A /* Login.storyboard */,
+				ABD46A80272B03E5006AB17A /* LoginViewController.swift */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		ABF581A2272D4F120086D60E /* PersonalPage */ = {
+			isa = PBXGroup;
+			children = (
+				ABF581A3272D4F1F0086D60E /* Mac */,
+			);
+			path = PersonalPage;
+			sourceTree = "<group>";
+		};
+		ABF581A3272D4F1F0086D60E /* Mac */ = {
+			isa = PBXGroup;
+			children = (
+				ABF581A4272D4F320086D60E /* MacPersonalPage.storyboard */,
+				ABF581A6272D4F380086D60E /* MacPersonalPageViewController.swift */,
+			);
+			path = Mac;
+			sourceTree = "<group>";
+		};
+		ABF581A8272D4F580086D60E /* ProfileAdditional */ = {
+			isa = PBXGroup;
+			children = (
+				ABF581A9272D4F680086D60E /* iOS */,
+			);
+			path = ProfileAdditional;
+			sourceTree = "<group>";
+		};
+		ABF581A9272D4F680086D60E /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				ABF581AA272D4F930086D60E /* ProfileAdditional.storyboard */,
+				ABF581AC272D4F970086D60E /* ProfileAdditionalViewController.swift */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		ABF581AE272D4FAB0086D60E /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				ABF581B3272D4FDD0086D60E /* iOS */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		ABF581B3272D4FDD0086D60E /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				ABF581AF272D4FC10086D60E /* Setting.storyboard */,
+				ABF581B1272D4FC80086D60E /* SettingViewController.swift */,
+			);
+			path = iOS;
 			sourceTree = "<group>";
 		};
 		BA995319C0F610C7BD8E9FC3 /* Frameworks */ = {
@@ -395,10 +493,13 @@
 				ABD46A81272B03E5006AB17A /* Login.storyboard in Resources */,
 				ABD46A95272BE524006AB17A /* Home.storyboard in Resources */,
 				ABD46A9B272C0EBE006AB17A /* ProfileCollectionViewCell.xib in Resources */,
+				ABF5819B272D4D860086D60E /* MacHome.storyboard in Resources */,
 				AB7AC681272985BB007069BC /* LaunchScreen.storyboard in Resources */,
-				ABF5814F272C303C0086D60E /* MacProfileCollectionViewCell.xib in Resources */,
+				ABF581AB272D4F930086D60E /* ProfileAdditional.storyboard in Resources */,
 				AB7AC67E272985BB007069BC /* Assets.xcassets in Resources */,
+				ABF581B0272D4FC10086D60E /* Setting.storyboard in Resources */,
 				AB2E84E2272994580082999C /* GoogleService-Info.plist in Resources */,
+				ABF581A5272D4F320086D60E /* MacPersonalPage.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,14 +619,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABD46A9D272C21FA006AB17A /* UIViewController+Extension.swift in Sources */,
+				ABD46A9D272C21FA006AB17A /* UIResponder+Extension.swift in Sources */,
+				ABF5819F272D4DA70086D60E /* MacHomeViewController.swift in Sources */,
 				ABD46A82272B03E5006AB17A /* LoginViewController.swift in Sources */,
+				ABF581B2272D4FC80086D60E /* SettingViewController.swift in Sources */,
 				AB7AC675272985BA007069BC /* AppDelegate.swift in Sources */,
 				ABD46A9A272C0EBE006AB17A /* ProfileCollectionViewCell.swift in Sources */,
-				ABF5814E272C303C0086D60E /* MacProfileCollectionViewCell.swift in Sources */,
 				AB7AC677272985BA007069BC /* SceneDelegate.swift in Sources */,
+				ABF581A7272D4F380086D60E /* MacPersonalPageViewController.swift in Sources */,
 				ABD46A8A272B2B1E006AB17A /* UITextField+Extension.swift in Sources */,
 				ABD46A84272B2AD4006AB17A /* UIColor+Extension.swift in Sources */,
+				ABF581AD272D4F970086D60E /* ProfileAdditionalViewController.swift in Sources */,
 				ABD46A97272BE52D006AB17A /* HomeViewController.swift in Sources */,
 				ABD46A88272B2AF4006AB17A /* CustomTextField.swift in Sources */,
 			);
