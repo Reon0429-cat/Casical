@@ -49,12 +49,17 @@ private extension MacPersonalPageViewController {
     
     func setupUI() {
         self.view.backgroundColor = .white
-        personalDataBaseView.layer.cornerRadius = 50
-        personalDataGraphBaseView.layer.cornerRadius = 50
         headerTitleLabel.textColor = .darkColor
         headerTitleLabel.font = .systemFont(ofSize: 60, weight: .bold)
         settingButton.tintColor = .gray
         backButton.tintColor = .gray
+        setupPersonalData()
+        setupGitHubData()
+        setupQiitaData()
+        setupSendMessage()
+    }
+    
+    func setupPersonalData() {
         nameLabel.text = sampleModel?.name
         let houseText = sampleModel?.house ?? "登録されていません"
         let experienceText = sampleModel?.experience ?? "登録されていません"
@@ -62,11 +67,22 @@ private extension MacPersonalPageViewController {
         experienceLabel.text = "● " + experienceText
         profileImageView.image = sampleModel?.image
         profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
-        githubAccountLabel.text = sampleModel?.github
-        qiitaAccountLabel.text = sampleModel?.qiita
         bioLabel.text = sampleModel?.bio
+        personalDataBaseView.layer.cornerRadius = 50
+        personalDataGraphBaseView.layer.cornerRadius = 50
+    }
+    
+    func setupGitHubData() {
+        githubAccountLabel.text = sampleModel?.github
         githubDataBaseView.layer.cornerRadius = 50
+    }
+    
+    func setupQiitaData() {
+        qiitaAccountLabel.text = sampleModel?.qiita
         qiitaDataBaseView.layer.cornerRadius = 50
+    }
+    
+    func setupSendMessage() {
         sendMessageBaseView.layer.cornerRadius = 50
     }
     
