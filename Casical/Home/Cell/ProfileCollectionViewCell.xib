@@ -92,6 +92,7 @@
                 <outlet property="baseView" destination="MD5-U4-sps" id="aSe-aO-tXa"/>
                 <outlet property="experienceLabel" destination="4yT-eJ-p8S" id="0CB-Gx-0QV"/>
                 <outlet property="houseLabel" destination="utH-XE-5fb" id="UY0-ai-qGk"/>
+                <outlet property="imageStackViewSpacing" destination="NcR-pn-BdS" id="bYa-y4-92T"/>
                 <outlet property="languageLabel" destination="HjB-Uu-Yeg" id="kh7-de-vmG"/>
                 <outlet property="nameLabel" destination="Wt6-TF-XF2" id="AJT-b3-I3Z"/>
                 <outlet property="profileImageView" destination="heX-Jj-oL2" id="DyC-Yq-DD6"/>

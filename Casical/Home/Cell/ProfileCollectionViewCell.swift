@@ -15,6 +15,7 @@ final class ProfileCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var languageLabel: UILabel!
     @IBOutlet private weak var houseLabel: UILabel!
     @IBOutlet private weak var experienceLabel: UILabel!
+    @IBOutlet private weak var imageStackViewSpacing: NSLayoutConstraint!
     
     static var identifier: String { String(describing: self) }
     static var nib: UINib { UINib(nibName: String(describing: self), bundle: nil) }
@@ -23,10 +24,18 @@ final class ProfileCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         
         baseView.layer.cornerRadius = 20
-        baseView.layer.shadowColor = UIColor.black.cgColor
-        baseView.layer.shadowOffset = CGSize(width: 2, height: 2)
-        baseView.layer.shadowRadius = 2
-        baseView.layer.shadowOpacity = 0.8
+        if isMac {
+            nameLabel.font = .systemFont(ofSize: 27)
+            languageLabel.font = .systemFont(ofSize: 22)
+            houseLabel.font = .systemFont(ofSize: 22)
+            experienceLabel.font = .systemFont(ofSize: 22)
+            imageStackViewSpacing.constant = 50
+        } else {
+            baseView.layer.shadowColor = UIColor.black.cgColor
+            baseView.layer.shadowOffset = CGSize(width: 2, height: 2)
+            baseView.layer.shadowRadius = 2
+            baseView.layer.shadowOpacity = 0.8
+        }
         
     }
     

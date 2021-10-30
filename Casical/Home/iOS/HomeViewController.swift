@@ -16,7 +16,7 @@ struct SampleModel {
     let experience: String
 }
 
-private extension SampleModel {
+extension SampleModel {
     static let data = [SampleModel(image: UIImage(named: "reon")!, name: "OONISHI REON", language: "Swift", house: "東京", experience: "1年"),
                        SampleModel(image: UIImage(named: "adu")!, name: "Azuki Yamada", language: "CSS", house: "大阪", experience: "6ヶ月"),
                        SampleModel(image: UIImage(named: "sakura")!, name: "宮脇 咲良", language: "JavaScript", house: "鹿児島", experience: "5年6ヶ月"),
@@ -59,7 +59,7 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         let isNotLoggedIn = (Auth.auth().currentUser == nil)
-        if isNotLoggedIn && !isMac {
+        if isNotLoggedIn {
             presentLoginVC()
         }
         
