@@ -25,4 +25,8 @@ extension UIColor {
         UIColor(named: "moreDarkColor")!
     }
     
+    static var mostLightColor: UIColor {
+        UIColor(named: "mostLightColor")!
+    }
+    
 }

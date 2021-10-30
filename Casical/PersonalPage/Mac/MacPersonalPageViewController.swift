@@ -9,9 +9,9 @@ import UIKit
 
 final class MacPersonalPageViewController: UIViewController {
     
+    @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var houseLabel: UILabel!
     @IBOutlet private weak var experienceLabel: UILabel!
-    @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var profileImageView: UIImageView!
     @IBOutlet private weak var githubAccountLabel: UILabel!
     @IBOutlet private weak var qiitaAccountLabel: UILabel!
@@ -21,6 +21,8 @@ final class MacPersonalPageViewController: UIViewController {
     @IBOutlet private weak var backButton: UIButton!
     @IBOutlet private weak var personalDataBaseView: UIView!
     @IBOutlet private weak var personalDataGraphBaseView: UIView!
+    @IBOutlet private weak var githubDataBaseView: UIView!
+    @IBOutlet private weak var qiitaDataBaseView: UIView!
     
     var sampleModel: SampleModel?
     
@@ -62,6 +64,8 @@ private extension MacPersonalPageViewController {
         githubAccountLabel.text = sampleModel?.github
         qiitaAccountLabel.text = sampleModel?.qiita
         bioLabel.text = sampleModel?.bio
+        githubDataBaseView.layer.cornerRadius = 50
+        qiitaDataBaseView.layer.cornerRadius = 50
     }
     
 }
