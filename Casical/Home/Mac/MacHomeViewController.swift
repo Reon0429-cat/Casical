@@ -55,6 +55,20 @@ final class MacHomeViewController: UIViewController {
 
 extension MacHomeViewController: UICollectionViewDelegate {
     
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        if isMac {
+            let sampleModel = sampleData[indexPath.row]
+            let macPersonalPageVC    = UIStoryboard(name: "MacPersonalPage", bundle: nil)
+                .instantiateInitialViewController() as! MacPersonalPageViewController
+            macPersonalPageVC.modalPresentationStyle = .fullScreen
+            macPersonalPageVC.sampleModel = sampleModel
+            present(macPersonalPageVC, animated: true)
+        } else {
+            // 実装しない
+        }
+    }
+    
 }
 
 extension MacHomeViewController: UICollectionViewDataSource {
