@@ -61,10 +61,8 @@ private extension MacPersonalPageViewController {
     
     func setupPersonalData() {
         nameLabel.text = sampleModel?.name
-        let houseText = sampleModel?.house ?? "登録されていません"
-        let experienceText = sampleModel?.experience ?? "登録されていません"
-        houseLabel.text = "● " + houseText
-        experienceLabel.text = "● " + experienceText
+        houseLabel.text = "● " + sampleModel!.house
+        experienceLabel.text = "● " + sampleModel!.convertExperienceToString()
         profileImageView.image = sampleModel?.image
         profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
         bioLabel.text = sampleModel?.bio

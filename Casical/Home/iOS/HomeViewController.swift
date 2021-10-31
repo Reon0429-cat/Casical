@@ -36,8 +36,22 @@ final class HomeViewController: UIViewController {
     @IBOutlet private weak var settingButton: UIButton!
     @IBOutlet private weak var separatorView: UIView!
     
-    private let sampleData = SampleModel.data
+    private var sampleData = SampleModel.data
     private lazy var sortButtonFollowViewPosition: SortButtonFollowViewPosition = .register(sortRegisterButton)
+    private enum SortType {
+        case score
+        case register
+        case experience
+        
+        var condition: (SampleModel, SampleModel) -> Bool {
+            switch self {
+                case .score: return { $0.skillScore > $1.skillScore }
+                case .register: return { $0.registrationDate < $1.registrationDate }
+                case .experience: return { $0.experience > $1.experience }
+            }
+        }
+    }
+    private var sortType: SortType = .register
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,29 +60,37 @@ final class HomeViewController: UIViewController {
         if isNotLoggedIn {
             presentLoginVC()
         }
-        
+        rearranges(sortType: .register)
         setupUI()
         
     }
     
     @IBAction private func sortScoreButton(_ sender: Any) {
         changeFollowViewPosition(to: sortScoreButton)
+        rearranges(sortType: .score)
     }
     
     @IBAction private func sortRegisterButton(_ sender: Any) {
         changeFollowViewPosition(to: sortRegisterButton)
+        rearranges(sortType: .register)
     }
     
     @IBAction private func sortExperienceButton(_ sender: Any) {
         changeFollowViewPosition(to: sortExperienceButton)
+        rearranges(sortType: .experience)
     }
     
     @IBAction private func filterButton(_ sender: Any) {
-        
+        // 実装しない
     }
     
     @IBAction private func settingButton(_ sender: Any) {
         
+    }
+    
+    private func rearranges(sortType: SortType) {
+        sampleData = sampleData.sorted(by: sortType.condition)
+        collectionView.reloadData()
     }
     
     private func presentLoginVC() {

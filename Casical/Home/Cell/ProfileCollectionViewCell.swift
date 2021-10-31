@@ -60,7 +60,7 @@ final class ProfileCollectionViewCell: UICollectionViewCell {
         nameLabel.text = model.name
         languageLabel.text = "● " + model.language
         houseLabel.text = "● " + model.house
-        experienceLabel.text = "● " + model.experience
+        experienceLabel.text = "● " + model.convertExperienceToString()
     }
 
 }
