@@ -17,6 +17,10 @@
 		AB2E84EC27299BFF0082999C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB7AC67F272985BB007069BC /* LaunchScreen.storyboard */; };
 		AB2E84ED27299BFF0082999C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB7AC67D272985BB007069BC /* Assets.xcassets */; };
 		AB2E84EF27299BFF0082999C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB2E84E1272994580082999C /* GoogleService-Info.plist */; };
+		AB39D205272DA0BB009639DD /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB39D203272DA0BB009639DD /* SettingTableViewCell.swift */; };
+		AB39D206272DA0BB009639DD /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB39D204272DA0BB009639DD /* SettingTableViewCell.xib */; };
+		AB558B4D272D9EFE00BC218A /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB558B4C272D9EFE00BC218A /* Setting.storyboard */; };
+		AB558B4F272D9F0C00BC218A /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB558B4E272D9F0C00BC218A /* SettingViewController.swift */; };
 		AB7AC675272985BA007069BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7AC674272985BA007069BC /* AppDelegate.swift */; };
 		AB7AC677272985BA007069BC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7AC676272985BA007069BC /* SceneDelegate.swift */; };
 		AB7AC67E272985BB007069BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB7AC67D272985BB007069BC /* Assets.xcassets */; };
@@ -41,8 +45,6 @@
 		ABF581A7272D4F380086D60E /* MacPersonalPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF581A6272D4F380086D60E /* MacPersonalPageViewController.swift */; };
 		ABF581AB272D4F930086D60E /* ProfileAdditional.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABF581AA272D4F930086D60E /* ProfileAdditional.storyboard */; };
 		ABF581AD272D4F970086D60E /* ProfileAdditionalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF581AC272D4F970086D60E /* ProfileAdditionalViewController.swift */; };
-		ABF581B0272D4FC10086D60E /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABF581AF272D4FC10086D60E /* Setting.storyboard */; };
-		ABF581B2272D4FC80086D60E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF581B1272D4FC80086D60E /* SettingViewController.swift */; };
 		CAC255DF3D1BE99A0BB62C9B /* libPods-CasicalTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C3254B2CABCA044ED2E7E139 /* libPods-CasicalTests.a */; };
 		E5ADF567EAEF87078AF02043 /* Pods_Casical.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F119E545C0EDBE24FB8BF090 /* Pods_Casical.framework */; };
 /* End PBXBuildFile section */
@@ -77,6 +79,10 @@
 		AB2E84E1272994580082999C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AB2E84F427299BFF0082999C /* Casical mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Casical mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB2E84F527299BFF0082999C /* Casical copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Casical copy-Info.plist"; path = "/Users/oonishireon/Desktop/Casical/Casical copy-Info.plist"; sourceTree = "<absolute>"; };
+		AB39D203272DA0BB009639DD /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		AB39D204272DA0BB009639DD /* SettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
+		AB558B4C272D9EFE00BC218A /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		AB558B4E272D9F0C00BC218A /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		AB7AC671272985BA007069BC /* Casical.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Casical.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB7AC674272985BA007069BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB7AC676272985BA007069BC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,8 +112,6 @@
 		ABF581A6272D4F380086D60E /* MacPersonalPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacPersonalPageViewController.swift; sourceTree = "<group>"; };
 		ABF581AA272D4F930086D60E /* ProfileAdditional.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileAdditional.storyboard; sourceTree = "<group>"; };
 		ABF581AC272D4F970086D60E /* ProfileAdditionalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAdditionalViewController.swift; sourceTree = "<group>"; };
-		ABF581AF272D4FC10086D60E /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
-		ABF581B1272D4FC80086D60E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		AEC13FA82DEA99E93F6EC3E9 /* Pods-Casical-CasicalUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Casical-CasicalUITests.debug.xcconfig"; path = "Target Support Files/Pods-Casical-CasicalUITests/Pods-Casical-CasicalUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C3254B2CABCA044ED2E7E139 /* libPods-CasicalTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CasicalTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F119E545C0EDBE24FB8BF090 /* Pods_Casical.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Casical.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -340,8 +344,10 @@
 		ABF581B3272D4FDD0086D60E /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				ABF581AF272D4FC10086D60E /* Setting.storyboard */,
-				ABF581B1272D4FC80086D60E /* SettingViewController.swift */,
+				AB558B4E272D9F0C00BC218A /* SettingViewController.swift */,
+				AB558B4C272D9EFE00BC218A /* Setting.storyboard */,
+				AB39D203272DA0BB009639DD /* SettingTableViewCell.swift */,
+				AB39D204272DA0BB009639DD /* SettingTableViewCell.xib */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -509,14 +515,15 @@
 			files = (
 				ABD46A81272B03E5006AB17A /* Login.storyboard in Resources */,
 				AB12F0F9272D60CC00A0FA60 /* SortTableViewCell.xib in Resources */,
+				AB39D206272DA0BB009639DD /* SettingTableViewCell.xib in Resources */,
 				ABD46A95272BE524006AB17A /* Home.storyboard in Resources */,
 				ABD46A9B272C0EBE006AB17A /* ProfileCollectionViewCell.xib in Resources */,
 				ABF5819B272D4D860086D60E /* MacHome.storyboard in Resources */,
 				AB7AC681272985BB007069BC /* LaunchScreen.storyboard in Resources */,
 				ABF581AB272D4F930086D60E /* ProfileAdditional.storyboard in Resources */,
 				AB7AC67E272985BB007069BC /* Assets.xcassets in Resources */,
-				ABF581B0272D4FC10086D60E /* Setting.storyboard in Resources */,
 				AB2E84E2272994580082999C /* GoogleService-Info.plist in Resources */,
+				AB558B4D272D9EFE00BC218A /* Setting.storyboard in Resources */,
 				ABF581A5272D4F320086D60E /* MacPersonalPage.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -642,8 +649,9 @@
 				ABF5819F272D4DA70086D60E /* MacHomeViewController.swift in Sources */,
 				ABD46A82272B03E5006AB17A /* LoginViewController.swift in Sources */,
 				AB12F0F8272D60CC00A0FA60 /* SortTableViewCell.swift in Sources */,
-				ABF581B2272D4FC80086D60E /* SettingViewController.swift in Sources */,
 				AB7AC675272985BA007069BC /* AppDelegate.swift in Sources */,
+				AB558B4F272D9F0C00BC218A /* SettingViewController.swift in Sources */,
+				AB39D205272DA0BB009639DD /* SettingTableViewCell.swift in Sources */,
 				ABD46A9A272C0EBE006AB17A /* ProfileCollectionViewCell.swift in Sources */,
 				AB7AC677272985BA007069BC /* SceneDelegate.swift in Sources */,
 				ABF581A7272D4F380086D60E /* MacPersonalPageViewController.swift in Sources */,

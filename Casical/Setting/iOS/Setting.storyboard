@@ -15,13 +15,36 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="p9n-dS-d6y">
+                                <rect key="frame" x="0.0" y="104" width="414" height="758"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="設定" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FgW-JT-OGi">
+                                <rect key="frame" x="20" y="60" width="41" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="p9n-dS-d6y" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="60" id="0uA-dN-5aa"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="p9n-dS-d6y" secondAttribute="bottom" id="1ER-Ox-oME"/>
+                            <constraint firstItem="p9n-dS-d6y" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="6wg-7w-TJ2"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="p9n-dS-d6y" secondAttribute="trailing" id="KXV-SU-Zqq"/>
+                            <constraint firstItem="p9n-dS-d6y" firstAttribute="top" secondItem="FgW-JT-OGi" secondAttribute="bottom" constant="20" id="grb-M6-j91"/>
+                            <constraint firstItem="FgW-JT-OGi" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="otX-14-U6r"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="p9n-dS-d6y" id="Phz-Wo-A2D"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="108"/>
+            <point key="canvasLocation" x="139" y="113"/>
         </scene>
     </scenes>
     <resources>

@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import SideMenu
 
 private enum SortButtonFollowViewPosition {
     case score(UIButton)
@@ -52,7 +53,8 @@ final class HomeViewController: UIViewController {
         }
     }
     private var sortType: SortType = .register
-    
+    private var rightSideMenuNavC: SideMenuNavigationController?
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -85,7 +87,19 @@ final class HomeViewController: UIViewController {
     }
     
     @IBAction private func settingButton(_ sender: Any) {
-        
+        if isMac {
+            // 実装しない
+        } else {
+            guard let sideMenuNavC = rightSideMenuNavC else { return }
+            present(sideMenuNavC, animated: true)
+        }
+    }
+    
+    @IBAction private func presentProfileAdditionalScreenButtonDidTapped(_ sender: Any) {
+        let profileAdditionalVC = UIStoryboard(name: "ProfileAdditional", bundle: nil)
+            .instantiateInitialViewController() as! ProfileAdditionalViewController
+        profileAdditionalVC.modalPresentationStyle = .fullScreen
+        present(profileAdditionalVC, animated: true)
     }
     
     private func rearranges(sortType: SortType) {
@@ -111,6 +125,15 @@ final class HomeViewController: UIViewController {
             self.view.layoutIfNeeded()
         }
         sortButtonFollowViewPosition = .register(destinationButton)
+    }
+    
+    private func makeSettings() -> SideMenuSettings {
+        let presentationStyle: SideMenuPresentationStyle = .menuSlideIn
+        presentationStyle.onTopShadowOpacity = 1.0
+        var settings = SideMenuSettings()
+        settings.presentationStyle = presentationStyle
+        settings.statusBarEndAlpha = 0
+        return settings
     }
     
 }
@@ -156,6 +179,7 @@ private extension HomeViewController {
     
     func setupUI() {
         setupCollectionView()
+        setupSideMenu()
         sortScoreButton.setTitleColor(.black, for: .normal)
         sortRegisterButton.setTitleColor(.black, for: .normal)
         sortExperienceButton.setTitleColor(.black, for: .normal)
@@ -174,6 +198,22 @@ private extension HomeViewController {
         layout.scrollDirection = .vertical
         layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
         collectionView.collectionViewLayout = layout
+    }
+    
+    func setupSideMenu() {
+        let rightSideMenuVC = UIStoryboard(name: "Setting", bundle: nil)
+            .instantiateViewController(withIdentifier: String(describing: SettingViewController.self)
+            ) as! SettingViewController
+        let rightSideMenuNavC = SideMenuNavigationController(rootViewController: rightSideMenuVC)
+        rightSideMenuNavC.settings = makeSettings()
+        rightSideMenuNavC.menuWidth = 200
+        SideMenuManager.default.rightMenuNavigationController = rightSideMenuNavC
+        self.rightSideMenuNavC = rightSideMenuNavC
+        
+        if let navigationController = self.navigationController {
+            SideMenuManager.default.addPanGestureToPresent(toView: navigationController.navigationBar)
+            SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: navigationController.view, forMenu: .left)
+        }
     }
     
 }
