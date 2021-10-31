@@ -18,6 +18,34 @@ private struct Prefecture {
     
 }
 
+struct User {
+    let name: String
+    let workLocation: String
+    let experience: Int
+    let employmentStatus: String
+    let registrationDate: Date
+    let gitHub: GitHub
+    let qiita: Qiita
+    let skillScore: Int
+}
+
+struct GitHub {
+    let name: String
+    let mostUsedLanguage: String?
+    let secondMostUsedLanguage: String?
+    let thirdMostUsedLanguage: String?
+    let followers: Int
+    let contributions: Int
+    let description: String
+}
+
+struct Qiita {
+    let name: String
+    let followers: Int
+    let contributions: Int
+    let tags: [(name: String, value: Int)]
+}
+
 final class ProfileAdditionalViewController: UIViewController {
     
     @IBOutlet private weak var registerButton: UIButton!
