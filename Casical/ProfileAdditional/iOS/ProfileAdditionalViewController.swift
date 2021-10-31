@@ -25,9 +25,6 @@ final class ProfileAdditionalViewController: UIViewController {
     private let employmentStatus = ["新卒", "中途"]
     private var oldSelectedExperiencesYearIndex = 0
     private var oldSelectedExperiencesMonthIndex = 0
-    private var gitHub: GitHub?
-//    private var totalContributions = 0
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,11 +56,7 @@ final class ProfileAdditionalViewController: UIViewController {
         let experienceYear = experiences[0][oldSelectedExperiencesYearIndex]
         let experienceMonth = experiences[1][oldSelectedExperiencesMonthIndex]
         let experience = experienceYear * 12 + experienceMonth
-        
         searchUser(userName: gitHubName)
-        
-        // MARK: - ToDo 保存処理
-        //        dismiss(animated: true)
     }
     
     private func searchUser(userName: String) {
@@ -85,59 +78,11 @@ final class ProfileAdditionalViewController: UIViewController {
                 case .failure(let title):
                     print("DEBUG_PRINT: ", title, #function)
                 case .success(let repos):
-                    
-                    let repoLanguages = repos.map { $0.language }
-                    let excludeSameRepoLanguages = NSOrderedSet(array: repoLanguages).array as! [String]
-                    var counts = [Int]()
-                    excludeSameRepoLanguages.forEach { excludeSameRepoLanguage in
-                        var count = 0
-                        repoLanguages.forEach { repoLanguage in
-                            if excludeSameRepoLanguage == repoLanguage {
-                                count += 1
-                            }
-                        }
-                        counts.append(count)
-                    }
-                    let percentCounts = counts.map { Double($0) / Double(repoLanguages.count) * 100 }.map { Int($0) }
-                    var languageTaples = [(language: String, percentNumber: Int)]()
-                    excludeSameRepoLanguages.enumerated().forEach { index, language in
-                        languageTaples.append((language: language, percentNumber: percentCounts[index]))
-                    }
-                    let sortedLanguageTaples = languageTaples.sorted(by: { $0.percentNumber > $1.percentNumber })
-                    
-                    var mostUsedLanguage: (name: String, value: Int)?
-                    var secondMostUsedLanguage: (name: String, value: Int)?
-                    var thirdMostUsedLanguage: (name: String, value: Int)?
-                    
-                    switch sortedLanguageTaples.count {
-                        case 0:
-                            mostUsedLanguage = nil
-                            secondMostUsedLanguage = nil
-                            thirdMostUsedLanguage = nil
-                        case 1:
-                            mostUsedLanguage = (name: sortedLanguageTaples[0].language, value: sortedLanguageTaples[0].percentNumber)
-                            secondMostUsedLanguage = nil
-                            thirdMostUsedLanguage = nil
-                        case 2:
-                            mostUsedLanguage = (name: sortedLanguageTaples[0].language, value: sortedLanguageTaples[0].percentNumber)
-                            secondMostUsedLanguage = (name: sortedLanguageTaples[1].language, value: sortedLanguageTaples[1].percentNumber)
-                            thirdMostUsedLanguage = nil
-                        default:
-                            mostUsedLanguage = (name: sortedLanguageTaples[0].language, value: sortedLanguageTaples[0].percentNumber)
-                            secondMostUsedLanguage = (name: sortedLanguageTaples[1].language, value: sortedLanguageTaples[1].percentNumber)
-                            thirdMostUsedLanguage = (name: sortedLanguageTaples[2].language, value: sortedLanguageTaples[2].percentNumber)
-                    }
-                    
-//                    repos.forEach { repo in
-//                        self.searchContributors(userName: userName,
-//                                                contributorsUrlString: repo.contributorsUrl,
-//                                                gitHubUser: gitHubUser,
-//                                                repos: repos)
-//                    }
-                    
-                    
                     let avatarUrl = URL(string: gitHubUser.avatarUrl)!
                     let image = try! Data(contentsOf: avatarUrl)
+                    let mostUsedLanguage = self.calculateUsedLanguage(repos: repos)[0]
+                    let secondMostUsedLanguage = self.calculateUsedLanguage(repos: repos)[1]
+                    let thirdMostUsedLanguage = self.calculateUsedLanguage(repos: repos)[2]
                     let gitHub = GitHub(name: userName,
                                         mostUsedLanguage: mostUsedLanguage,
                                         secondMostUsedLanguage: secondMostUsedLanguage,
@@ -145,29 +90,9 @@ final class ProfileAdditionalViewController: UIViewController {
                                         followers: gitHubUser.followers,
                                         description: gitHubUser.bio,
                                         image: image)
-                    
-                    print("DEBUG_PRINT: ", gitHub)
-                    
-                    
             }
         }
     }
-    
-//    private func searchContributors(userName: String,
-//                                    contributorsUrlString: String,
-//                                    gitHubUser: GitHubUser,
-//                                    repos: [GitHubRepoItem]) {
-//        GitHubAPIClient().searchContributors(
-//            contributorsUrlString: contributorsUrlString
-//        ) { result in
-//            switch result {
-//                case .failure(let title):
-//                    print("DEBUG_PRINT: ", title, #function)
-//                case .success(let contributors):
-//                    self.totalContributions += contributors.map { $0.contributions }.reduce(0, +)
-//            }
-//        }
-//    }
     
     @IBAction func dismissButtonDidTapped(_ sender: Any) {
         dismiss(animated: true)
@@ -189,6 +114,49 @@ final class ProfileAdditionalViewController: UIViewController {
         ].allSatisfy { !$0!.text!.isEmpty }
         registerButton.isEnabled = isEnabled
         registerButton.layer.opacity = isEnabled ? 1 : 0.6
+    }
+    
+    private func calculateUsedLanguage(repos: [GitHubRepoItem]) -> [(name: String, value: Int)?] {
+        let repoLanguages = repos.map { $0.language }.compactMap { $0 }
+        let excludeSameRepoLanguages = NSOrderedSet(array: repoLanguages).array as! [String]
+        var counts = [Int]()
+        excludeSameRepoLanguages.forEach { excludeSameRepoLanguage in
+            var count = 0
+            repoLanguages.forEach { repoLanguage in
+                if excludeSameRepoLanguage == repoLanguage {
+                    count += 1
+                }
+            }
+            counts.append(count)
+        }
+        let percentCounts = counts.map { Double($0) / Double(repoLanguages.count) * 100 }.map { Int($0) }
+        var languageTaples = [(language: String, percentNumber: Int)]()
+        excludeSameRepoLanguages.enumerated().forEach { index, language in
+            languageTaples.append((language: language, percentNumber: percentCounts[index]))
+        }
+        let sortedLanguageTaples = languageTaples.sorted(by: { $0.percentNumber > $1.percentNumber })
+        var mostUsedLanguage: (name: String, value: Int)?
+        var secondMostUsedLanguage: (name: String, value: Int)?
+        var thirdMostUsedLanguage: (name: String, value: Int)?
+        switch sortedLanguageTaples.count {
+            case 0:
+                mostUsedLanguage = nil
+                secondMostUsedLanguage = nil
+                thirdMostUsedLanguage = nil
+            case 1:
+                mostUsedLanguage = (name: sortedLanguageTaples[0].language, value: sortedLanguageTaples[0].percentNumber)
+                secondMostUsedLanguage = nil
+                thirdMostUsedLanguage = nil
+            case 2:
+                mostUsedLanguage = (name: sortedLanguageTaples[0].language, value: sortedLanguageTaples[0].percentNumber)
+                secondMostUsedLanguage = (name: sortedLanguageTaples[1].language, value: sortedLanguageTaples[1].percentNumber)
+                thirdMostUsedLanguage = nil
+            default:
+                mostUsedLanguage = (name: sortedLanguageTaples[0].language, value: sortedLanguageTaples[0].percentNumber)
+                secondMostUsedLanguage = (name: sortedLanguageTaples[1].language, value: sortedLanguageTaples[1].percentNumber)
+                thirdMostUsedLanguage = (name: sortedLanguageTaples[2].language, value: sortedLanguageTaples[2].percentNumber)
+        }
+        return [mostUsedLanguage, secondMostUsedLanguage, thirdMostUsedLanguage]
     }
     
 }
