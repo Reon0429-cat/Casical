@@ -28,6 +28,7 @@
 		AB7AC68C272985BC007069BC /* CasicalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7AC68B272985BC007069BC /* CasicalTests.swift */; };
 		AB7AC696272985BC007069BC /* CasicalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7AC695272985BC007069BC /* CasicalUITests.swift */; };
 		AB7AC698272985BC007069BC /* CasicalUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7AC697272985BC007069BC /* CasicalUITestsLaunchTests.swift */; };
+		ABCDE64A272E38B400BB34A3 /* SampleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCDE649272E38B400BB34A3 /* SampleModel.swift */; };
 		ABD46A81272B03E5006AB17A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABD46A7F272B03E5006AB17A /* Login.storyboard */; };
 		ABD46A82272B03E5006AB17A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD46A80272B03E5006AB17A /* LoginViewController.swift */; };
 		ABD46A84272B2AD4006AB17A /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD46A83272B2AD4006AB17A /* UIColor+Extension.swift */; };
@@ -94,6 +95,7 @@
 		AB7AC695272985BC007069BC /* CasicalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasicalUITests.swift; sourceTree = "<group>"; };
 		AB7AC697272985BC007069BC /* CasicalUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasicalUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		AB7AC6A4272985C1007069BC /* Casical.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Casical.entitlements; sourceTree = "<group>"; };
+		ABCDE649272E38B400BB34A3 /* SampleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleModel.swift; sourceTree = "<group>"; };
 		ABD46A7F272B03E5006AB17A /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		ABD46A80272B03E5006AB17A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		ABD46A83272B2AD4006AB17A /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 		AB7AC673272985BA007069BC /* Casical */ = {
 			isa = PBXGroup;
 			children = (
+				ABCDE648272E38A500BB34A3 /* Model */,
 				ABF581AE272D4FAB0086D60E /* Setting */,
 				ABF581A8272D4F580086D60E /* ProfileAdditional */,
 				ABF581A2272D4F120086D60E /* PersonalPage */,
@@ -212,6 +215,14 @@
 				AB7AC697272985BC007069BC /* CasicalUITestsLaunchTests.swift */,
 			);
 			path = CasicalUITests;
+			sourceTree = "<group>";
+		};
+		ABCDE648272E38A500BB34A3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ABCDE649272E38B400BB34A3 /* SampleModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		ABD46A7E272B03E5006AB17A /* Login */ = {
@@ -634,6 +645,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABD46A9D272C21FA006AB17A /* UIResponder+Extension.swift in Sources */,
+				ABCDE64A272E38B400BB34A3 /* SampleModel.swift in Sources */,
 				ABF5819F272D4DA70086D60E /* MacHomeViewController.swift in Sources */,
 				ABD46A82272B03E5006AB17A /* LoginViewController.swift in Sources */,
 				AB12F0F8272D60CC00A0FA60 /* SortTableViewCell.swift in Sources */,

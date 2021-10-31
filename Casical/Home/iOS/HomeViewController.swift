@@ -9,25 +9,6 @@ import UIKit
 import FirebaseAuth
 import SideMenu
 
-struct SampleModel {
-    let image: UIImage
-    let name: String
-    let language: String
-    let house: String
-    let experience: String
-    let github: String
-    let qiita: String
-    let bio: String
-}
-
-extension SampleModel {
-    static let data = [SampleModel(image: UIImage(named: "reon")!, name: "OONISHI REON", language: "Swift", house: "東京", experience: "1年", github: "Reon0429-cat", qiita: "REON", bio: "iOSエンジニアを目指してます！Swift大好き！"),
-                       SampleModel(image: UIImage(named: "adu")!, name: "Azuki Yamada", language: "CSS", house: "大阪", experience: "6ヶ月", github: "aduGitHub", qiita: "aduQiita", bio: "aduBio"),
-                       SampleModel(image: UIImage(named: "sakura")!, name: "宮脇 咲良", language: "JavaScript", house: "鹿児島", experience: "5年6ヶ月", github: "sakuraGitHub", qiita: "sakuraQiita", bio: "sakuraBio"),
-                       SampleModel(image: UIImage(named: "mai")!, name: "Mai Shiraishi", language: "Java", house: "群馬", experience: "中途未経験", github: "maiGitHub", qiita: "maiQiita", bio: "maiBio"),
-                       SampleModel(image: UIImage(named: "asuka")!, name: "齋藤 飛鳥", language: "PHP", house: "東京", experience: "新卒未経験", github: "asukaGitHub", qiita: "asukaQiita", bio: "asukaBio"),]
-}
-
 private enum SortButtonFollowViewPosition {
     case score(UIButton)
     case register(UIButton)
@@ -56,10 +37,24 @@ final class HomeViewController: UIViewController {
     @IBOutlet private weak var settingButton: UIButton!
     @IBOutlet private weak var separatorView: UIView!
     
-    private let sampleData = [[SampleModel]](repeating: SampleModel.data, count: 10).flatMap { $0 }
+    private var sampleData = SampleModel.data
     private lazy var sortButtonFollowViewPosition: SortButtonFollowViewPosition = .register(sortRegisterButton)
+    private enum SortType {
+        case score
+        case register
+        case experience
+        
+        var condition: (SampleModel, SampleModel) -> Bool {
+            switch self {
+                case .score: return { $0.skillScore > $1.skillScore }
+                case .register: return { $0.registrationDate < $1.registrationDate }
+                case .experience: return { $0.experience > $1.experience }
+            }
+        }
+    }
+    private var sortType: SortType = .register
     private var rightSideMenuNavC: SideMenuNavigationController?
-
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -67,25 +62,28 @@ final class HomeViewController: UIViewController {
         if isNotLoggedIn {
             presentLoginVC()
         }
-        
+        rearranges(sortType: .register)
         setupUI()
         
     }
     
     @IBAction private func sortScoreButton(_ sender: Any) {
         changeFollowViewPosition(to: sortScoreButton)
+        rearranges(sortType: .score)
     }
     
     @IBAction private func sortRegisterButton(_ sender: Any) {
         changeFollowViewPosition(to: sortRegisterButton)
+        rearranges(sortType: .register)
     }
     
     @IBAction private func sortExperienceButton(_ sender: Any) {
         changeFollowViewPosition(to: sortExperienceButton)
+        rearranges(sortType: .experience)
     }
     
     @IBAction private func filterButton(_ sender: Any) {
-        
+        // 実装しない
     }
     
     @IBAction private func settingButton(_ sender: Any) {
@@ -102,6 +100,11 @@ final class HomeViewController: UIViewController {
             .instantiateInitialViewController() as! ProfileAdditionalViewController
         profileAdditionalVC.modalPresentationStyle = .fullScreen
         present(profileAdditionalVC, animated: true)
+    }
+    
+    private func rearranges(sortType: SortType) {
+        sampleData = sampleData.sorted(by: sortType.condition)
+        collectionView.reloadData()
     }
     
     private func presentLoginVC() {
