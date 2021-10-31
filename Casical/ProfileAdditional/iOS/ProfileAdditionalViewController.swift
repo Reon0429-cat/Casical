@@ -26,7 +26,7 @@ final class ProfileAdditionalViewController: UIViewController {
     private var oldSelectedExperiencesYearIndex = 0
     private var oldSelectedExperiencesMonthIndex = 0
     private var gitHub: GitHub?
-    private var totalContributions = 0
+//    private var totalContributions = 0
     
     
     override func viewDidLoad() {
@@ -59,7 +59,8 @@ final class ProfileAdditionalViewController: UIViewController {
         let experienceYear = experiences[0][oldSelectedExperiencesYearIndex]
         let experienceMonth = experiences[1][oldSelectedExperiencesMonthIndex]
         let experience = experienceYear * 12 + experienceMonth
-        self.searchUser(userName: gitHubName)
+        
+        searchUser(userName: gitHubName)
         
         // MARK: - ToDo 保存処理
         //        dismiss(animated: true)
@@ -127,12 +128,12 @@ final class ProfileAdditionalViewController: UIViewController {
                             thirdMostUsedLanguage = (name: sortedLanguageTaples[2].language, value: sortedLanguageTaples[2].percentNumber)
                     }
                     
-                    repos.forEach { repo in
-                        self.searchContributors(userName: userName,
-                                                contributorsUrlString: repo.contributorsUrl,
-                                                gitHubUser: gitHubUser,
-                                                repos: repos)
-                    }
+//                    repos.forEach { repo in
+//                        self.searchContributors(userName: userName,
+//                                                contributorsUrlString: repo.contributorsUrl,
+//                                                gitHubUser: gitHubUser,
+//                                                repos: repos)
+//                    }
                     
                     
                     let avatarUrl = URL(string: gitHubUser.avatarUrl)!
@@ -142,7 +143,6 @@ final class ProfileAdditionalViewController: UIViewController {
                                         secondMostUsedLanguage: secondMostUsedLanguage,
                                         thirdMostUsedLanguage: thirdMostUsedLanguage,
                                         followers: gitHubUser.followers,
-                                        contributions: self.totalContributions,
                                         description: gitHubUser.bio,
                                         image: image)
                     
@@ -153,22 +153,21 @@ final class ProfileAdditionalViewController: UIViewController {
         }
     }
     
-    private func searchContributors(userName: String,
-                                    contributorsUrlString: String,
-                                    gitHubUser: GitHubUser,
-                                    repos: [GitHubRepoItem]) {
-        GitHubAPIClient().searchContributors(
-            contributorsUrlString: contributorsUrlString
-        ) { result in
-            switch result {
-                case .failure(let title):
-                    print("DEBUG_PRINT: ", title, #function)
-                case .success(let contributors):
-                    self.totalContributions += contributors.map { $0.contributions }.reduce(0, +)
-            }
-        }
-    }
-    
+//    private func searchContributors(userName: String,
+//                                    contributorsUrlString: String,
+//                                    gitHubUser: GitHubUser,
+//                                    repos: [GitHubRepoItem]) {
+//        GitHubAPIClient().searchContributors(
+//            contributorsUrlString: contributorsUrlString
+//        ) { result in
+//            switch result {
+//                case .failure(let title):
+//                    print("DEBUG_PRINT: ", title, #function)
+//                case .success(let contributors):
+//                    self.totalContributions += contributors.map { $0.contributions }.reduce(0, +)
+//            }
+//        }
+//    }
     
     @IBAction func dismissButtonDidTapped(_ sender: Any) {
         dismiss(animated: true)
@@ -179,7 +178,7 @@ final class ProfileAdditionalViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    func changeRegisterButtonState() {
+    private func changeRegisterButtonState() {
         let isEnabled = [
             nameTextField,
             houseTextField,
