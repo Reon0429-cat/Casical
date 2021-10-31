@@ -17,4 +17,17 @@ extension UITextField {
         self.layer.masksToBounds = true
     }
     
+    func setUnderLine() {
+        self.borderStyle = .none
+        let underline = UIView()
+        underline.frame = CGRect(x: 0,
+                                 y: self.frame.height,
+                                 width: self.frame.width,
+                                 height: 1)
+        underline.backgroundColor = .darkColor
+        self.addSubview(underline)
+        self.bringSubviewToFront(underline)
+    }
+    
 }
+

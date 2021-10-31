@@ -90,6 +90,13 @@ final class HomeViewController: UIViewController {
         
     }
     
+    @IBAction private func presentProfileAdditionalScreenButtonDidTapped(_ sender: Any) {
+        let profileAdditionalVC = UIStoryboard(name: "ProfileAdditional", bundle: nil)
+            .instantiateInitialViewController() as! ProfileAdditionalViewController
+        profileAdditionalVC.modalPresentationStyle = .fullScreen
+        present(profileAdditionalVC, animated: true)
+    }
+    
     private func presentLoginVC() {
         let loginVC = UIStoryboard(name: "Login", bundle: nil)
             .instantiateInitialViewController() as! LoginViewController
