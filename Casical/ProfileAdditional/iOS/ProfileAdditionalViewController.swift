@@ -103,12 +103,13 @@ extension ProfileAdditionalViewController: UIPickerViewDelegate {
                 houseTextField.text = houses[row]
             case experiencePickerView:
                 if component == 0 {
-                    experienceTextField.text = "\(experiences[0][row])年\(experiences[1][oldSelectedExperiencesMonthIndex])ヶ月"
                     oldSelectedExperiencesYearIndex = row
                 } else {
-                    experienceTextField.text = "\(experiences[0][oldSelectedExperiencesYearIndex])年\(experiences[1][row])ヶ月"
                     oldSelectedExperiencesMonthIndex = row
                 }
+                let yearText = "\(experiences[0][oldSelectedExperiencesYearIndex])年"
+                let monthText = "\(experiences[1][oldSelectedExperiencesMonthIndex])ヶ月"
+                experienceTextField.text = yearText + monthText
             case employmentStatusPickerView:
                 employmentStatusTextField.text = employmentStatus[row]
             default:
