@@ -8,25 +8,6 @@
 import UIKit
 import FirebaseAuth
 
-struct SampleModel {
-    let image: UIImage
-    let name: String
-    let language: String
-    let house: String
-    let experience: String
-    let github: String
-    let qiita: String
-    let bio: String
-}
-
-extension SampleModel {
-    static let data = [SampleModel(image: UIImage(named: "reon")!, name: "OONISHI REON", language: "Swift", house: "東京", experience: "1年", github: "Reon0429-cat", qiita: "REON", bio: "iOSエンジニアを目指してます！Swift大好き！"),
-                       SampleModel(image: UIImage(named: "adu")!, name: "Azuki Yamada", language: "CSS", house: "大阪", experience: "6ヶ月", github: "aduGitHub", qiita: "aduQiita", bio: "aduBio"),
-                       SampleModel(image: UIImage(named: "sakura")!, name: "宮脇 咲良", language: "JavaScript", house: "鹿児島", experience: "5年6ヶ月", github: "sakuraGitHub", qiita: "sakuraQiita", bio: "sakuraBio"),
-                       SampleModel(image: UIImage(named: "mai")!, name: "Mai Shiraishi", language: "Java", house: "群馬", experience: "中途未経験", github: "maiGitHub", qiita: "maiQiita", bio: "maiBio"),
-                       SampleModel(image: UIImage(named: "asuka")!, name: "齋藤 飛鳥", language: "PHP", house: "東京", experience: "新卒未経験", github: "asukaGitHub", qiita: "asukaQiita", bio: "asukaBio"),]
-}
-
 private enum SortButtonFollowViewPosition {
     case score(UIButton)
     case register(UIButton)
@@ -55,7 +36,7 @@ final class HomeViewController: UIViewController {
     @IBOutlet private weak var settingButton: UIButton!
     @IBOutlet private weak var separatorView: UIView!
     
-    private let sampleData = [[SampleModel]](repeating: SampleModel.data, count: 10).flatMap { $0 }
+    private let sampleData = SampleModel.data
     private lazy var sortButtonFollowViewPosition: SortButtonFollowViewPosition = .register(sortRegisterButton)
     
     override func viewDidLoad() {
