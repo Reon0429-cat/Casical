@@ -28,7 +28,14 @@
 		AB7AC68C272985BC007069BC /* CasicalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7AC68B272985BC007069BC /* CasicalTests.swift */; };
 		AB7AC696272985BC007069BC /* CasicalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7AC695272985BC007069BC /* CasicalUITests.swift */; };
 		AB7AC698272985BC007069BC /* CasicalUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7AC697272985BC007069BC /* CasicalUITestsLaunchTests.swift */; };
-		ABCDE64A272E38B400BB34A3 /* SampleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCDE649272E38B400BB34A3 /* SampleModel.swift */; };
+		AB895E21272EF92D004B6A3F /* QiitaAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB895E1B272EF92D004B6A3F /* QiitaAPIModel.swift */; };
+		AB895E22272EF92D004B6A3F /* Prefecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB895E1C272EF92D004B6A3F /* Prefecture.swift */; };
+		AB895E23272EF92D004B6A3F /* GitHubAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB895E1D272EF92D004B6A3F /* GitHubAPIModel.swift */; };
+		AB895E24272EF92D004B6A3F /* GitHubAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB895E1E272EF92D004B6A3F /* GitHubAPIClient.swift */; };
+		AB895E25272EF92D004B6A3F /* QiitaAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB895E1F272EF92D004B6A3F /* QiitaAPIClient.swift */; };
+		AB895E26272EF92D004B6A3F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB895E20272EF92D004B6A3F /* User.swift */; };
+		AB895E28272EF9B3004B6A3F /* ProfileAdditionalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB895E27272EF9B3004B6A3F /* ProfileAdditionalViewController.swift */; };
+		AB895E2A272EFB03004B6A3F /* SampleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB895E29272EFB03004B6A3F /* SampleModel.swift */; };
 		ABD46A81272B03E5006AB17A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABD46A7F272B03E5006AB17A /* Login.storyboard */; };
 		ABD46A82272B03E5006AB17A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD46A80272B03E5006AB17A /* LoginViewController.swift */; };
 		ABD46A84272B2AD4006AB17A /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD46A83272B2AD4006AB17A /* UIColor+Extension.swift */; };
@@ -44,7 +51,6 @@
 		ABF581A5272D4F320086D60E /* MacPersonalPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABF581A4272D4F320086D60E /* MacPersonalPage.storyboard */; };
 		ABF581A7272D4F380086D60E /* MacPersonalPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF581A6272D4F380086D60E /* MacPersonalPageViewController.swift */; };
 		ABF581AB272D4F930086D60E /* ProfileAdditional.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABF581AA272D4F930086D60E /* ProfileAdditional.storyboard */; };
-		ABF581AD272D4F970086D60E /* ProfileAdditionalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF581AC272D4F970086D60E /* ProfileAdditionalViewController.swift */; };
 		CAC255DF3D1BE99A0BB62C9B /* libPods-CasicalTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C3254B2CABCA044ED2E7E139 /* libPods-CasicalTests.a */; };
 		E5ADF567EAEF87078AF02043 /* Pods_Casical.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F119E545C0EDBE24FB8BF090 /* Pods_Casical.framework */; };
 /* End PBXBuildFile section */
@@ -95,7 +101,14 @@
 		AB7AC695272985BC007069BC /* CasicalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasicalUITests.swift; sourceTree = "<group>"; };
 		AB7AC697272985BC007069BC /* CasicalUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasicalUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		AB7AC6A4272985C1007069BC /* Casical.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Casical.entitlements; sourceTree = "<group>"; };
-		ABCDE649272E38B400BB34A3 /* SampleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleModel.swift; sourceTree = "<group>"; };
+		AB895E1B272EF92D004B6A3F /* QiitaAPIModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QiitaAPIModel.swift; path = "../../../Casical 2/Casical/Model/QiitaAPIModel.swift"; sourceTree = "<group>"; };
+		AB895E1C272EF92D004B6A3F /* Prefecture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Prefecture.swift; path = "../../../Casical 2/Casical/Model/Prefecture.swift"; sourceTree = "<group>"; };
+		AB895E1D272EF92D004B6A3F /* GitHubAPIModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GitHubAPIModel.swift; path = "../../../Casical 2/Casical/Model/GitHubAPIModel.swift"; sourceTree = "<group>"; };
+		AB895E1E272EF92D004B6A3F /* GitHubAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GitHubAPIClient.swift; path = "../../../Casical 2/Casical/Model/GitHubAPIClient.swift"; sourceTree = "<group>"; };
+		AB895E1F272EF92D004B6A3F /* QiitaAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QiitaAPIClient.swift; path = "../../../Casical 2/Casical/Model/QiitaAPIClient.swift"; sourceTree = "<group>"; };
+		AB895E20272EF92D004B6A3F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = "../../../Casical 2/Casical/Model/User.swift"; sourceTree = "<group>"; };
+		AB895E27272EF9B3004B6A3F /* ProfileAdditionalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileAdditionalViewController.swift; sourceTree = "<group>"; };
+		AB895E29272EFB03004B6A3F /* SampleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleModel.swift; sourceTree = "<group>"; };
 		ABD46A7F272B03E5006AB17A /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		ABD46A80272B03E5006AB17A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		ABD46A83272B2AD4006AB17A /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -111,7 +124,6 @@
 		ABF581A4272D4F320086D60E /* MacPersonalPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MacPersonalPage.storyboard; sourceTree = "<group>"; };
 		ABF581A6272D4F380086D60E /* MacPersonalPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacPersonalPageViewController.swift; sourceTree = "<group>"; };
 		ABF581AA272D4F930086D60E /* ProfileAdditional.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileAdditional.storyboard; sourceTree = "<group>"; };
-		ABF581AC272D4F970086D60E /* ProfileAdditionalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAdditionalViewController.swift; sourceTree = "<group>"; };
 		AEC13FA82DEA99E93F6EC3E9 /* Pods-Casical-CasicalUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Casical-CasicalUITests.debug.xcconfig"; path = "Target Support Files/Pods-Casical-CasicalUITests/Pods-Casical-CasicalUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C3254B2CABCA044ED2E7E139 /* libPods-CasicalTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CasicalTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F119E545C0EDBE24FB8BF090 /* Pods_Casical.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Casical.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -220,7 +232,13 @@
 		ABCDE648272E38A500BB34A3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				ABCDE649272E38B400BB34A3 /* SampleModel.swift */,
+				AB895E29272EFB03004B6A3F /* SampleModel.swift */,
+				AB895E20272EF92D004B6A3F /* User.swift */,
+				AB895E1C272EF92D004B6A3F /* Prefecture.swift */,
+				AB895E1E272EF92D004B6A3F /* GitHubAPIClient.swift */,
+				AB895E1D272EF92D004B6A3F /* GitHubAPIModel.swift */,
+				AB895E1F272EF92D004B6A3F /* QiitaAPIClient.swift */,
+				AB895E1B272EF92D004B6A3F /* QiitaAPIModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -328,7 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				ABF581AA272D4F930086D60E /* ProfileAdditional.storyboard */,
-				ABF581AC272D4F970086D60E /* ProfileAdditionalViewController.swift */,
+				AB895E27272EF9B3004B6A3F /* ProfileAdditionalViewController.swift */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -644,22 +662,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB895E24272EF92D004B6A3F /* GitHubAPIClient.swift in Sources */,
+				AB895E2A272EFB03004B6A3F /* SampleModel.swift in Sources */,
 				ABD46A9D272C21FA006AB17A /* UIResponder+Extension.swift in Sources */,
-				ABCDE64A272E38B400BB34A3 /* SampleModel.swift in Sources */,
+				AB895E21272EF92D004B6A3F /* QiitaAPIModel.swift in Sources */,
 				ABF5819F272D4DA70086D60E /* MacHomeViewController.swift in Sources */,
 				ABD46A82272B03E5006AB17A /* LoginViewController.swift in Sources */,
 				AB12F0F8272D60CC00A0FA60 /* SortTableViewCell.swift in Sources */,
 				AB7AC675272985BA007069BC /* AppDelegate.swift in Sources */,
 				AB558B4F272D9F0C00BC218A /* SettingViewController.swift in Sources */,
 				AB39D205272DA0BB009639DD /* SettingTableViewCell.swift in Sources */,
+				AB895E22272EF92D004B6A3F /* Prefecture.swift in Sources */,
 				ABD46A9A272C0EBE006AB17A /* ProfileCollectionViewCell.swift in Sources */,
 				AB7AC677272985BA007069BC /* SceneDelegate.swift in Sources */,
 				ABF581A7272D4F380086D60E /* MacPersonalPageViewController.swift in Sources */,
 				ABD46A8A272B2B1E006AB17A /* UITextField+Extension.swift in Sources */,
+				AB895E23272EF92D004B6A3F /* GitHubAPIModel.swift in Sources */,
 				ABD46A84272B2AD4006AB17A /* UIColor+Extension.swift in Sources */,
-				ABF581AD272D4F970086D60E /* ProfileAdditionalViewController.swift in Sources */,
+				AB895E25272EF92D004B6A3F /* QiitaAPIClient.swift in Sources */,
 				ABD46A97272BE52D006AB17A /* HomeViewController.swift in Sources */,
+				AB895E28272EF9B3004B6A3F /* ProfileAdditionalViewController.swift in Sources */,
 				ABD46A88272B2AF4006AB17A /* CustomTextField.swift in Sources */,
+				AB895E26272EF92D004B6A3F /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

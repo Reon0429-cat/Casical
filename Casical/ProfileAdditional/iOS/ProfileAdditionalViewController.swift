@@ -7,45 +7,6 @@
 
 import UIKit
 
-private struct Prefecture {
-    
-    static let name = ["北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県", "茨城県",
-                       "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県", "新潟県",
-                       "富山県", "石川県", "福井県", "山梨県", "長野県", "岐阜県", "静岡県", "愛知県",
-                       "三重県", "滋賀県", "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県", "鳥取県",
-                       "島根県", "岡山県", "広島県", "山口県", "徳島県", "香川県", "愛媛県", "高知県",
-                       "福岡県", "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県"]
-    
-}
-
-struct User {
-    let name: String
-    let workLocation: String
-    let experience: Int
-    let employmentStatus: String
-    let registrationDate: Date
-    let gitHub: GitHub
-    let qiita: Qiita
-    let skillScore: Int
-}
-
-struct GitHub {
-    let name: String
-    let mostUsedLanguage: String?
-    let secondMostUsedLanguage: String?
-    let thirdMostUsedLanguage: String?
-    let followers: Int
-    let contributions: Int
-    let description: String
-}
-
-struct Qiita {
-    let name: String
-    let followers: Int
-    let contributions: Int
-    let tags: [(name: String, value: Int)]
-}
-
 final class ProfileAdditionalViewController: UIViewController {
     
     @IBOutlet private weak var registerButton: UIButton!
@@ -64,11 +25,21 @@ final class ProfileAdditionalViewController: UIViewController {
     private let employmentStatus = ["新卒", "中途"]
     private var oldSelectedExperiencesYearIndex = 0
     private var oldSelectedExperiencesMonthIndex = 0
+    private var gitHub: GitHub?
+    private var totalContributions = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
+        // MARK: - ToDo 消す
+        nameTextField.text = "REON"
+        houseTextField.text = "東京都"
+        experienceTextField.text = "1年"
+        employmentStatusTextField.text = "新卒"
+        gitHubTextField.text = "Reon0429-cat"
+        qiitaTextField.text = "REON"
         
     }
     
@@ -80,9 +51,124 @@ final class ProfileAdditionalViewController: UIViewController {
     }
     
     @IBAction private func registerButtonDidTapped(_ sender: Any) {
+        guard let name = nameTextField.text,
+              let workLocation = houseTextField.text,
+              let employmentStatus = employmentStatusTextField.text,
+              let gitHubName = gitHubTextField.text,
+              let qiitaName = qiitaTextField.text else { return }
+        let experienceYear = experiences[0][oldSelectedExperiencesYearIndex]
+        let experienceMonth = experiences[1][oldSelectedExperiencesMonthIndex]
+        let experience = experienceYear * 12 + experienceMonth
+        self.searchUser(userName: gitHubName)
+        
         // MARK: - ToDo 保存処理
-        dismiss(animated: true)
+        //        dismiss(animated: true)
     }
+    
+    private func searchUser(userName: String) {
+        GitHubAPIClient().searchUser(userName: userName) { result in
+            switch result {
+                case .failure(let title):
+                    print("DEBUG_PRINT: ", title, #function)
+                case .success(let gitHubUser):
+                    self.searchRepos(userName: userName,
+                                     gitHubUser: gitHubUser)
+            }
+        }
+    }
+    
+    private func searchRepos(userName: String,
+                             gitHubUser: GitHubUser) {
+        GitHubAPIClient().searchRepos(userName: userName) { result in
+            switch result {
+                case .failure(let title):
+                    print("DEBUG_PRINT: ", title, #function)
+                case .success(let repos):
+                    
+                    let repoLanguages = repos.map { $0.language }
+                    let excludeSameRepoLanguages = NSOrderedSet(array: repoLanguages).array as! [String]
+                    var counts = [Int]()
+                    excludeSameRepoLanguages.forEach { excludeSameRepoLanguage in
+                        var count = 0
+                        repoLanguages.forEach { repoLanguage in
+                            if excludeSameRepoLanguage == repoLanguage {
+                                count += 1
+                            }
+                        }
+                        counts.append(count)
+                    }
+                    let percentCounts = counts.map { Double($0) / Double(repoLanguages.count) * 100 }.map { Int($0) }
+                    var languageTaples = [(language: String, percentNumber: Int)]()
+                    excludeSameRepoLanguages.enumerated().forEach { index, language in
+                        languageTaples.append((language: language, percentNumber: percentCounts[index]))
+                    }
+                    let sortedLanguageTaples = languageTaples.sorted(by: { $0.percentNumber > $1.percentNumber })
+                    
+                    var mostUsedLanguage: (name: String, value: Int)?
+                    var secondMostUsedLanguage: (name: String, value: Int)?
+                    var thirdMostUsedLanguage: (name: String, value: Int)?
+                    
+                    switch sortedLanguageTaples.count {
+                        case 0:
+                            mostUsedLanguage = nil
+                            secondMostUsedLanguage = nil
+                            thirdMostUsedLanguage = nil
+                        case 1:
+                            mostUsedLanguage = (name: sortedLanguageTaples[0].language, value: sortedLanguageTaples[0].percentNumber)
+                            secondMostUsedLanguage = nil
+                            thirdMostUsedLanguage = nil
+                        case 2:
+                            mostUsedLanguage = (name: sortedLanguageTaples[0].language, value: sortedLanguageTaples[0].percentNumber)
+                            secondMostUsedLanguage = (name: sortedLanguageTaples[1].language, value: sortedLanguageTaples[1].percentNumber)
+                            thirdMostUsedLanguage = nil
+                        default:
+                            mostUsedLanguage = (name: sortedLanguageTaples[0].language, value: sortedLanguageTaples[0].percentNumber)
+                            secondMostUsedLanguage = (name: sortedLanguageTaples[1].language, value: sortedLanguageTaples[1].percentNumber)
+                            thirdMostUsedLanguage = (name: sortedLanguageTaples[2].language, value: sortedLanguageTaples[2].percentNumber)
+                    }
+                    
+                    repos.forEach { repo in
+                        self.searchContributors(userName: userName,
+                                                contributorsUrlString: repo.contributorsUrl,
+                                                gitHubUser: gitHubUser,
+                                                repos: repos)
+                    }
+                    
+                    
+                    let avatarUrl = URL(string: gitHubUser.avatarUrl)!
+                    let image = try! Data(contentsOf: avatarUrl)
+                    let gitHub = GitHub(name: userName,
+                                        mostUsedLanguage: mostUsedLanguage,
+                                        secondMostUsedLanguage: secondMostUsedLanguage,
+                                        thirdMostUsedLanguage: thirdMostUsedLanguage,
+                                        followers: gitHubUser.followers,
+                                        contributions: self.totalContributions,
+                                        description: gitHubUser.bio,
+                                        image: image)
+                    
+                    print("DEBUG_PRINT: ", gitHub)
+                    
+                    
+            }
+        }
+    }
+    
+    private func searchContributors(userName: String,
+                                    contributorsUrlString: String,
+                                    gitHubUser: GitHubUser,
+                                    repos: [GitHubRepoItem]) {
+        GitHubAPIClient().searchContributors(
+            contributorsUrlString: contributorsUrlString
+        ) { result in
+            switch result {
+                case .failure(let title):
+                    print("DEBUG_PRINT: ", title, #function)
+                case .success(let contributors):
+                    self.totalContributions += contributors.map { $0.contributions }.reduce(0, +)
+            }
+        }
+    }
+    
     
     @IBAction func dismissButtonDidTapped(_ sender: Any) {
         dismiss(animated: true)
