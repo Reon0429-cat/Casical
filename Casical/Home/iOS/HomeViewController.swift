@@ -78,7 +78,9 @@ final class HomeViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
         listener?.remove()
+        
     }
     
     @IBAction private func sortScoreButton(_ sender: Any) {
