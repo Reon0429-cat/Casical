@@ -19,7 +19,7 @@ let json = """
 
 struct GitHubUser: Codable {
     let avatarUrl: String
-    let bio: String
+    let bio: String?
     let followers: Int
 }
 
