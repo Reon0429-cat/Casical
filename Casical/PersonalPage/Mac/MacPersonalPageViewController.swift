@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Charts
 
 final class MacPersonalPageViewController: UIViewController {
     
@@ -24,6 +25,15 @@ final class MacPersonalPageViewController: UIViewController {
     @IBOutlet private weak var githubDataBaseView: UIView!
     @IBOutlet private weak var qiitaDataBaseView: UIView!
     @IBOutlet private weak var sendMessageBaseView: UIView!
+    @IBOutlet private weak var pieChartView: PieChartView!
+    @IBOutlet private weak var pieChartCenterTitleLabel: UILabel!
+    @IBOutlet private weak var pieChartCenterValueLabel: UILabel!
+    @IBOutlet private weak var pieChartMostLanguageLabel: UILabel!
+    @IBOutlet private weak var pieChartSecondMostLanguageLabel: UILabel!
+    @IBOutlet private weak var pieChartThirdMostLanguageLabel: UILabel!
+    @IBOutlet private weak var pieChartMostLanguageAccessoryView: UIView!
+    @IBOutlet private weak var pieChartSecondMostLanguageAccessoryView: UIView!
+    @IBOutlet private weak var pieChartThirdMostLanguageAccessoryView: UIView!
     
     var user: User!
     
@@ -31,6 +41,18 @@ final class MacPersonalPageViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        DispatchQueue.main.async {
+            self.profileImageView.layer.cornerRadius = self.profileImageView.frame.height / 2
+            self.pieChartMostLanguageAccessoryView.layer.cornerRadius = self.pieChartMostLanguageAccessoryView.frame.height / 2
+            self.pieChartSecondMostLanguageAccessoryView.layer.cornerRadius = self.pieChartSecondMostLanguageAccessoryView.frame.height / 2
+            self.pieChartThirdMostLanguageAccessoryView.layer.cornerRadius = self.pieChartThirdMostLanguageAccessoryView.frame.height / 2
+        }
         
     }
     
@@ -57,6 +79,7 @@ private extension MacPersonalPageViewController {
         setupGitHubData()
         setupQiitaData()
         setupSendMessage()
+        setupPieChartView()
     }
     
     func setupPersonalData() {
@@ -64,7 +87,6 @@ private extension MacPersonalPageViewController {
         houseLabel.text = "● " + user.workLocation
         experienceLabel.text = "● " + user.convertExperienceToString()
         profileImageView.image = UIImage(data: user.gitHub.image)
-        profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
         bioLabel.text = user.gitHub.description
         personalDataBaseView.layer.cornerRadius = 50
         personalDataGraphBaseView.layer.cornerRadius = 50
@@ -82,6 +104,40 @@ private extension MacPersonalPageViewController {
     
     func setupSendMessage() {
         sendMessageBaseView.layer.cornerRadius = 50
+    }
+    
+    func setupPieChartView() {
+        pieChartView.legend.enabled = false
+        pieChartView.holeColor = .clear
+        pieChartView.holeRadiusPercent = 0.7
+        let mostUsedLanguageValue = Double(user.gitHub.mostUsedLanguage?.value ?? 0)
+        let secondMostUsedLanguageValue = Double(user.gitHub.secondMostUsedLanguage?.value ?? 0)
+        let thirdMostUsedLanguageValue = Double(user.gitHub.thirdMostUsedLanguage?.value ?? 0)
+        let all = mostUsedLanguageValue + secondMostUsedLanguageValue + thirdMostUsedLanguageValue
+        let mostUsedLanguageValuePercent = mostUsedLanguageValue / all * 100
+        let secondMostUsedLanguageValuePercent = secondMostUsedLanguageValue / all * 100
+        let otherLanguagePercent = 100 - mostUsedLanguageValuePercent - secondMostUsedLanguageValuePercent
+        let dataEntries = [
+            PieChartDataEntry(value: mostUsedLanguageValuePercent),
+            PieChartDataEntry(value: secondMostUsedLanguageValuePercent),
+            PieChartDataEntry(value: otherLanguagePercent),
+        ]
+        let dataSet = PieChartDataSet(entries: dataEntries)
+        dataSet.colors = [.pieChartColor1, .pieChartColor2, .pieChartColor3]
+        dataSet.valueTextColor = .black
+        dataSet.entryLabelColor = .black
+        dataSet.valueTextColor = .clear
+        self.pieChartView.data = PieChartData(dataSet: dataSet)
+        let mostUsedLanguageName = user.gitHub.mostUsedLanguage?.name ?? ""
+        let secondMostUsedLanguageName = user.gitHub.secondMostUsedLanguage?.name ?? ""
+        pieChartCenterTitleLabel.text = mostUsedLanguageName
+        pieChartCenterValueLabel.text = String(Int(mostUsedLanguageValuePercent)) + "%"
+        pieChartMostLanguageLabel.text = mostUsedLanguageName + " " + String(Int(mostUsedLanguageValuePercent)) + "%"
+        pieChartSecondMostLanguageLabel.text = secondMostUsedLanguageName + " " + String(Int(secondMostUsedLanguageValuePercent)) + "%"
+        pieChartThirdMostLanguageLabel.text = "others" + " " + String(Int(otherLanguagePercent)) + "%"
+        pieChartMostLanguageAccessoryView.backgroundColor = .pieChartColor1
+        pieChartSecondMostLanguageAccessoryView.backgroundColor = .pieChartColor2
+        pieChartThirdMostLanguageAccessoryView.backgroundColor = .pieChartColor3
     }
     
 }
