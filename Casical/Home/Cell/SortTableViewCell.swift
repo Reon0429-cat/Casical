@@ -14,7 +14,7 @@ final class SortTableViewCell: UITableViewCell {
     
     static var identifier: String { String(describing: self) }
     static var nib: UINib { UINib(nibName: String(describing: self), bundle: nil) }
-    var onTapEvent: ((Int) -> Void)?
+    var onTapEvent: ((Int, String) -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,7 +25,7 @@ final class SortTableViewCell: UITableViewCell {
     
     func configure(title: String,
                    users: [User],
-                   onTapEvent: ((Int) -> Void)?) {
+                   onTapEvent: ((Int, String) -> Void)?) {
         self.onTapEvent = onTapEvent
         titleLabel.text = title
         chevronButton.showsMenuAsPrimaryAction = true
@@ -41,7 +41,10 @@ final class SortTableViewCell: UITableViewCell {
             case .language:
                 let languageNames = users.map { $0.gitHub.mostUsedLanguage?.name }.compactMap { $0 }
                 let filteredLanguageNames = NSOrderedSet(array: languageNames).array as! [String]
-                let actions =  filteredLanguageNames.map { UIAction(title: $0) { _ in self.onTapEvent?(self.tag) } }
+                var actions = filteredLanguageNames.map {
+                    UIAction(title: $0) { self.onTapEvent?(self.tag, $0.title) }
+                }
+                actions.insert(UIAction(title: "すべて", handler: { _ in self.onTapEvent?(-1, "すべて") }), at: 0)
                 return UIMenu(title: "使用言語",
                               options: .displayInline,
                               children: actions)

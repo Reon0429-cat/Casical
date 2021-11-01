@@ -53,10 +53,11 @@ final class MacHomeViewController: UIViewController {
             }
         }
     }
+    private var selectedFilterTitle: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupUI()
         
     }
@@ -133,7 +134,11 @@ extension MacHomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        users.count
+        if let selectedFilterTitle = selectedFilterTitle {
+            return users.filter { $0.gitHub.mostUsedLanguage?.name == selectedFilterTitle }.count
+        } else {
+            return users.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -142,6 +147,13 @@ extension MacHomeViewController: UICollectionViewDataSource {
             withReuseIdentifier: ProfileCollectionViewCell.identifier,
             for: indexPath
         ) as! ProfileCollectionViewCell
+        let users: [User] = {
+            if let selectedFilterTitle = selectedFilterTitle {
+                return self.users.filter { $0.gitHub.mostUsedLanguage?.name == selectedFilterTitle }
+            } else {
+                return self.users
+            }
+        }()
         let model = users[indexPath.row]
         cell.configure(model: model)
         return cell
@@ -189,21 +201,27 @@ extension MacHomeViewController: UITableViewDataSource {
         ) as! SortTableViewCell
         let title = FilterType.allCases[indexPath.row].title
         cell.tag = indexPath.row
-        cell.configure(title: title, users: users) { [weak self] cellTag in
-            let filterType = FilterType(rawValue: cellTag) ?? .language
-            switch filterType {
-                case .language:
-                    print("DEBUG_PRINT: language")
-                case .prefecture:
-                    print("DEBUG_PRINT: prefecture")
-                case .experience:
-                    print("DEBUG_PRINT: experience")
-                case .github:
-                    print("DEBUG_PRINT: github")
-                case .qiita:
-                    print("DEBUG_PRINT: qiita")
+        cell.configure(title: title, users: users) { [weak self] cellTag, title in
+            let isLanguageAll = title == "すべて" && cellTag == -1
+            if isLanguageAll {
+                // 言語のすべてが選択された
+                self?.selectedFilterTitle = nil
+            } else {
+                let filterType = FilterType(rawValue: cellTag) ?? .language
+                switch filterType {
+                    case .language:
+                        self?.selectedFilterTitle = title
+                    case .prefecture:
+                        print("DEBUG_PRINT: prefecture")
+                    case .experience:
+                        print("DEBUG_PRINT: experience")
+                    case .github:
+                        print("DEBUG_PRINT: github")
+                    case .qiita:
+                        print("DEBUG_PRINT: qiita")
+                }
             }
-            self?.filterTableView.reloadData()
+            self?.profileCollectionView.reloadData()
         }
         return cell
     }
@@ -230,7 +248,7 @@ private extension MacHomeViewController {
         profileCollectionView.dataSource = self
         profileCollectionView.showsVerticalScrollIndicator = false
         profileCollectionView.register(ProfileCollectionViewCell.nib,
-                                forCellWithReuseIdentifier: ProfileCollectionViewCell.identifier)
+                                       forCellWithReuseIdentifier: ProfileCollectionViewCell.identifier)
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
