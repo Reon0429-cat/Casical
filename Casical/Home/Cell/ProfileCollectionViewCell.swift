@@ -55,11 +55,11 @@ final class ProfileCollectionViewCell: UICollectionViewCell {
         
     }
     
-    func configure(model: SampleModel) {
-        profileImageView.image = model.image
+    func configure(model: User) {
+        profileImageView.image = UIImage(data: model.gitHub.image)
         nameLabel.text = model.name
-        languageLabel.text = "● " + model.language
-        houseLabel.text = "● " + model.house
+        languageLabel.text = "● " + model.gitHub.mostUsedLanguage!.name
+        houseLabel.text = "● " + model.workLocation
         experienceLabel.text = "● " + model.convertExperienceToString()
     }
 

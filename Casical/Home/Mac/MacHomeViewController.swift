@@ -34,11 +34,13 @@ final class MacHomeViewController: UIViewController {
     @IBOutlet private weak var headerTitleLabel: UILabel!
     @IBOutlet private weak var filterLabel: UILabel!
     
-    private let sampleData = [[SampleModel]](repeating: SampleModel.data, count: 10).flatMap { $0 }
+    private var users = [User]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // MARK: - ToDo firebase 初期化
+        users = []
         setupUI()
         
     }
@@ -58,11 +60,11 @@ extension MacHomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         if isMac {
-            let sampleModel = sampleData[indexPath.row]
+            let user = users[indexPath.row]
             let macPersonalPageVC    = UIStoryboard(name: "MacPersonalPage", bundle: nil)
                 .instantiateInitialViewController() as! MacPersonalPageViewController
             macPersonalPageVC.modalPresentationStyle = .fullScreen
-            macPersonalPageVC.sampleModel = sampleModel
+            macPersonalPageVC.user = user
             present(macPersonalPageVC, animated: true)
         } else {
             // 実装しない
@@ -75,7 +77,7 @@ extension MacHomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        sampleData.count
+        users.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -84,7 +86,7 @@ extension MacHomeViewController: UICollectionViewDataSource {
             withReuseIdentifier: ProfileCollectionViewCell.identifier,
             for: indexPath
         ) as! ProfileCollectionViewCell
-        let model = sampleData[indexPath.row]
+        let model = users[indexPath.row]
         cell.configure(model: model)
         return cell
     }

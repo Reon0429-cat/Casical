@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseAuth
 import SideMenu
+import FirebaseFirestore
 
 private enum SortButtonFollowViewPosition {
     case score(UIButton)
@@ -37,14 +38,14 @@ final class HomeViewController: UIViewController {
     @IBOutlet private weak var settingButton: UIButton!
     @IBOutlet private weak var separatorView: UIView!
     
-    private var sampleData = SampleModel.data
     private lazy var sortButtonFollowViewPosition: SortButtonFollowViewPosition = .register(sortRegisterButton)
+    private var users = [User]()
     private enum SortType {
         case score
         case register
         case experience
         
-        var condition: (SampleModel, SampleModel) -> Bool {
+        var condition: (User, User) -> Bool {
             switch self {
                 case .score: return { $0.skillScore > $1.skillScore }
                 case .register: return { $0.registrationDate < $1.registrationDate }
@@ -54,6 +55,7 @@ final class HomeViewController: UIViewController {
     }
     private var sortType: SortType = .register
     private var rightSideMenuNavC: SideMenuNavigationController?
+    private var listener: ListenerRegistration?
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +67,18 @@ final class HomeViewController: UIViewController {
         rearranges(sortType: .register)
         setupUI()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        attachFirestore()
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        listener?.remove()
     }
     
     @IBAction private func sortScoreButton(_ sender: Any) {
@@ -102,8 +116,28 @@ final class HomeViewController: UIViewController {
         present(profileAdditionalVC, animated: true)
     }
     
+    private func attachFirestore() {
+        listener = Firestore.firestore().collection("users")
+            .addSnapshotListener { snapshot, error in
+                if let error = error {
+                    print("DEBUG_PRINT: ", error.localizedDescription)
+                    return
+                }
+                var users = [User]()
+                snapshot?.documents.forEach { snapshot in
+                    let dic = snapshot.data()
+                    let user = User(dic: dic)
+                    users.append(user)
+                }
+                self.users = users
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            }
+    }
+    
     private func rearranges(sortType: SortType) {
-        sampleData = sampleData.sorted(by: sortType.condition)
+        users = users.sorted(by: sortType.condition)
         collectionView.reloadData()
     }
     
@@ -146,7 +180,7 @@ extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        sampleData.count
+        users.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -155,7 +189,7 @@ extension HomeViewController: UICollectionViewDataSource {
             withReuseIdentifier: ProfileCollectionViewCell.identifier,
             for: indexPath
         ) as! ProfileCollectionViewCell
-        let model = sampleData[indexPath.row]
+        let model = users[indexPath.row]
         cell.configure(model: model)
         return cell
     }
