@@ -22,10 +22,15 @@ final class ProfileAdditionalViewController: UIViewController {
     private var employmentStatusPickerView = UIPickerView()
     private let houses = Prefecture.name
     private let experiences = [[Int](0...100), [Int](0...12)]
-    private let employmentStatus = ["新卒", "中途"]
+    private let employmentStatusArray = ["新卒", "中途"]
     private var oldSelectedExperiencesYearIndex = 0
     private var oldSelectedExperiencesMonthIndex = 0
-    
+    private var name: String { nameTextField.text ?? "" }
+    private var workLocation: String { houseTextField.text ?? "" }
+    private var employmentStatus: String { employmentStatusTextField.text ?? "" }
+    private var qiitaName: String { qiitaTextField.text ?? "" }
+    private var gitHubName: String { gitHubTextField.text ?? "" }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,18 +53,10 @@ final class ProfileAdditionalViewController: UIViewController {
     }
     
     @IBAction private func registerButtonDidTapped(_ sender: Any) {
-        guard let name = nameTextField.text,
-              let workLocation = houseTextField.text,
-              let employmentStatus = employmentStatusTextField.text,
-              let gitHubName = gitHubTextField.text,
-              let qiitaName = qiitaTextField.text else { return }
-        let experienceYear = experiences[0][oldSelectedExperiencesYearIndex]
-        let experienceMonth = experiences[1][oldSelectedExperiencesMonthIndex]
-        let experience = experienceYear * 12 + experienceMonth
-        searchUser(userName: gitHubName)
+        searchGitHubUser(userName: gitHubName)
     }
     
-    private func searchUser(userName: String) {
+    private func searchGitHubUser(userName: String) {
         GitHubAPIClient().searchUser(userName: userName) { result in
             switch result {
                 case .failure(let title):
@@ -90,6 +87,38 @@ final class ProfileAdditionalViewController: UIViewController {
                                         followers: gitHubUser.followers,
                                         description: gitHubUser.bio,
                                         image: image)
+                    DispatchQueue.main.async {
+                        self.searchQiitaUser(gitHub: gitHub)
+                    }
+            }
+        }
+    }
+    
+    private func searchQiitaUser(gitHub: GitHub) {
+        QiitaAPIClient().searchUser(userName: qiitaName) { result in
+            switch result {
+                case .failure(let title):
+                    print("DEBUG_PRINT: ", title, #function)
+                case .success(let qiitaUser):
+                    let experienceYear = self.experiences[0][self.oldSelectedExperiencesYearIndex]
+                    let experienceMonth = self.experiences[1][self.oldSelectedExperiencesMonthIndex]
+                    let experience = experienceYear * 12 + experienceMonth
+                    DispatchQueue.main.async {
+                        let qiita = Qiita(name: self.qiitaName,
+                                          followers: qiitaUser.followersCount,
+                                          itemsCount: qiitaUser.itemsCount)
+                        // MARK: - ToDo 一旦適当にskillScoreは算出しておく
+                        let skillScore = 10000
+                        let user = User(name: self.name,
+                                        workLocation: self.workLocation,
+                                        experience: experience,
+                                        employmentStatus: self.employmentStatus,
+                                        registrationDate: Date(),
+                                        gitHub: gitHub,
+                                        qiita: qiita,
+                                        skillScore: skillScore)
+                        // MARK: - ToDo 保存処理
+                    }
             }
         }
     }
@@ -192,7 +221,7 @@ extension ProfileAdditionalViewController: UIPickerViewDelegate {
                 let monthText = "\(experiences[1][oldSelectedExperiencesMonthIndex])ヶ月"
                 experienceTextField.text = yearText + monthText
             case employmentStatusPickerView:
-                employmentStatusTextField.text = employmentStatus[row]
+                employmentStatusTextField.text = employmentStatusArray[row]
             default:
                 break
         }
@@ -207,7 +236,7 @@ extension ProfileAdditionalViewController: UIPickerViewDelegate {
             case experiencePickerView:
                 return String(experiences[component][row])
             case employmentStatusPickerView:
-                return employmentStatus[row]
+                return employmentStatusArray[row]
             default:
                 return ""
         }
@@ -234,7 +263,7 @@ extension ProfileAdditionalViewController: UIPickerViewDataSource {
             case experiencePickerView:
                 return experiences[component].count
             case employmentStatusPickerView:
-                return employmentStatus.count
+                return employmentStatusArray.count
             default:
                 return 0
         }
