@@ -48,12 +48,16 @@ final class HomeViewController: UIViewController {
         var condition: (User, User) -> Bool {
             switch self {
                 case .score: return { $0.skillScore > $1.skillScore }
-                case .register: return { $0.registrationDate < $1.registrationDate }
+                case .register: return { $0.registrationDate > $1.registrationDate }
                 case .experience: return { $0.experience > $1.experience }
             }
         }
     }
-    private var sortType: SortType = .register
+    private var sortType: SortType = .register {
+        didSet {
+            rearranges(sortType: sortType)
+        }
+    }
     private var rightSideMenuNavC: SideMenuNavigationController?
     private var listener: ListenerRegistration?
   
@@ -64,7 +68,6 @@ final class HomeViewController: UIViewController {
         if isNotLoggedIn {
             presentLoginVC()
         }
-        rearranges(sortType: .register)
         setupUI()
         
     }
@@ -85,17 +88,17 @@ final class HomeViewController: UIViewController {
     
     @IBAction private func sortScoreButton(_ sender: Any) {
         changeFollowViewPosition(to: sortScoreButton)
-        rearranges(sortType: .score)
+        sortType = .score
     }
     
     @IBAction private func sortRegisterButton(_ sender: Any) {
         changeFollowViewPosition(to: sortRegisterButton)
-        rearranges(sortType: .register)
+        sortType = .register
     }
     
     @IBAction private func sortExperienceButton(_ sender: Any) {
         changeFollowViewPosition(to: sortExperienceButton)
-        rearranges(sortType: .experience)
+        sortType = .experience
     }
     
     @IBAction private func filterButton(_ sender: Any) {
@@ -133,7 +136,7 @@ final class HomeViewController: UIViewController {
                 }
                 self.users = users
                 DispatchQueue.main.async {
-                    self.collectionView.reloadData()
+                    self.rearranges(sortType: self.sortType)
                 }
             }
     }
