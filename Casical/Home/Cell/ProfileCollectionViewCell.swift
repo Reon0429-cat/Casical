@@ -58,7 +58,12 @@ final class ProfileCollectionViewCell: UICollectionViewCell {
     func configure(model: User) {
         profileImageView.image = UIImage(data: model.gitHub.image)
         nameLabel.text = model.name
-        languageLabel.text = "● " + model.gitHub.mostUsedLanguage!.name
+        if let languageName = model.gitHub.mostUsedLanguage?.name {
+            languageLabel.text = "● " + languageName
+        } else {
+            languageLabel.text = "● " + "言語なし"
+        }
+        
         houseLabel.text = "● " + model.workLocation
         experienceLabel.text = "● " + model.convertExperienceToString()
     }

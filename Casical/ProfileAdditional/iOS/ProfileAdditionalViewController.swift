@@ -64,6 +64,9 @@ final class ProfileAdditionalViewController: UIViewController {
         GitHubAPIClient().searchUser(userName: userName) { result in
             switch result {
                 case .failure(let title):
+                    DispatchQueue.main.async {
+                        HUD.flash(.error, onView: self.view)
+                    }
                     print("DEBUG_PRINT: ", title, #function)
                 case .success(let gitHubUser):
                     self.searchRepos(userName: userName,
@@ -77,6 +80,9 @@ final class ProfileAdditionalViewController: UIViewController {
         GitHubAPIClient().searchRepos(userName: userName) { result in
             switch result {
                 case .failure(let title):
+                    DispatchQueue.main.async {
+                        HUD.flash(.error, onView: self.view)
+                    }
                     print("DEBUG_PRINT: ", title, #function)
                 case .success(let repos):
                     let avatarUrl = URL(string: gitHubUser.avatarUrl)!
@@ -89,7 +95,7 @@ final class ProfileAdditionalViewController: UIViewController {
                                         secondMostUsedLanguage: secondMostUsedLanguage,
                                         thirdMostUsedLanguage: thirdMostUsedLanguage,
                                         followers: gitHubUser.followers,
-                                        description: gitHubUser.bio,
+                                        description: gitHubUser.bio ?? "",
                                         image: image)
                     DispatchQueue.main.async {
                         self.searchQiitaUser(gitHub: gitHub)
@@ -102,6 +108,9 @@ final class ProfileAdditionalViewController: UIViewController {
         QiitaAPIClient().searchUser(userName: qiitaName) { result in
             switch result {
                 case .failure(let title):
+                    DispatchQueue.main.async {
+                        HUD.flash(.error, onView: self.view)
+                    }
                     print("DEBUG_PRINT: ", title, #function)
                 case .success(let qiitaUser):
                     let experienceYear = self.experiences[0][self.oldSelectedExperiencesYearIndex]

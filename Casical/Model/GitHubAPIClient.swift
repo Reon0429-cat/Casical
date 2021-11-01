@@ -30,7 +30,10 @@ final class GitHubAPIClient {
             }
             let jsonDecoder = JSONDecoder()
             jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-            let user = try! jsonDecoder.decode(GitHubUser.self, from: data)
+            guard let user = try? jsonDecoder.decode(GitHubUser.self, from: data) else {
+                completion(.failure("userが不適"))
+                return
+            }
             completion(.success(user))
         }
         task.resume()
@@ -50,7 +53,10 @@ final class GitHubAPIClient {
             }
             let jsonDecoder = JSONDecoder()
             jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-            let items = try! jsonDecoder.decode([GitHubRepoItem].self, from: data)
+            guard let items = try? jsonDecoder.decode([GitHubRepoItem].self, from: data) else {
+                completion(.failure("itemが不適"))
+                return
+            }
             completion(.success(items))
         }
         task.resume()

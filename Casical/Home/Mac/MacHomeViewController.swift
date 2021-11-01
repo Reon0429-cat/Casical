@@ -11,7 +11,7 @@ import FirebaseAuth
 import SideMenu
 import FirebaseFirestore
 
-private enum FilterType: CaseIterable {
+enum FilterType: Int, CaseIterable {
     case language
     case prefecture
     case experience
@@ -98,10 +98,11 @@ final class MacHomeViewController: UIViewController {
     private func rearranges(sortType: SortType) {
         users = users.sorted(by: sortType.condition)
         profileCollectionView.reloadData()
+        filterTableView.reloadData()
     }
     
     @IBAction private func sortButtonDidTapped(_ sender: Any) {
-        
+        // 実装しない
     }
     
     @IBAction private func settingButtonDidTapped(_ sender: Any) {
@@ -163,6 +164,11 @@ extension MacHomeViewController: UICollectionViewDelegateFlowLayout {
 extension MacHomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
+                   didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
@@ -182,7 +188,23 @@ extension MacHomeViewController: UITableViewDataSource {
             withIdentifier: SortTableViewCell.identifier
         ) as! SortTableViewCell
         let title = FilterType.allCases[indexPath.row].title
-        cell.configure(title: title)
+        cell.tag = indexPath.row
+        cell.configure(title: title, users: users) { [weak self] cellTag in
+            let filterType = FilterType(rawValue: cellTag) ?? .language
+            switch filterType {
+                case .language:
+                    print("DEBUG_PRINT: language")
+                case .prefecture:
+                    print("DEBUG_PRINT: prefecture")
+                case .experience:
+                    print("DEBUG_PRINT: experience")
+                case .github:
+                    print("DEBUG_PRINT: github")
+                case .qiita:
+                    print("DEBUG_PRINT: qiita")
+            }
+            self?.filterTableView.reloadData()
+        }
         return cell
     }
     

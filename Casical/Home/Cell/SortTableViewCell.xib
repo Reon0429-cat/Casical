@@ -55,6 +55,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="chevronButton" destination="M2e-0i-cTO" id="y8C-tz-PgQ"/>
                 <outlet property="titleLabel" destination="R0E-WC-Fca" id="lDz-6C-zQt"/>
             </connections>
             <point key="canvasLocation" x="63.04347826086957" y="21.09375"/>
