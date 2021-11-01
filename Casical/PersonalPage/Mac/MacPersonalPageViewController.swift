@@ -25,7 +25,7 @@ final class MacPersonalPageViewController: UIViewController {
     @IBOutlet private weak var qiitaDataBaseView: UIView!
     @IBOutlet private weak var sendMessageBaseView: UIView!
     
-    var sampleModel: SampleModel?
+    var user: User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,23 +60,23 @@ private extension MacPersonalPageViewController {
     }
     
     func setupPersonalData() {
-        nameLabel.text = sampleModel?.name
-        houseLabel.text = "● " + sampleModel!.house
-        experienceLabel.text = "● " + sampleModel!.convertExperienceToString()
-        profileImageView.image = sampleModel?.image
+        nameLabel.text = user.name
+        houseLabel.text = "● " + user.workLocation
+        experienceLabel.text = "● " + user.convertExperienceToString()
+        profileImageView.image = UIImage(data: user.gitHub.image)
         profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
-        bioLabel.text = sampleModel?.bio
+        bioLabel.text = user.gitHub.description
         personalDataBaseView.layer.cornerRadius = 50
         personalDataGraphBaseView.layer.cornerRadius = 50
     }
     
     func setupGitHubData() {
-        githubAccountLabel.text = sampleModel?.github
+        githubAccountLabel.text = user.gitHub.name
         githubDataBaseView.layer.cornerRadius = 50
     }
     
     func setupQiitaData() {
-        qiitaAccountLabel.text = sampleModel?.qiita
+        qiitaAccountLabel.text = user.qiita.name
         qiitaDataBaseView.layer.cornerRadius = 50
     }
     

@@ -6,3 +6,17 @@
 //
 
 import Foundation
+
+// https://qiita.com/api/v2/users/REON
+
+let json10 = """
+{
+"followers_count": 23,
+"items_count": 98,
+}
+"""
+
+struct QiitaUser: Codable {
+    let followersCount: Int
+    let itemsCount: Int
+}

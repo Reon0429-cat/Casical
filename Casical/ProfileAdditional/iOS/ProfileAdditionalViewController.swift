@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import PKHUD
+import Firebase
+import FirebaseFirestore
 
 final class ProfileAdditionalViewController: UIViewController {
     
@@ -30,7 +33,7 @@ final class ProfileAdditionalViewController: UIViewController {
     private var employmentStatus: String { employmentStatusTextField.text ?? "" }
     private var qiitaName: String { qiitaTextField.text ?? "" }
     private var gitHubName: String { gitHubTextField.text ?? "" }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,6 +56,7 @@ final class ProfileAdditionalViewController: UIViewController {
     }
     
     @IBAction private func registerButtonDidTapped(_ sender: Any) {
+        HUD.show(.progress)
         searchGitHubUser(userName: gitHubName)
     }
     
@@ -117,10 +121,27 @@ final class ProfileAdditionalViewController: UIViewController {
                                         gitHub: gitHub,
                                         qiita: qiita,
                                         skillScore: skillScore)
-                        // MARK: - ToDo 保存処理
+                        self.saveUser(user: user)
                     }
             }
         }
+    }
+    
+    private func saveUser(user: User) {
+        print("DEBUG_PRINT: userを保存", user)
+        Firestore.firestore().collection("users")
+            .addDocument(data: user.toDic()) { error in
+                if let error = error {
+                    print("DEBUG_PRINT: ", error.localizedDescription)
+                    return
+                }
+                print("DEBUG_PRINT: Firestoreに保存成功")
+                HUD.flash(.success,
+                          onView: nil,
+                          delay: 0) { _ in
+                    self.dismiss(animated: true)
+                }
+            }
     }
     
     @IBAction func dismissButtonDidTapped(_ sender: Any) {
