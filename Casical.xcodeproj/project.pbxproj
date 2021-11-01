@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		1E09EE3AE8DFFBB9895B36D6 /* libPods-CasicalUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7114CBD50D481EF2B2F5D207 /* libPods-CasicalUITests.a */; };
-		3E9646FF843F32C16CE7EFB1 /* Pods_Casical.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F119E545C0EDBE24FB8BF090 /* Pods_Casical.framework */; };
+		3912D6BBEA1AAD1B71B4737C /* Pods_Casical.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C23EF24E5513308A7D6B25 /* Pods_Casical.framework */; };
 		AB12F0F8272D60CC00A0FA60 /* SortTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB12F0F6272D60CC00A0FA60 /* SortTableViewCell.swift */; };
 		AB12F0F9272D60CC00A0FA60 /* SortTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB12F0F7272D60CC00A0FA60 /* SortTableViewCell.xib */; };
+		AB15E725273035D000A99A8A /* GitHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB15E724273035D000A99A8A /* GitHub.swift */; };
+		AB15E727273035D800A99A8A /* Qiita.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB15E726273035D800A99A8A /* Qiita.swift */; };
 		AB2E84E2272994580082999C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB2E84E1272994580082999C /* GoogleService-Info.plist */; };
 		AB2E84E727299BFF0082999C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7AC674272985BA007069BC /* AppDelegate.swift */; };
 		AB2E84E827299BFF0082999C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7AC676272985BA007069BC /* SceneDelegate.swift */; };
@@ -28,7 +30,13 @@
 		AB7AC68C272985BC007069BC /* CasicalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7AC68B272985BC007069BC /* CasicalTests.swift */; };
 		AB7AC696272985BC007069BC /* CasicalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7AC695272985BC007069BC /* CasicalUITests.swift */; };
 		AB7AC698272985BC007069BC /* CasicalUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7AC697272985BC007069BC /* CasicalUITestsLaunchTests.swift */; };
-		ABCDE64A272E38B400BB34A3 /* SampleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCDE649272E38B400BB34A3 /* SampleModel.swift */; };
+		AB895E28272EF9B3004B6A3F /* ProfileAdditionalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB895E27272EF9B3004B6A3F /* ProfileAdditionalViewController.swift */; };
+		AB8F193B27301EBB004B0D99 /* GitHubAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8F193627301EBB004B0D99 /* GitHubAPIClient.swift */; };
+		AB8F193C27301EBB004B0D99 /* QiitaAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8F193727301EBB004B0D99 /* QiitaAPIModel.swift */; };
+		AB8F193D27301EBB004B0D99 /* GitHubAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8F193827301EBB004B0D99 /* GitHubAPIModel.swift */; };
+		AB8F193E27301EBB004B0D99 /* Prefecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8F193927301EBB004B0D99 /* Prefecture.swift */; };
+		AB8F193F27301EBB004B0D99 /* QiitaAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8F193A27301EBB004B0D99 /* QiitaAPIClient.swift */; };
+		AB8F194127301EC1004B0D99 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8F194027301EC1004B0D99 /* User.swift */; };
 		ABD46A81272B03E5006AB17A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABD46A7F272B03E5006AB17A /* Login.storyboard */; };
 		ABD46A82272B03E5006AB17A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD46A80272B03E5006AB17A /* LoginViewController.swift */; };
 		ABD46A84272B2AD4006AB17A /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD46A83272B2AD4006AB17A /* UIColor+Extension.swift */; };
@@ -44,9 +52,7 @@
 		ABF581A5272D4F320086D60E /* MacPersonalPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABF581A4272D4F320086D60E /* MacPersonalPage.storyboard */; };
 		ABF581A7272D4F380086D60E /* MacPersonalPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF581A6272D4F380086D60E /* MacPersonalPageViewController.swift */; };
 		ABF581AB272D4F930086D60E /* ProfileAdditional.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABF581AA272D4F930086D60E /* ProfileAdditional.storyboard */; };
-		ABF581AD272D4F970086D60E /* ProfileAdditionalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF581AC272D4F970086D60E /* ProfileAdditionalViewController.swift */; };
 		CAC255DF3D1BE99A0BB62C9B /* libPods-CasicalTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C3254B2CABCA044ED2E7E139 /* libPods-CasicalTests.a */; };
-		E5ADF567EAEF87078AF02043 /* Pods_Casical.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F119E545C0EDBE24FB8BF090 /* Pods_Casical.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +74,7 @@
 
 /* Begin PBXFileReference section */
 		012299BCFDD627244F5A5D76 /* Pods-Casical.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Casical.debug.xcconfig"; path = "Target Support Files/Pods-Casical/Pods-Casical.debug.xcconfig"; sourceTree = "<group>"; };
+		23C23EF24E5513308A7D6B25 /* Pods_Casical.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Casical.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		683CC817455E8FBDBED57A20 /* Pods-Casical.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Casical.release.xcconfig"; path = "Target Support Files/Pods-Casical/Pods-Casical.release.xcconfig"; sourceTree = "<group>"; };
 		7114CBD50D481EF2B2F5D207 /* libPods-CasicalUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CasicalUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		76CA737CB72A47B018FA06F6 /* Pods-CasicalUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CasicalUITests.debug.xcconfig"; path = "Target Support Files/Pods-CasicalUITests/Pods-CasicalUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -76,6 +83,8 @@
 		A5073874244670B9A4854F28 /* Pods-CasicalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CasicalTests.debug.xcconfig"; path = "Target Support Files/Pods-CasicalTests/Pods-CasicalTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AB12F0F6272D60CC00A0FA60 /* SortTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortTableViewCell.swift; sourceTree = "<group>"; };
 		AB12F0F7272D60CC00A0FA60 /* SortTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortTableViewCell.xib; sourceTree = "<group>"; };
+		AB15E724273035D000A99A8A /* GitHub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHub.swift; sourceTree = "<group>"; };
+		AB15E726273035D800A99A8A /* Qiita.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Qiita.swift; sourceTree = "<group>"; };
 		AB2E84E1272994580082999C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AB2E84F427299BFF0082999C /* Casical mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Casical mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB2E84F527299BFF0082999C /* Casical copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Casical copy-Info.plist"; path = "/Users/oonishireon/Desktop/Casical/Casical copy-Info.plist"; sourceTree = "<absolute>"; };
@@ -95,7 +104,13 @@
 		AB7AC695272985BC007069BC /* CasicalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasicalUITests.swift; sourceTree = "<group>"; };
 		AB7AC697272985BC007069BC /* CasicalUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasicalUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		AB7AC6A4272985C1007069BC /* Casical.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Casical.entitlements; sourceTree = "<group>"; };
-		ABCDE649272E38B400BB34A3 /* SampleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleModel.swift; sourceTree = "<group>"; };
+		AB895E27272EF9B3004B6A3F /* ProfileAdditionalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileAdditionalViewController.swift; sourceTree = "<group>"; };
+		AB8F193627301EBB004B0D99 /* GitHubAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubAPIClient.swift; sourceTree = "<group>"; };
+		AB8F193727301EBB004B0D99 /* QiitaAPIModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiitaAPIModel.swift; sourceTree = "<group>"; };
+		AB8F193827301EBB004B0D99 /* GitHubAPIModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubAPIModel.swift; sourceTree = "<group>"; };
+		AB8F193927301EBB004B0D99 /* Prefecture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Prefecture.swift; sourceTree = "<group>"; };
+		AB8F193A27301EBB004B0D99 /* QiitaAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiitaAPIClient.swift; sourceTree = "<group>"; };
+		AB8F194027301EC1004B0D99 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		ABD46A7F272B03E5006AB17A /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		ABD46A80272B03E5006AB17A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		ABD46A83272B2AD4006AB17A /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -111,10 +126,8 @@
 		ABF581A4272D4F320086D60E /* MacPersonalPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MacPersonalPage.storyboard; sourceTree = "<group>"; };
 		ABF581A6272D4F380086D60E /* MacPersonalPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacPersonalPageViewController.swift; sourceTree = "<group>"; };
 		ABF581AA272D4F930086D60E /* ProfileAdditional.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileAdditional.storyboard; sourceTree = "<group>"; };
-		ABF581AC272D4F970086D60E /* ProfileAdditionalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAdditionalViewController.swift; sourceTree = "<group>"; };
 		AEC13FA82DEA99E93F6EC3E9 /* Pods-Casical-CasicalUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Casical-CasicalUITests.debug.xcconfig"; path = "Target Support Files/Pods-Casical-CasicalUITests/Pods-Casical-CasicalUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C3254B2CABCA044ED2E7E139 /* libPods-CasicalTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CasicalTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F119E545C0EDBE24FB8BF090 /* Pods_Casical.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Casical.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD3AFB8E04B7117266C86667 /* Pods-CasicalUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CasicalUITests.release.xcconfig"; path = "Target Support Files/Pods-CasicalUITests/Pods-CasicalUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,8 +143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5ADF567EAEF87078AF02043 /* Pods_Casical.framework in Frameworks */,
-				3E9646FF843F32C16CE7EFB1 /* Pods_Casical.framework in Frameworks */,
+				3912D6BBEA1AAD1B71B4737C /* Pods_Casical.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,7 +232,14 @@
 		ABCDE648272E38A500BB34A3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				ABCDE649272E38B400BB34A3 /* SampleModel.swift */,
+				AB8F193927301EBB004B0D99 /* Prefecture.swift */,
+				AB8F194027301EC1004B0D99 /* User.swift */,
+				AB15E724273035D000A99A8A /* GitHub.swift */,
+				AB15E726273035D800A99A8A /* Qiita.swift */,
+				AB8F193627301EBB004B0D99 /* GitHubAPIClient.swift */,
+				AB8F193827301EBB004B0D99 /* GitHubAPIModel.swift */,
+				AB8F193A27301EBB004B0D99 /* QiitaAPIClient.swift */,
+				AB8F193727301EBB004B0D99 /* QiitaAPIModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -328,7 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				ABF581AA272D4F930086D60E /* ProfileAdditional.storyboard */,
-				ABF581AC272D4F970086D60E /* ProfileAdditionalViewController.swift */,
+				AB895E27272EF9B3004B6A3F /* ProfileAdditionalViewController.swift */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -355,9 +374,9 @@
 		BA995319C0F610C7BD8E9FC3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F119E545C0EDBE24FB8BF090 /* Pods_Casical.framework */,
 				C3254B2CABCA044ED2E7E139 /* libPods-CasicalTests.a */,
 				7114CBD50D481EF2B2F5D207 /* libPods-CasicalUITests.a */,
+				23C23EF24E5513308A7D6B25 /* Pods_Casical.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -405,7 +424,7 @@
 				AB7AC66D272985BA007069BC /* Sources */,
 				AB7AC66E272985BA007069BC /* Frameworks */,
 				AB7AC66F272985BA007069BC /* Resources */,
-				AC276D71C07D264106975156 /* [CP] Embed Pods Frameworks */,
+				9AFECDCA8F4EEE99DA0EAC2C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -567,7 +586,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AC276D71C07D264106975156 /* [CP] Embed Pods Frameworks */ = {
+		9AFECDCA8F4EEE99DA0EAC2C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -644,21 +663,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB15E725273035D000A99A8A /* GitHub.swift in Sources */,
 				ABD46A9D272C21FA006AB17A /* UIResponder+Extension.swift in Sources */,
-				ABCDE64A272E38B400BB34A3 /* SampleModel.swift in Sources */,
 				ABF5819F272D4DA70086D60E /* MacHomeViewController.swift in Sources */,
+				AB8F193C27301EBB004B0D99 /* QiitaAPIModel.swift in Sources */,
 				ABD46A82272B03E5006AB17A /* LoginViewController.swift in Sources */,
 				AB12F0F8272D60CC00A0FA60 /* SortTableViewCell.swift in Sources */,
+				AB8F193D27301EBB004B0D99 /* GitHubAPIModel.swift in Sources */,
+				AB8F193B27301EBB004B0D99 /* GitHubAPIClient.swift in Sources */,
 				AB7AC675272985BA007069BC /* AppDelegate.swift in Sources */,
 				AB558B4F272D9F0C00BC218A /* SettingViewController.swift in Sources */,
+				AB8F194127301EC1004B0D99 /* User.swift in Sources */,
+				AB15E727273035D800A99A8A /* Qiita.swift in Sources */,
 				AB39D205272DA0BB009639DD /* SettingTableViewCell.swift in Sources */,
 				ABD46A9A272C0EBE006AB17A /* ProfileCollectionViewCell.swift in Sources */,
+				AB8F193E27301EBB004B0D99 /* Prefecture.swift in Sources */,
 				AB7AC677272985BA007069BC /* SceneDelegate.swift in Sources */,
 				ABF581A7272D4F380086D60E /* MacPersonalPageViewController.swift in Sources */,
 				ABD46A8A272B2B1E006AB17A /* UITextField+Extension.swift in Sources */,
 				ABD46A84272B2AD4006AB17A /* UIColor+Extension.swift in Sources */,
-				ABF581AD272D4F970086D60E /* ProfileAdditionalViewController.swift in Sources */,
 				ABD46A97272BE52D006AB17A /* HomeViewController.swift in Sources */,
+				AB8F193F27301EBB004B0D99 /* QiitaAPIClient.swift in Sources */,
+				AB895E28272EF9B3004B6A3F /* ProfileAdditionalViewController.swift in Sources */,
 				ABD46A88272B2AF4006AB17A /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

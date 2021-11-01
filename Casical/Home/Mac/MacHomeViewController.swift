@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import UIKit
+import FirebaseAuth
+import SideMenu
+import FirebaseFirestore
 
-private enum SortType: CaseIterable {
+private enum FilterType: CaseIterable {
     case language
     case prefecture
     case experience
@@ -34,13 +38,66 @@ final class MacHomeViewController: UIViewController {
     @IBOutlet private weak var headerTitleLabel: UILabel!
     @IBOutlet private weak var filterLabel: UILabel!
     
-    private let sampleData = [[SampleModel]](repeating: SampleModel.data, count: 10).flatMap { $0 }
+    private var listener: ListenerRegistration?
+    private var users = [User]()
+    private enum SortType {
+        case score
+        case register
+        case experience
+        
+        var condition: (User, User) -> Bool {
+            switch self {
+                case .score: return { $0.skillScore > $1.skillScore }
+                case .register: return { $0.registrationDate > $1.registrationDate }
+                case .experience: return { $0.experience > $1.experience }
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        attachFirestore()
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        listener?.remove()
+        
+    }
+    
+    private func attachFirestore() {
+        listener = Firestore.firestore().collection("users")
+            .addSnapshotListener { snapshot, error in
+                if let error = error {
+                    print("DEBUG_PRINT: ", error.localizedDescription)
+                    return
+                }
+                var users = [User]()
+                snapshot?.documents.forEach { snapshot in
+                    let dic = snapshot.data()
+                    let user = User(dic: dic)
+                    users.append(user)
+                }
+                self.users = users
+                DispatchQueue.main.async {
+                    self.rearranges(sortType: .register)
+                }
+            }
+    }
+    
+    private func rearranges(sortType: SortType) {
+        users = users.sorted(by: sortType.condition)
+        profileCollectionView.reloadData()
     }
     
     @IBAction private func sortButtonDidTapped(_ sender: Any) {
@@ -58,11 +115,11 @@ extension MacHomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         if isMac {
-            let sampleModel = sampleData[indexPath.row]
+            let user = users[indexPath.row]
             let macPersonalPageVC    = UIStoryboard(name: "MacPersonalPage", bundle: nil)
                 .instantiateInitialViewController() as! MacPersonalPageViewController
             macPersonalPageVC.modalPresentationStyle = .fullScreen
-            macPersonalPageVC.sampleModel = sampleModel
+            macPersonalPageVC.user = user
             present(macPersonalPageVC, animated: true)
         } else {
             // 実装しない
@@ -75,7 +132,7 @@ extension MacHomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        sampleData.count
+        users.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -84,7 +141,7 @@ extension MacHomeViewController: UICollectionViewDataSource {
             withReuseIdentifier: ProfileCollectionViewCell.identifier,
             for: indexPath
         ) as! ProfileCollectionViewCell
-        let model = sampleData[indexPath.row]
+        let model = users[indexPath.row]
         cell.configure(model: model)
         return cell
     }
@@ -116,7 +173,7 @@ extension MacHomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return SortType.allCases.count
+        return FilterType.allCases.count
     }
     
     func tableView(_ tableView: UITableView,
@@ -124,7 +181,7 @@ extension MacHomeViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: SortTableViewCell.identifier
         ) as! SortTableViewCell
-        let title = SortType.allCases[indexPath.row].title
+        let title = FilterType.allCases[indexPath.row].title
         cell.configure(title: title)
         return cell
     }

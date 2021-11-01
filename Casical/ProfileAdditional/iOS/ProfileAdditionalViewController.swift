@@ -6,17 +6,9 @@
 //
 
 import UIKit
-
-private struct Prefecture {
-    
-    static let name = ["北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県", "茨城県",
-                       "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県", "新潟県",
-                       "富山県", "石川県", "福井県", "山梨県", "長野県", "岐阜県", "静岡県", "愛知県",
-                       "三重県", "滋賀県", "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県", "鳥取県",
-                       "島根県", "岡山県", "広島県", "山口県", "徳島県", "香川県", "愛媛県", "高知県",
-                       "福岡県", "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県"]
-    
-}
+import PKHUD
+import Firebase
+import FirebaseFirestore
 
 final class ProfileAdditionalViewController: UIViewController {
     
@@ -33,14 +25,26 @@ final class ProfileAdditionalViewController: UIViewController {
     private var employmentStatusPickerView = UIPickerView()
     private let houses = Prefecture.name
     private let experiences = [[Int](0...100), [Int](0...12)]
-    private let employmentStatus = ["新卒", "中途"]
+    private let employmentStatusArray = ["新卒", "中途"]
     private var oldSelectedExperiencesYearIndex = 0
     private var oldSelectedExperiencesMonthIndex = 0
+    private var name: String { nameTextField.text ?? "" }
+    private var workLocation: String { houseTextField.text ?? "" }
+    private var employmentStatus: String { employmentStatusTextField.text ?? "" }
+    private var qiitaName: String { qiitaTextField.text ?? "" }
+    private var gitHubName: String { gitHubTextField.text ?? "" }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
+        // MARK: - ToDo 消す
+        nameTextField.text = "REON"
+        houseTextField.text = "東京都"
+        experienceTextField.text = "1年"
+        employmentStatusTextField.text = "新卒"
+        gitHubTextField.text = "Reon0429-cat"
+        qiitaTextField.text = "REON"
         
     }
     
@@ -52,8 +56,92 @@ final class ProfileAdditionalViewController: UIViewController {
     }
     
     @IBAction private func registerButtonDidTapped(_ sender: Any) {
-        // MARK: - ToDo 保存処理
-        dismiss(animated: true)
+        HUD.show(.progress)
+        searchGitHubUser(userName: gitHubName)
+    }
+    
+    private func searchGitHubUser(userName: String) {
+        GitHubAPIClient().searchUser(userName: userName) { result in
+            switch result {
+                case .failure(let title):
+                    print("DEBUG_PRINT: ", title, #function)
+                case .success(let gitHubUser):
+                    self.searchRepos(userName: userName,
+                                     gitHubUser: gitHubUser)
+            }
+        }
+    }
+    
+    private func searchRepos(userName: String,
+                             gitHubUser: GitHubUser) {
+        GitHubAPIClient().searchRepos(userName: userName) { result in
+            switch result {
+                case .failure(let title):
+                    print("DEBUG_PRINT: ", title, #function)
+                case .success(let repos):
+                    let avatarUrl = URL(string: gitHubUser.avatarUrl)!
+                    let image = try! Data(contentsOf: avatarUrl)
+                    let mostUsedLanguage = self.calculateUsedLanguage(repos: repos)[0]
+                    let secondMostUsedLanguage = self.calculateUsedLanguage(repos: repos)[1]
+                    let thirdMostUsedLanguage = self.calculateUsedLanguage(repos: repos)[2]
+                    let gitHub = GitHub(name: userName,
+                                        mostUsedLanguage: mostUsedLanguage,
+                                        secondMostUsedLanguage: secondMostUsedLanguage,
+                                        thirdMostUsedLanguage: thirdMostUsedLanguage,
+                                        followers: gitHubUser.followers,
+                                        description: gitHubUser.bio,
+                                        image: image)
+                    DispatchQueue.main.async {
+                        self.searchQiitaUser(gitHub: gitHub)
+                    }
+            }
+        }
+    }
+    
+    private func searchQiitaUser(gitHub: GitHub) {
+        QiitaAPIClient().searchUser(userName: qiitaName) { result in
+            switch result {
+                case .failure(let title):
+                    print("DEBUG_PRINT: ", title, #function)
+                case .success(let qiitaUser):
+                    let experienceYear = self.experiences[0][self.oldSelectedExperiencesYearIndex]
+                    let experienceMonth = self.experiences[1][self.oldSelectedExperiencesMonthIndex]
+                    let experience = experienceYear * 12 + experienceMonth
+                    DispatchQueue.main.async {
+                        let qiita = Qiita(name: self.qiitaName,
+                                          followers: qiitaUser.followersCount,
+                                          itemsCount: qiitaUser.itemsCount)
+                        // MARK: - ToDo 一旦適当にskillScoreは算出しておく
+                        let skillScore = 10000
+                        let user = User(name: self.name,
+                                        workLocation: self.workLocation,
+                                        experience: experience,
+                                        employmentStatus: self.employmentStatus,
+                                        registrationDate: Date(),
+                                        gitHub: gitHub,
+                                        qiita: qiita,
+                                        skillScore: skillScore)
+                        self.saveUser(user: user)
+                    }
+            }
+        }
+    }
+    
+    private func saveUser(user: User) {
+        print("DEBUG_PRINT: userを保存", user)
+        Firestore.firestore().collection("users")
+            .addDocument(data: user.toDic()) { error in
+                if let error = error {
+                    print("DEBUG_PRINT: ", error.localizedDescription)
+                    return
+                }
+                print("DEBUG_PRINT: Firestoreに保存成功")
+                HUD.flash(.success,
+                          onView: nil,
+                          delay: 0) { _ in
+                    self.dismiss(animated: true)
+                }
+            }
     }
     
     @IBAction func dismissButtonDidTapped(_ sender: Any) {
@@ -65,7 +153,7 @@ final class ProfileAdditionalViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    func changeRegisterButtonState() {
+    private func changeRegisterButtonState() {
         let isEnabled = [
             nameTextField,
             houseTextField,
@@ -76,6 +164,49 @@ final class ProfileAdditionalViewController: UIViewController {
         ].allSatisfy { !$0!.text!.isEmpty }
         registerButton.isEnabled = isEnabled
         registerButton.layer.opacity = isEnabled ? 1 : 0.6
+    }
+    
+    private func calculateUsedLanguage(repos: [GitHubRepoItem]) -> [(name: String, value: Int)?] {
+        let repoLanguages = repos.map { $0.language }.compactMap { $0 }
+        let excludeSameRepoLanguages = NSOrderedSet(array: repoLanguages).array as! [String]
+        var counts = [Int]()
+        excludeSameRepoLanguages.forEach { excludeSameRepoLanguage in
+            var count = 0
+            repoLanguages.forEach { repoLanguage in
+                if excludeSameRepoLanguage == repoLanguage {
+                    count += 1
+                }
+            }
+            counts.append(count)
+        }
+        let percentCounts = counts.map { Double($0) / Double(repoLanguages.count) * 100 }.map { Int($0) }
+        var languageTaples = [(language: String, percentNumber: Int)]()
+        excludeSameRepoLanguages.enumerated().forEach { index, language in
+            languageTaples.append((language: language, percentNumber: percentCounts[index]))
+        }
+        let sortedLanguageTaples = languageTaples.sorted(by: { $0.percentNumber > $1.percentNumber })
+        var mostUsedLanguage: (name: String, value: Int)?
+        var secondMostUsedLanguage: (name: String, value: Int)?
+        var thirdMostUsedLanguage: (name: String, value: Int)?
+        switch sortedLanguageTaples.count {
+            case 0:
+                mostUsedLanguage = nil
+                secondMostUsedLanguage = nil
+                thirdMostUsedLanguage = nil
+            case 1:
+                mostUsedLanguage = (name: sortedLanguageTaples[0].language, value: sortedLanguageTaples[0].percentNumber)
+                secondMostUsedLanguage = nil
+                thirdMostUsedLanguage = nil
+            case 2:
+                mostUsedLanguage = (name: sortedLanguageTaples[0].language, value: sortedLanguageTaples[0].percentNumber)
+                secondMostUsedLanguage = (name: sortedLanguageTaples[1].language, value: sortedLanguageTaples[1].percentNumber)
+                thirdMostUsedLanguage = nil
+            default:
+                mostUsedLanguage = (name: sortedLanguageTaples[0].language, value: sortedLanguageTaples[0].percentNumber)
+                secondMostUsedLanguage = (name: sortedLanguageTaples[1].language, value: sortedLanguageTaples[1].percentNumber)
+                thirdMostUsedLanguage = (name: sortedLanguageTaples[2].language, value: sortedLanguageTaples[2].percentNumber)
+        }
+        return [mostUsedLanguage, secondMostUsedLanguage, thirdMostUsedLanguage]
     }
     
 }
@@ -111,7 +242,7 @@ extension ProfileAdditionalViewController: UIPickerViewDelegate {
                 let monthText = "\(experiences[1][oldSelectedExperiencesMonthIndex])ヶ月"
                 experienceTextField.text = yearText + monthText
             case employmentStatusPickerView:
-                employmentStatusTextField.text = employmentStatus[row]
+                employmentStatusTextField.text = employmentStatusArray[row]
             default:
                 break
         }
@@ -126,7 +257,7 @@ extension ProfileAdditionalViewController: UIPickerViewDelegate {
             case experiencePickerView:
                 return String(experiences[component][row])
             case employmentStatusPickerView:
-                return employmentStatus[row]
+                return employmentStatusArray[row]
             default:
                 return ""
         }
@@ -153,7 +284,7 @@ extension ProfileAdditionalViewController: UIPickerViewDataSource {
             case experiencePickerView:
                 return experiences[component].count
             case employmentStatusPickerView:
-                return employmentStatus.count
+                return employmentStatusArray.count
             default:
                 return 0
         }
