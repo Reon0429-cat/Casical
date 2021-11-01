@@ -53,11 +53,25 @@ final class MacHomeViewController: UIViewController {
             }
         }
     }
-    private var selectedFilterTitle: String?
+    private var selectedFilterLanguage: String? {
+        didSet {
+            detailTexts[FilterType.language.rawValue] = selectedFilterLanguage
+        }
+    }
+    private var selectedFilterPrefecture: String? {
+        didSet {
+            detailTexts[FilterType.prefecture.rawValue] = selectedFilterPrefecture
+        }
+    }
+    private let selectedFilterLanguageKey = "selectedFilterLanguageKey"
+    private let selectedFilterPrefectureKey = "selectedFilterPrefectureKey"
+    private var detailTexts = [String?](repeating: "", count: FilterType.allCases.count)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        selectedFilterLanguage = UserDefaults.standard.string(forKey: selectedFilterLanguageKey)
+        selectedFilterPrefecture = UserDefaults.standard.string(forKey: selectedFilterPrefectureKey)
         setupUI()
         
     }
@@ -102,6 +116,23 @@ final class MacHomeViewController: UIViewController {
         filterTableView.reloadData()
     }
     
+    private func filteredUsers() -> [User] {
+        let filteredLanguageUsers: [User] = {
+            if let selectedFilterLanguage = selectedFilterLanguage {
+                return self.users.filter { $0.gitHub.mostUsedLanguage?.name == selectedFilterLanguage }
+            } else {
+                return self.users
+            }
+        }()
+        let filteredPrefectureusers: [User] = {
+            if let selectedFilterPrefecture = selectedFilterPrefecture {
+                return filteredLanguageUsers.filter { $0.workLocation == selectedFilterPrefecture }
+            }
+            return filteredLanguageUsers
+        }()
+        return filteredPrefectureusers
+    }
+    
     @IBAction private func sortButtonDidTapped(_ sender: Any) {
         // 実装しない
     }
@@ -117,8 +148,8 @@ extension MacHomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         if isMac {
-            let user = users[indexPath.row]
-            let macPersonalPageVC    = UIStoryboard(name: "MacPersonalPage", bundle: nil)
+            let user = filteredUsers()[indexPath.row]
+            let macPersonalPageVC = UIStoryboard(name: "MacPersonalPage", bundle: nil)
                 .instantiateInitialViewController() as! MacPersonalPageViewController
             macPersonalPageVC.modalPresentationStyle = .fullScreen
             macPersonalPageVC.user = user
@@ -134,11 +165,7 @@ extension MacHomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        if let selectedFilterTitle = selectedFilterTitle {
-            return users.filter { $0.gitHub.mostUsedLanguage?.name == selectedFilterTitle }.count
-        } else {
-            return users.count
-        }
+        filteredUsers().count
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -147,14 +174,7 @@ extension MacHomeViewController: UICollectionViewDataSource {
             withReuseIdentifier: ProfileCollectionViewCell.identifier,
             for: indexPath
         ) as! ProfileCollectionViewCell
-        let users: [User] = {
-            if let selectedFilterTitle = selectedFilterTitle {
-                return self.users.filter { $0.gitHub.mostUsedLanguage?.name == selectedFilterTitle }
-            } else {
-                return self.users
-            }
-        }()
-        let model = users[indexPath.row]
+        let model = filteredUsers()[indexPath.row]
         cell.configure(model: model)
         return cell
     }
@@ -177,7 +197,7 @@ extension MacHomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: false)
     }
     
     func tableView(_ tableView: UITableView,
@@ -201,18 +221,29 @@ extension MacHomeViewController: UITableViewDataSource {
         ) as! SortTableViewCell
         let title = FilterType.allCases[indexPath.row].title
         cell.tag = indexPath.row
-        cell.configure(title: title, users: users) { [weak self] cellTag, title in
-            let isLanguageAll = title == "すべて" && cellTag == -1
+        cell.selectionStyle = .none
+        let detailText = detailTexts[indexPath.row] ?? ""
+        cell.configure(title: title,
+                       users: users,
+                       detailText: detailText) { [weak self] cellTag, title in
+            guard let self = self else { return }
+            let isLanguageAll = (title == "すべて" && cellTag == -1)
+            let isPrefectureAll = (title == "すべて" && cellTag == -2)
             if isLanguageAll {
-                // 言語のすべてが選択された
-                self?.selectedFilterTitle = nil
+                self.selectedFilterLanguage = nil
+                UserDefaults.standard.set(nil, forKey: self.selectedFilterLanguageKey)
+            } else if isPrefectureAll {
+                self.selectedFilterPrefecture = nil
+                UserDefaults.standard.set(nil, forKey: self.selectedFilterPrefectureKey)
             } else {
                 let filterType = FilterType(rawValue: cellTag) ?? .language
                 switch filterType {
                     case .language:
-                        self?.selectedFilterTitle = title
+                        self.selectedFilterLanguage = title
+                        UserDefaults.standard.set(title, forKey: self.selectedFilterLanguageKey)
                     case .prefecture:
-                        print("DEBUG_PRINT: prefecture")
+                        self.selectedFilterPrefecture = title
+                        UserDefaults.standard.set(title, forKey: self.selectedFilterPrefectureKey)
                     case .experience:
                         print("DEBUG_PRINT: experience")
                     case .github:
@@ -221,7 +252,8 @@ extension MacHomeViewController: UITableViewDataSource {
                         print("DEBUG_PRINT: qiita")
                 }
             }
-            self?.profileCollectionView.reloadData()
+            self.profileCollectionView.reloadData()
+            self.filterTableView.reloadData()
         }
         return cell
     }

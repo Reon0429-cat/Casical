@@ -40,6 +40,12 @@
                             <constraint firstAttribute="height" constant="1" id="lz2-93-p96"/>
                         </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SKA-xJ-ceJ">
+                        <rect key="frame" x="355.5" y="58.5" width="48" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
@@ -47,8 +53,10 @@
                     <constraint firstItem="M2e-0i-cTO" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Kog-6n-efU"/>
                     <constraint firstAttribute="bottom" secondItem="DKI-04-gUH" secondAttribute="bottom" id="RF2-uq-1YV"/>
                     <constraint firstAttribute="trailing" secondItem="M2e-0i-cTO" secondAttribute="trailing" constant="20" id="WEz-bV-ubc"/>
+                    <constraint firstItem="SKA-xJ-ceJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ayM-uH-L96"/>
                     <constraint firstAttribute="trailing" secondItem="DKI-04-gUH" secondAttribute="trailing" id="kzg-Hi-2g2"/>
                     <constraint firstItem="DKI-04-gUH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="yYJ-4j-oKR"/>
+                    <constraint firstItem="M2e-0i-cTO" firstAttribute="leading" secondItem="SKA-xJ-ceJ" secondAttribute="trailing" constant="10" id="zKq-TR-RcM"/>
                     <constraint firstItem="R0E-WC-Fca" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="zaV-2v-b8d"/>
                 </constraints>
             </tableViewCellContentView>
@@ -56,6 +64,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="chevronButton" destination="M2e-0i-cTO" id="y8C-tz-PgQ"/>
+                <outlet property="detailLabel" destination="SKA-xJ-ceJ" id="vYJ-kV-Vzu"/>
                 <outlet property="titleLabel" destination="R0E-WC-Fca" id="lDz-6C-zQt"/>
             </connections>
             <point key="canvasLocation" x="63.04347826086957" y="21.09375"/>

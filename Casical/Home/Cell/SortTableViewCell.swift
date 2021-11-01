@@ -9,6 +9,7 @@ import UIKit
 
 final class SortTableViewCell: UITableViewCell {
     
+    @IBOutlet private weak var detailLabel: UILabel!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var chevronButton: UIButton!
     
@@ -25,11 +26,13 @@ final class SortTableViewCell: UITableViewCell {
     
     func configure(title: String,
                    users: [User],
+                   detailText: String,
                    onTapEvent: ((Int, String) -> Void)?) {
         self.onTapEvent = onTapEvent
         titleLabel.text = title
         chevronButton.showsMenuAsPrimaryAction = true
         chevronButton.menu = createUIMenu(users: users)
+        detailLabel.text = detailText
     }
     
     @IBAction private func chevronButtonDidTapped(_ sender: Any) {
@@ -49,7 +52,13 @@ final class SortTableViewCell: UITableViewCell {
                               options: .displayInline,
                               children: actions)
             case .prefecture:
-                break
+                var actions = Prefecture.name.map {
+                    UIAction(title: $0) { self.onTapEvent?(self.tag, $0.title) }
+                }
+                actions.insert(UIAction(title: "すべて", handler: { _ in self.onTapEvent?(-2, "すべて") }), at: 0)
+                return UIMenu(title: "都道府県",
+                              options: .displayInline,
+                              children: actions)
             case .experience:
                 break
             case .github:
