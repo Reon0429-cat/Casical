@@ -9,6 +9,8 @@ import UIKit
 import PKHUD
 import Firebase
 import FirebaseFirestore
+import Alamofire
+import Kanna
 
 final class ProfileAdditionalViewController: UIViewController {
     
@@ -113,25 +115,56 @@ final class ProfileAdditionalViewController: UIViewController {
                     }
                     print("DEBUG_PRINT: ", title, #function)
                 case .success(let qiitaUser):
-                    let experienceYear = self.experiences[0][self.oldSelectedExperiencesYearIndex]
-                    let experienceMonth = self.experiences[1][self.oldSelectedExperiencesMonthIndex]
-                    let experience = experienceYear * 12 + experienceMonth
                     DispatchQueue.main.async {
-                        let qiita = Qiita(name: self.qiitaName,
-                                          followers: qiitaUser.followersCount,
-                                          itemsCount: qiitaUser.itemsCount)
-                        // MARK: - ToDo 一旦適当にskillScoreは算出しておく
-                        let skillScore = 10000
-                        let user = User(name: self.name,
-                                        workLocation: self.workLocation,
-                                        experience: experience,
-                                        employmentStatus: self.employmentStatus,
-                                        registrationDate: Date(),
-                                        gitHub: gitHub,
-                                        qiita: qiita,
-                                        skillScore: skillScore)
-                        self.saveUser(user: user)
+                        self.scrapingQiita(qiitaUser: qiitaUser, gitHub: gitHub)
                     }
+            }
+        }
+    }
+    
+    private func scrapingQiita(qiitaUser: QiitaUser, gitHub: GitHub) {
+        AF.request("https://qiita.com/\(qiitaName)").responseString { response in
+            switch response.result {
+                case .success(let value):
+                    if let doc = try? HTML(html: value, encoding: .utf8) {
+                        let contributions = Int(doc.xpath("//span[@class='css-mf9wc5']")
+                                                    .compactMap { $0.text }
+                                                    .first ?? "0") ?? 0
+                        let postedArticleNames = doc.xpath("//span[@class='css-1s0lzlm e1ojqm5t4']")
+                            .compactMap { $0.text }
+                            .map { $0.dropLast() }
+                            .enumerated()
+                            .filter { $0.offset < 5 }
+                            .map { String($0.element) }
+                        let postedArticleValues = doc.xpath("//span[@class='css-9yocrl e1ojqm5t5']")
+                            .compactMap { $0.text }
+                            .map { $0.dropLast() }
+                            .enumerated()
+                            .filter { $0.offset < 5 }
+                            .compactMap { Int($0.element) }
+                        let experienceYear = self.experiences[0][self.oldSelectedExperiencesYearIndex]
+                        let experienceMonth = self.experiences[1][self.oldSelectedExperiencesMonthIndex]
+                        let experience = experienceYear * 12 + experienceMonth
+                        DispatchQueue.main.async {
+                            let qiita = Qiita(name: self.qiitaName,
+                                              followers: qiitaUser.followersCount,
+                                              itemsCount: qiitaUser.itemsCount,
+                                              contributions: contributions,
+                                              postedArticleNames: postedArticleNames,
+                                              postedArticleValues: postedArticleValues)
+                            let user = User(name: self.name,
+                                            workLocation: self.workLocation,
+                                            experience: experience,
+                                            employmentStatus: self.employmentStatus,
+                                            registrationDate: Date(),
+                                            gitHub: gitHub,
+                                            qiita: qiita,
+                                            skillScore: [1, 2, 3, 4, 5, 6, 7, 8, 9].randomElement()!)
+                            self.saveUser(user: user)
+                        }
+                    }
+                case .failure:
+                    print("DEBUG_PRINT: Qiitaスクレイビング失敗")
             }
         }
     }

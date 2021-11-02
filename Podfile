@@ -10,6 +10,8 @@ target 'Casical' do
   pod 'BubbleTransition'
   pod 'Charts'
   pod 'PKHUD'
+  pod 'Alamofire'
+  pod 'Kanna'
   pod 'lottie-ios'
   pod 'Firebase/Analytics'
   pod 'Firebase/Auth'

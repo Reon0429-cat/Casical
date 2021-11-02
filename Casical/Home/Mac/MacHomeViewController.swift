@@ -74,6 +74,16 @@ final class MacHomeViewController: UIViewController {
         selectedFilterPrefecture = UserDefaults.standard.string(forKey: selectedFilterPrefectureKey)
         setupUI()
         
+        // MARK: - ToDo 消す
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            let user = self.filteredUsers()[0]
+            let macPersonalPageVC = UIStoryboard(name: "MacPersonalPage", bundle: nil)
+                .instantiateInitialViewController() as! MacPersonalPageViewController
+            macPersonalPageVC.modalPresentationStyle = .fullScreen
+            macPersonalPageVC.user = user
+            self.present(macPersonalPageVC, animated: true)
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
