@@ -50,12 +50,14 @@ final class MacPersonalPageViewController: UIViewController {
     // GitHub
     @IBOutlet private weak var githubDataBaseView: UIView!
     @IBOutlet private weak var githubFollowersCountLabel: UILabel!
+    @IBOutlet private weak var githubContributionsCountLabel: UILabel!
+    @IBOutlet private weak var githubRepositoriesCountLabel: UILabel!
     @IBOutlet private weak var barChartView: BarChartView!
     @IBOutlet private weak var githubMonthStackView: UIStackView!
     
     // Skill Score
     @IBOutlet private weak var radarChartView: RadarChartView!
-    
+    @IBOutlet private weak var skillScoreLabel: UILabel!
     
     // Send Message
     @IBOutlet private weak var sendMessageBaseView: UIView!
@@ -126,7 +128,6 @@ private extension MacPersonalPageViewController {
         setupPieChartView()
         setupHorizontalBarChartView()
         setupBarChartView()
-        setupRadarChartView()
     }
     
     func setupPersonalData() {
@@ -329,8 +330,8 @@ private extension MacPersonalPageViewController {
                     data.barWidth = 0.9
                     self.barChartView.data = data
                     
-                    self.indicator(isHidden: true)
-                    
+                    self.setupRadarChartView()
+
                 case .failure(let error):
                     print("DEBUG_PRINT: ", error.localizedDescription)
             }
@@ -350,7 +351,7 @@ private extension MacPersonalPageViewController {
 
         radarChartView.yAxis.drawLabelsEnabled = false
         radarChartView.yAxis.axisMinimum = 0
-        radarChartView.yAxis.axisMaximum = 1
+        radarChartView.yAxis.axisMaximum = 5
         radarChartView.yAxis.enabled = false
         radarChartView.yAxis.drawGridLinesEnabled = false
         radarChartView.yAxis.drawAxisLineEnabled = false
@@ -360,22 +361,61 @@ private extension MacPersonalPageViewController {
         radarChartView.legend.drawInside = true
         radarChartView.legend.textColor = .black
         
-        let entries = [
-            RadarChartDataEntry(value: 0.9),
-            RadarChartDataEntry(value: 0.5),
-            RadarChartDataEntry(value: 0.5),
-            RadarChartDataEntry(value: 1),
-            RadarChartDataEntry(value: 0.9),
-            RadarChartDataEntry(value: 0.5),
-        ]
-        let dataSet = RadarChartDataSet(entries: entries, label: "Data")
-        dataSet.drawFilledEnabled = true
-        dataSet.fillColor = .darkColor
-        dataSet.lineWidth = 2
-        dataSet.valueTextColor = .clear
-        dataSet.colors = [.darkColor]
-        let data = RadarChartData(dataSet: dataSet)
-        radarChartView.data = data
+        AF.request("https://github.com/Reon0429-cat").responseString { response in
+            switch response.result {
+                case .success(let value):
+                    guard let doc = try? HTML(html: value, encoding: .utf8) else { return }
+                    let gitHubContributions = doc.xpath("//h2[@class='f4 text-normal mb-2']")
+                        .compactMap { $0.text }
+                        .first!
+                        .components(separatedBy: NSCharacterSet.decimalDigits.inverted)
+                        .joined()
+                    let gitHubRepositories = doc.xpath("//span[@class='Counter']")
+                        .compactMap { $0.text }
+                        .first!
+                    self.githubContributionsCountLabel.text = gitHubContributions
+                    self.githubRepositoriesCountLabel.text = gitHubRepositories
+                    
+                    
+                    let gitHubRepositoriesScore = Double(gitHubRepositories)! / 100
+                    let gitHubContributionsScore = Double(gitHubContributions)! / 1000
+                    let gitHubScores = [gitHubRepositoriesScore, gitHubContributionsScore].reduce(0, +)
+                    
+                    let qiitaContributionsScore = Double(self.user.qiita.contributions) / 500
+                    let qiitaItemCountScore = Double(self.user.qiita.itemsCount) / 100
+                    let qiitaScores = [qiitaContributionsScore, qiitaItemCountScore].reduce(0, +)
+                    
+                    let experienceScore: Double = {
+                        switch self.user.experience / 12 {
+                            case 0: return 0
+                            case 1: return 1
+                            case 2...3: return 2
+                            case 4...5: return 3
+                            case 5...10: return 4
+                            default: return 5
+                        }
+                    }()
+                    
+                    let skillScores = [gitHubScores, qiitaScores, experienceScore]
+                    let entries = skillScores.map { RadarChartDataEntry(value: $0) }
+                    let dataSet = RadarChartDataSet(entries: entries, label: "")
+                    dataSet.drawFilledEnabled = true
+                    dataSet.fillColor = .darkColor
+                    dataSet.lineWidth = 2
+                    dataSet.valueTextColor = .clear
+                    dataSet.colors = [.darkColor]
+                    let data = RadarChartData(dataSet: dataSet)
+                    self.radarChartView.data = data
+                    
+                    self.skillScoreLabel.text = String(floor(skillScores.reduce(0, +) * 10) / 10)
+                    
+                    self.indicator(isHidden: true)
+                    
+                case .failure(let error):
+                    print("DEBUG_PRINT: ", error.localizedDescription)
+            }
+        }
+        
     }
     
 }

@@ -152,8 +152,6 @@ final class ProfileAdditionalViewController: UIViewController {
                                               contributions: contributions,
                                               postedArticleNames: postedArticleNames,
                                               postedArticleValues: postedArticleValues)
-                            // MARK: - ToDo 一旦適当にskillScoreは算出しておく
-                            let skillScore = 10000
                             let user = User(name: self.name,
                                             workLocation: self.workLocation,
                                             experience: experience,
@@ -161,7 +159,7 @@ final class ProfileAdditionalViewController: UIViewController {
                                             registrationDate: Date(),
                                             gitHub: gitHub,
                                             qiita: qiita,
-                                            skillScore: skillScore)
+                                            skillScore: [1, 2, 3, 4, 5, 6, 7, 8, 9].randomElement()!)
                             self.saveUser(user: user)
                         }
                     }
