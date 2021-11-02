@@ -9,6 +9,7 @@ import UIKit
 import Charts
 import Alamofire
 import Kanna
+import PKHUD
 
 final class MacPersonalPageViewController: UIViewController {
     
@@ -52,16 +53,17 @@ final class MacPersonalPageViewController: UIViewController {
     @IBOutlet private weak var barChartView: BarChartView!
     @IBOutlet private weak var githubMonthStackView: UIStackView!
     
-    
     // Send Message
     @IBOutlet private weak var sendMessageBaseView: UIView!
     
     var user: User!
+    private var indicatorView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
+        indicator(isHidden: false)
         
     }
     
@@ -83,6 +85,23 @@ final class MacPersonalPageViewController: UIViewController {
     
     @IBAction private func settingButtonDidTapped(_ sender: Any) {
         // 実装しない
+    }
+    
+    private func indicator(isHidden: Bool) {
+        if isHidden {
+            self.indicatorView.isHidden = true
+            HUD.hide(nil)
+        } else {
+            indicatorView.backgroundColor = .white
+            indicatorView.translatesAutoresizingMaskIntoConstraints = false
+            self.view.addSubview(indicatorView)
+            [indicatorView.topAnchor.constraint(equalTo: self.view.topAnchor),
+             indicatorView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+             indicatorView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+             indicatorView.rightAnchor.constraint(equalTo: self.view.rightAnchor)
+            ].forEach { $0.isActive = true }
+            HUD.show(.progress, onView: indicatorView)
+        }
     }
     
 }
@@ -294,7 +313,6 @@ private extension MacPersonalPageViewController {
                         november3Count,
                         november4Count,
                     ]
-                    print("DEBUG_PRINT: ", rawData)
                     let entries = rawData
                         .enumerated()
                         .map { BarChartDataEntry(x: Double($0.offset), y: Double($0.element)) }
@@ -305,12 +323,13 @@ private extension MacPersonalPageViewController {
                     let data = BarChartData(dataSet: dataSet)
                     data.barWidth = 0.9
                     self.barChartView.data = data
+                    
+                    self.indicator(isHidden: true)
+                    
                 case .failure(let error):
                     print("DEBUG_PRINT: ", error.localizedDescription)
             }
         }
-        
-        
         
     }
     
