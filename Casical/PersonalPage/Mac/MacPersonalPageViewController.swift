@@ -53,6 +53,10 @@ final class MacPersonalPageViewController: UIViewController {
     @IBOutlet private weak var barChartView: BarChartView!
     @IBOutlet private weak var githubMonthStackView: UIStackView!
     
+    // Skill Score
+    @IBOutlet private weak var radarChartView: RadarChartView!
+    
+    
     // Send Message
     @IBOutlet private weak var sendMessageBaseView: UIView!
     
@@ -122,6 +126,7 @@ private extension MacPersonalPageViewController {
         setupPieChartView()
         setupHorizontalBarChartView()
         setupBarChartView()
+        setupRadarChartView()
     }
     
     func setupPersonalData() {
@@ -331,6 +336,46 @@ private extension MacPersonalPageViewController {
             }
         }
         
+    }
+    
+    func setupRadarChartView() {
+        radarChartView.xAxis.labelPosition = .top
+        radarChartView.xAxis.labelTextColor = .black
+        radarChartView.xAxis.drawGridLinesEnabled = false
+        radarChartView.xAxis.drawAxisLineEnabled = false
+        radarChartView.xAxis.drawLabelsEnabled = false
+        radarChartView.xAxis.enabled = false
+        radarChartView.xAxis.xOffset = 0
+        radarChartView.xAxis.yOffset = 0
+
+        radarChartView.yAxis.drawLabelsEnabled = false
+        radarChartView.yAxis.axisMinimum = 0
+        radarChartView.yAxis.axisMaximum = 1
+        radarChartView.yAxis.enabled = false
+        radarChartView.yAxis.drawGridLinesEnabled = false
+        radarChartView.yAxis.drawAxisLineEnabled = false
+        radarChartView.yAxis.labelTextColor = .clear
+
+        radarChartView.legend.enabled = false
+        radarChartView.legend.drawInside = true
+        radarChartView.legend.textColor = .black
+        
+        let entries = [
+            RadarChartDataEntry(value: 0.9),
+            RadarChartDataEntry(value: 0.5),
+            RadarChartDataEntry(value: 0.5),
+            RadarChartDataEntry(value: 1),
+            RadarChartDataEntry(value: 0.9),
+            RadarChartDataEntry(value: 0.5),
+        ]
+        let dataSet = RadarChartDataSet(entries: entries, label: "Data")
+        dataSet.drawFilledEnabled = true
+        dataSet.fillColor = .darkColor
+        dataSet.lineWidth = 2
+        dataSet.valueTextColor = .clear
+        dataSet.colors = [.darkColor]
+        let data = RadarChartData(dataSet: dataSet)
+        radarChartView.data = data
     }
     
 }

@@ -520,18 +520,20 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WGy-2y-eUR">
                                                 <rect key="frame" x="0.0" y="47" width="470" height="250"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skill Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HQh-2b-EME">
-                                                        <rect key="frame" x="195" y="115" width="79.5" height="20.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="enL-Cj-7TW" customClass="RadarChartView" customModule="Charts">
+                                                        <rect key="frame" x="0.0" y="15" width="235" height="235"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="enL-Cj-7TW" secondAttribute="height" id="05X-2f-TpJ"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstItem="HQh-2b-EME" firstAttribute="centerY" secondItem="WGy-2y-eUR" secondAttribute="centerY" id="Q9K-cP-eLE"/>
-                                                    <constraint firstItem="HQh-2b-EME" firstAttribute="centerX" secondItem="WGy-2y-eUR" secondAttribute="centerX" id="Xrc-uT-WWb"/>
+                                                    <constraint firstItem="enL-Cj-7TW" firstAttribute="leading" secondItem="WGy-2y-eUR" secondAttribute="leading" id="5bG-oI-rvM"/>
+                                                    <constraint firstItem="enL-Cj-7TW" firstAttribute="top" secondItem="WGy-2y-eUR" secondAttribute="top" constant="15" id="Cmh-dg-4rX"/>
                                                     <constraint firstAttribute="height" priority="500" constant="250" id="cfz-By-TBF"/>
+                                                    <constraint firstAttribute="bottom" secondItem="enL-Cj-7TW" secondAttribute="bottom" id="dZn-3G-JRu"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7C-Pl-kzy">
@@ -800,6 +802,7 @@
                         <outlet property="qiitaFolloersLabel" destination="jB2-yk-ueA" id="WT7-KF-Ccn"/>
                         <outlet property="qiitaTagNameStackView" destination="Jdn-5B-mwm" id="of3-OD-nH0"/>
                         <outlet property="qiitaTagValueStackView" destination="YvA-sp-63K" id="LgG-nh-uhr"/>
+                        <outlet property="radarChartView" destination="enL-Cj-7TW" id="Bep-5J-M7G"/>
                         <outlet property="sendMessageBaseView" destination="7hJ-cn-Jq1" id="bHf-CF-AnC"/>
                         <outlet property="settingButton" destination="ffY-DG-dPp" id="o6p-lY-t4m"/>
                     </connections>
