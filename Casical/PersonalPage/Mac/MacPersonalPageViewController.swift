@@ -189,15 +189,15 @@ private extension MacPersonalPageViewController {
         user.qiita.postedArticleNames.enumerated().forEach { index, name in
             let label = UILabel()
             label.text = name
-            label.textColor = barColors.reversed()[index]
+            label.textColor = .black
             label.font = .systemFont(ofSize: 20)
             label.textAlignment = .right
             qiitaTagNameStackView.addArrangedSubview(label)
         }
         user.qiita.postedArticleValues.enumerated().forEach { index, value in
             let label = UILabel()
-            label.text = String(Int(floor(Double(value * itemCount) / Double(100))))
-            label.textColor = barColors.reversed()[index]
+            label.text = String(Int(floor(Double(value * itemCount) / Double(100)))) + " posts"
+            label.textColor = .black
             label.font = .systemFont(ofSize: 20)
             label.textAlignment = .left
             qiitaTagValueStackView.addArrangedSubview(label)

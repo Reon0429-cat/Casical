@@ -193,14 +193,14 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="YvA-sp-63K">
-                                                        <rect key="frame" x="664" y="123" width="50" height="176.5"/>
+                                                        <rect key="frame" x="634" y="123" width="80" height="176.5"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="50" id="O0A-fO-ExO"/>
+                                                            <constraint firstAttribute="width" constant="80" id="O0A-fO-ExO"/>
                                                         </constraints>
                                                     </stackView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LhJ-ns-EYI" customClass="HorizontalBarChartView" customModule="Charts">
-                                                        <rect key="frame" x="120" y="112" width="594" height="197.5"/>
+                                                        <rect key="frame" x="120" y="112" width="564" height="197.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="us4-sm-JN9">
@@ -241,7 +241,7 @@
                                                     <constraint firstItem="lP0-Kk-WXX" firstAttribute="top" secondItem="K7Z-Bb-Dro" secondAttribute="bottom" constant="15" id="j4L-I5-dkc"/>
                                                     <constraint firstItem="K7Z-Bb-Dro" firstAttribute="leading" secondItem="us4-sm-JN9" secondAttribute="trailing" constant="5" id="oK9-Rk-Wgc"/>
                                                     <constraint firstItem="YvA-sp-63K" firstAttribute="top" secondItem="Jdn-5B-mwm" secondAttribute="top" id="r2v-zX-0JT"/>
-                                                    <constraint firstAttribute="trailing" secondItem="LhJ-ns-EYI" secondAttribute="trailing" constant="30" id="t3q-ut-2hu"/>
+                                                    <constraint firstAttribute="trailing" secondItem="LhJ-ns-EYI" secondAttribute="trailing" constant="60" id="t3q-ut-2hu"/>
                                                     <constraint firstItem="jB2-yk-ueA" firstAttribute="leading" secondItem="UwY-BI-VVk" secondAttribute="trailing" constant="30" id="wbE-lc-hKe"/>
                                                     <constraint firstAttribute="trailing" secondItem="lP0-Kk-WXX" secondAttribute="trailing" constant="20" id="wcS-kI-wqo"/>
                                                     <constraint firstItem="lP0-Kk-WXX" firstAttribute="top" secondItem="MpC-ag-4Zt" secondAttribute="bottom" constant="15" id="x2Y-9q-CAy"/>
