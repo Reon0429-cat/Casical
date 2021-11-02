@@ -7,9 +7,12 @@
 
 import UIKit
 import Charts
+import Alamofire
+import Kanna
 
 final class MacPersonalPageViewController: UIViewController {
     
+    // Profile
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var houseLabel: UILabel!
     @IBOutlet private weak var experienceLabel: UILabel!
@@ -22,9 +25,7 @@ final class MacPersonalPageViewController: UIViewController {
     @IBOutlet private weak var backButton: UIButton!
     @IBOutlet private weak var personalDataBaseView: UIView!
     @IBOutlet private weak var personalDataGraphBaseView: UIView!
-    @IBOutlet private weak var githubDataBaseView: UIView!
-    @IBOutlet private weak var qiitaDataBaseView: UIView!
-    @IBOutlet private weak var sendMessageBaseView: UIView!
+    
     // Language
     @IBOutlet private weak var pieChartView: PieChartView!
     @IBOutlet private weak var pieChartCenterTitleLabel: UILabel!
@@ -35,7 +36,9 @@ final class MacPersonalPageViewController: UIViewController {
     @IBOutlet private weak var pieChartMostLanguageAccessoryView: UIView!
     @IBOutlet private weak var pieChartSecondMostLanguageAccessoryView: UIView!
     @IBOutlet private weak var pieChartThirdMostLanguageAccessoryView: UIView!
+    
     // Qiita
+    @IBOutlet private weak var qiitaDataBaseView: UIView!
     @IBOutlet private weak var horizontalBarChartView: HorizontalBarChartView!
     @IBOutlet private weak var qiitaFolloersLabel: UILabel!
     @IBOutlet private weak var qiitaContributionsLabel: UILabel!
@@ -43,6 +46,15 @@ final class MacPersonalPageViewController: UIViewController {
     @IBOutlet private weak var qiitaTagValueStackView: UIStackView!
     @IBOutlet private weak var postCountLabel: UILabel!
     
+    // GitHub
+    @IBOutlet private weak var githubDataBaseView: UIView!
+    @IBOutlet private weak var githubFollowersCountLabel: UILabel!
+    @IBOutlet private weak var barChartView: BarChartView!
+    @IBOutlet private weak var githubMonthStackView: UIStackView!
+    
+    
+    // Send Message
+    @IBOutlet private weak var sendMessageBaseView: UIView!
     
     var user: User!
     
@@ -90,6 +102,7 @@ private extension MacPersonalPageViewController {
         setupSendMessage()
         setupPieChartView()
         setupHorizontalBarChartView()
+        setupBarChartView()
     }
     
     func setupPersonalData() {
@@ -209,6 +222,96 @@ private extension MacPersonalPageViewController {
         let barChartData = BarChartData(dataSet: barChartDataSet)
         barChartData.barWidth = 1
         horizontalBarChartView.data = barChartData
+    }
+    
+    func setupBarChartView() {
+        githubFollowersCountLabel.text = String(user.gitHub.followers)
+        githubMonthStackView.subviews.forEach { $0.backgroundColor = .clear }
+        
+        barChartView.xAxis.labelPosition = .bottom
+        barChartView.xAxis.labelTextColor = .black
+        barChartView.xAxis.drawGridLinesEnabled = false
+        barChartView.xAxis.drawAxisLineEnabled = false
+        barChartView.xAxis.drawLabelsEnabled = false
+        
+        barChartView.rightAxis.enabled = false
+        
+        barChartView.leftAxis.enabled = false
+        barChartView.leftAxis.axisMinimum = 0.0
+        barChartView.leftAxis.drawZeroLineEnabled = true
+        barChartView.leftAxis.zeroLineColor = .black
+        barChartView.leftAxis.labelCount = 5
+        barChartView.leftAxis.labelTextColor = .black
+        barChartView.leftAxis.gridColor = .black
+        barChartView.leftAxis.drawAxisLineEnabled = false
+        
+        barChartView.legend.enabled = false
+        
+        AF.request("https://github.com/Reon0429-cat").responseString { response in
+            switch response.result {
+                case .success(let value):
+                    guard let doc = try? HTML(html: value, encoding: .utf8) else { return }
+                    let grass = doc.css("rect").compactMap { $0["data-count"] }
+                    let date = doc.css("rect").compactMap { $0["data-date"] }
+                    let taple = zip(date, grass).map { (date: $0.0, count: Int($0.1)!) }
+                    let august = taple.filter { $0.date.contains("2021-08-") }
+                    let september = taple.filter { $0.date.contains("2021-09-") }
+                    let october = taple.filter { $0.date.contains("2021-10-") }
+                    let november = taple.filter { $0.date.contains("2021-11-") }
+                    
+                    let august1Count = august.filter { "2021-08-01" <= $0.date && $0.date <= "2021-08-07" }.map { $0.count }.reduce(0, +)
+                    let august2Count = august.filter { "2021-08-08" <= $0.date && $0.date <= "2021-08-15" }.map { $0.count }.reduce(0, +)
+                    let august3Count = august.filter { "2021-08-16" <= $0.date && $0.date <= "2021-08-23" }.map { $0.count }.reduce(0, +)
+                    let august4Count = august.filter { "2021-08-24" <= $0.date && $0.date <= "2021-08-31" }.map { $0.count }.reduce(0, +)
+                    let september1Count = september.filter { "2021-09-01" <= $0.date && $0.date <= "2021-09-07" }.map { $0.count }.reduce(0, +)
+                    let september2Count = september.filter { "2021-09-08" <= $0.date && $0.date <= "2021-09-15" }.map { $0.count }.reduce(0, +)
+                    let september3Count = september.filter { "2021-09-16" <= $0.date && $0.date <= "2021-09-23" }.map { $0.count }.reduce(0, +)
+                    let september4Count = september.filter { "2021-09-24" <= $0.date && $0.date <= "2021-09-31" }.map { $0.count }.reduce(0, +)
+                    let october1Count = october.filter { "2021-10-01" <= $0.date && $0.date <= "2021-10-07" }.map { $0.count }.reduce(0, +)
+                    let october2Count = october.filter { "2021-10-08" <= $0.date && $0.date <= "2021-10-15" }.map { $0.count }.reduce(0, +)
+                    let october3Count = october.filter { "2021-10-16" <= $0.date && $0.date <= "2021-10-23" }.map { $0.count }.reduce(0, +)
+                    let october4Count = october.filter { "2021-10-24" <= $0.date && $0.date <= "2021-10-31" }.map { $0.count }.reduce(0, +)
+                    let november1Count = november.filter { "2021-11-01" <= $0.date && $0.date <= "2021-11-07" }.map { $0.count }.reduce(0, +)
+                    let november2Count = november.filter { "2021-11-08" <= $0.date && $0.date <= "2021-11-15" }.map { $0.count }.reduce(0, +)
+                    let november3Count = november.filter { "2021-11-16" <= $0.date && $0.date <= "2021-11-23" }.map { $0.count }.reduce(0, +)
+                    let november4Count = november.filter { "2021-11-24" <= $0.date && $0.date <= "2021-11-31" }.map { $0.count }.reduce(0, +)
+                    
+                    let rawData = [
+                        august1Count,
+                        august2Count,
+                        august3Count,
+                        august4Count,
+                        september1Count,
+                        september2Count,
+                        september3Count,
+                        september4Count,
+                        october1Count,
+                        october2Count,
+                        october3Count,
+                        october4Count,
+                        november1Count,
+                        november2Count,
+                        november3Count,
+                        november4Count,
+                    ]
+                    print("DEBUG_PRINT: ", rawData)
+                    let entries = rawData
+                        .enumerated()
+                        .map { BarChartDataEntry(x: Double($0.offset), y: Double($0.element)) }
+                    let dataSet = BarChartDataSet(entries: entries)
+                    dataSet.valueFont = .systemFont(ofSize: 20)
+                    dataSet.valueTextColor = .black
+                    dataSet.colors = [.darkColor]
+                    let data = BarChartData(dataSet: dataSet)
+                    data.barWidth = 0.9
+                    self.barChartView.data = data
+                case .failure(let error):
+                    print("DEBUG_PRINT: ", error.localizedDescription)
+            }
+        }
+        
+        
+        
     }
     
 }
