@@ -68,15 +68,15 @@ extension GitHub {
         let mostUsedLanguageDic = [
             "name": mostUsedLanguage?.name ?? "",
             "value": mostUsedLanguage?.value ?? ""
-        ] as [String : Any]
+        ] as [String: Any]
         let secondMostUsedLanguageDic = [
             "name": secondMostUsedLanguage?.name ?? "",
             "value": secondMostUsedLanguage?.value ?? ""
-        ] as [String : Any]
+        ] as [String: Any]
         let thirdMostUsedLanguageDic = [
             "name": thirdMostUsedLanguage?.name ?? "",
             "value": thirdMostUsedLanguage?.value ?? ""
-        ] as [String : Any]
+        ] as [String: Any]
         return [
             "name": name,
             "mostUsedLanguage": mostUsedLanguageDic,

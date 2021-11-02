@@ -41,6 +41,26 @@ extension UIColor {
         UIColor(hex: "D8C7F8")
     }
     
+    static var horizontalChartColor1: UIColor {
+        .darkColor
+    }
+    
+    static var horizontalChartColor2: UIColor {
+        .darkColor.withAlphaComponent(0.9)
+    }
+    
+    static var horizontalChartColor3: UIColor {
+        .darkColor.withAlphaComponent(0.75)
+    }
+    
+    static var horizontalChartColor4: UIColor {
+        .darkColor.withAlphaComponent(0.6)
+    }
+    
+    static var horizontalChartColor5: UIColor {
+        .darkColor.withAlphaComponent(0.5)
+    }
+    
 }
 
 extension UIColor {

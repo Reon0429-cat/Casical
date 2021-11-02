@@ -25,6 +25,7 @@ final class MacPersonalPageViewController: UIViewController {
     @IBOutlet private weak var githubDataBaseView: UIView!
     @IBOutlet private weak var qiitaDataBaseView: UIView!
     @IBOutlet private weak var sendMessageBaseView: UIView!
+    // Language
     @IBOutlet private weak var pieChartView: PieChartView!
     @IBOutlet private weak var pieChartCenterTitleLabel: UILabel!
     @IBOutlet private weak var pieChartCenterValueLabel: UILabel!
@@ -34,6 +35,14 @@ final class MacPersonalPageViewController: UIViewController {
     @IBOutlet private weak var pieChartMostLanguageAccessoryView: UIView!
     @IBOutlet private weak var pieChartSecondMostLanguageAccessoryView: UIView!
     @IBOutlet private weak var pieChartThirdMostLanguageAccessoryView: UIView!
+    // Qiita
+    @IBOutlet private weak var horizontalBarChartView: HorizontalBarChartView!
+    @IBOutlet private weak var qiitaFolloersLabel: UILabel!
+    @IBOutlet private weak var qiitaContributionsLabel: UILabel!
+    @IBOutlet private weak var qiitaTagNameStackView: UIStackView!
+    @IBOutlet private weak var qiitaTagValueStackView: UIStackView!
+    @IBOutlet private weak var postCountLabel: UILabel!
+    
     
     var user: User!
     
@@ -80,6 +89,7 @@ private extension MacPersonalPageViewController {
         setupQiitaData()
         setupSendMessage()
         setupPieChartView()
+        setupHorizontalBarChartView()
     }
     
     func setupPersonalData() {
@@ -138,6 +148,67 @@ private extension MacPersonalPageViewController {
         pieChartMostLanguageAccessoryView.backgroundColor = .pieChartColor1
         pieChartSecondMostLanguageAccessoryView.backgroundColor = .pieChartColor2
         pieChartThirdMostLanguageAccessoryView.backgroundColor = .pieChartColor3
+    }
+    
+    func setupHorizontalBarChartView() {
+        qiitaFolloersLabel.text = String(user.qiita.followers)
+        qiitaContributionsLabel.text = String(user.qiita.contributions)
+        postCountLabel.text = String(user.qiita.itemsCount)
+        
+        horizontalBarChartView.legend.enabled = false
+        horizontalBarChartView.borderColor = .clear
+        horizontalBarChartView.gridBackgroundColor = .clear
+        horizontalBarChartView.drawGridBackgroundEnabled = false
+        horizontalBarChartView.chartDescription?.enabled = false
+        horizontalBarChartView.drawValueAboveBarEnabled = false
+        
+        horizontalBarChartView.xAxis.drawAxisLineEnabled = false
+        horizontalBarChartView.xAxis.enabled = false
+        horizontalBarChartView.xAxis.labelPosition = .topInside
+        
+        horizontalBarChartView.leftAxis.drawAxisLineEnabled = false
+        horizontalBarChartView.leftAxis.drawGridLinesEnabled = false
+        horizontalBarChartView.leftAxis.enabled = false
+        
+        horizontalBarChartView.rightAxis.drawAxisLineEnabled = false
+        horizontalBarChartView.rightAxis.drawGridLinesEnabled = false
+        horizontalBarChartView.rightAxis.enabled = false
+        
+        let barColors: [UIColor] = [
+            .horizontalChartColor1,
+            .horizontalChartColor2,
+            .horizontalChartColor3,
+            .horizontalChartColor4,
+            .horizontalChartColor5
+        ].reversed()
+        let itemCount = user.qiita.itemsCount
+        let barChartDataEntries = user.qiita.postedArticleValues
+            .reversed()
+            .enumerated()
+            .map { BarChartDataEntry(x: Double($0 + 1), y: Double($1)) }
+        user.qiita.postedArticleNames.enumerated().forEach { index, name in
+            let label = UILabel()
+            label.text = name
+            label.textColor = barColors.reversed()[index]
+            label.font = .systemFont(ofSize: 20)
+            label.textAlignment = .right
+            qiitaTagNameStackView.addArrangedSubview(label)
+        }
+        user.qiita.postedArticleValues.enumerated().forEach { index, value in
+            let label = UILabel()
+            label.text = String(Int(floor(Double(value * itemCount) / Double(100))))
+            label.textColor = barColors.reversed()[index]
+            label.font = .systemFont(ofSize: 20)
+            label.textAlignment = .left
+            qiitaTagValueStackView.addArrangedSubview(label)
+        }
+        let barChartDataSet = BarChartDataSet(entries: barChartDataEntries, label: "")
+        barChartDataSet.colors = barColors
+        barChartDataSet.valueTextColor = .clear
+        
+        let barChartData = BarChartData(dataSet: barChartDataSet)
+        barChartData.barWidth = 1
+        horizontalBarChartView.data = barChartData
     }
     
 }
