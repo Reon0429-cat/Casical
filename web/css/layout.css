@@ -1,0 +1,301 @@
+@charset "utf-8";
+
+:root {
+    --primary:#7A4E9A;
+    --text1st:#E4E1F2;
+    --text2nd:#908e99;
+}
+/* レイアウトのためのCSS */
+
+body{
+    font-family: 'Noto Sans JP', sans-serif;
+	color: #333;
+	font-size:1rem;
+	line-height:1.85;
+    letter-spacing: 1px;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%; 
+	word-wrap: break-word;
+}
+
+
+ul{
+	margin:0;
+	padding: 0;
+	list-style: none;
+}
+
+a{
+	color: #333;
+	text-decoration: none;
+    outline: none;
+}
+
+img{
+    width:100%;
+    height: auto;
+}
+
+*{
+    box-sizing: border-box
+}
+
+/* font-family */
+
+#header,h1,h2,.heading01,.count-size{
+    font-family: 'Roboto', sans-serif;
+}
+
+/* header */
+
+#header{
+    padding:20px 70px 0px 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 1px var(--text1st);
+}
+
+#header h1 a{
+    width: 130px;
+}
+
+#header h1 img {
+    width: 130px;
+}
+
+#header .header-area{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/* container */
+
+#container{
+    padding:0 70px 0 130px;
+}
+
+/*---------------------------------------
+
+この辺から本編
+
+----------------------------------------*/
+
+.full-page {
+    margin-top: 17px;
+    width: 95%;
+    height: 790px;
+    background-color: var(--text1st);
+    position: relative;
+    left: 25px;
+    border-radius: 50px;
+    display: flex;
+}
+
+/*-------------------------
+
+info
+
+--------------------------*/
+
+.info {
+    width: 71%;
+    height: inherit;
+    border-radius: inherit;
+    background-color: #F4F5FC;
+    padding: 45px;
+}
+
+.info-title {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--primary);
+    padding-bottom: 4px;
+}
+
+.info-subtitle {
+    font-size: 16px;
+    color: var(--text2nd);
+    font-weight: bold;
+}
+
+hr {
+    border: solid 1px var(--text2nd);
+}
+
+/*----------------------------
+
+github
+
+-----------------------------*/
+
+.github {
+    background-color: #E9ECF6;
+    width: 100%;
+    height: 400px;
+    border-radius: 50px;
+    margin-bottom: 30px;
+    padding: 30px 45px;
+}
+
+/*-------------------------------
+
+message
+
+--------------------------------*/
+
+
+.lower {
+    width: 100%;
+    height: 270px;
+    border-radius: inherit;
+    display: flex;
+}
+
+.message {
+    width: 23%;
+    background-color: #E9ECF6;
+    border-radius: inherit;
+    height: inherit;
+    margin-right: 30px;
+    text-align: center;
+}
+
+.message img {
+    width: 35%;
+    margin-top: 100px;
+}
+
+.message p {
+    font-weight: bold;
+    color: var(--primary);
+}
+
+
+/*---------------------------------
+
+Qiita
+
+----------------------------------*/
+
+.qiita {
+    width: 100%;
+    background-color: #E9ECF6;
+    border-radius: inherit;
+    height: inherit;
+    padding: 20px 45px;
+}
+
+.github-top,.qiita-top {
+    display: flex;
+    gap: 30px;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--primary);
+    padding-bottom: 4px;
+}
+
+.github-top li:first-child,
+.qiita-top li:first-child {
+    margin-right: auto;
+}
+
+.github-top span,
+.qiita-top span {
+    font-size: 16px;
+    color: var(--text2nd);
+}
+
+/*---------------------------------
+
+about
+
+----------------------------------*/
+
+/* profile */
+
+.about {
+    width: 29%;
+    height: inherit;
+    padding: 20px;
+}
+
+.profile-top {
+    display: flex;
+    margin: 15px;
+}
+
+.profile-top img {
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+}
+
+.profile-content {
+    margin: 0 auto;
+}
+
+.profile-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.profile-item {
+    display: flex;
+}
+
+.profile-item li {
+    width: 50%;
+    color: var(--text2nd);
+    font-size: 19px;
+}
+
+.profile-id {
+    text-align: center;
+}
+
+.profile-id p {
+    margin: 0 auto;
+}
+
+.profile-bio {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 12px;
+}
+
+/* skillScore */
+
+.about-title {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--primary);
+    border-bottom: solid 1px var(--primary);
+    padding-bottom: 4px;
+    vertical-align: bottom;
+}
+
+.about-title span {
+    font-size: 16px;
+    color: var(--text2nd);
+}
+
+.skillscore-chart {
+    height: 170px;
+}
+
+/* language */
+
+.language-chart {
+    height: 170px;
+}
+
+
+
+
+
+
