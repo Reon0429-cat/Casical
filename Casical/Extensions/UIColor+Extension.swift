@@ -10,23 +10,28 @@ import UIKit
 extension UIColor {
     
     static var lightColor: UIColor {
-        UIColor(named: "lightColor")!
+        UserDefaults.standard.loadColor(.lightColor)
+        ?? UIColor(named: "lightColor")!
     }
     
     static var darkColor: UIColor {
-        UIColor(named: "darkColor")!
+        UserDefaults.standard.loadColor(.darkColor)
+        ?? UIColor(named: "darkColor")!
     }
     
     static var moreLightColor: UIColor {
-        UIColor(named: "moreLightColor")!
+        UserDefaults.standard.loadColor(.moreLightColor)
+        ?? UIColor(named: "moreLightColor")!
     }
     
     static var moreDarkColor: UIColor {
-        UIColor(named: "moreDarkColor")!
+        UserDefaults.standard.loadColor(.moreDarkColor)
+        ?? UIColor(named: "moreDarkColor")!
     }
     
     static var mostLightColor: UIColor {
-        UIColor(named: "mostLightColor")!
+        UserDefaults.standard.loadColor(.mostLightColor)
+        ?? UIColor(named: "mostLightColor")!
     }
     
     static var pieChartColor1: UIColor {

@@ -226,6 +226,7 @@ private extension HomeViewController {
         filterButton.tintColor = .black
         collectionView.indicatorStyle = .black
         settingButton.tintColor = .black
+        sortButtonFollowView.backgroundColor = .darkColor
     }
     
     func setupCollectionView() {
@@ -243,6 +244,10 @@ private extension HomeViewController {
         let rightSideMenuVC = UIStoryboard(name: "Setting", bundle: nil)
             .instantiateViewController(withIdentifier: String(describing: SettingViewController.self)
             ) as! SettingViewController
+        rightSideMenuVC.onColorSelected = {
+            self.sortButtonFollowView.backgroundColor = .darkColor
+            self.collectionView.reloadData()
+        }
         let rightSideMenuNavC = SideMenuNavigationController(rootViewController: rightSideMenuVC)
         rightSideMenuNavC.settings = makeSettings()
         rightSideMenuNavC.menuWidth = 200

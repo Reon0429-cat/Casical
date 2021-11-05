@@ -7,7 +7,7 @@
 
 import UIKit
 
-private enum SettingType: CaseIterable {
+private enum SettingType: Int, CaseIterable {
     case themeColor
     case language
     case shareApp
@@ -37,6 +37,8 @@ final class SettingViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     
+    var onColorSelected: (() -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -54,6 +56,13 @@ extension SettingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let settingType = SettingType(rawValue: indexPath.row) ?? .themeColor
+        if settingType == .themeColor {
+            let colorPickerVC = UIColorPickerViewController()
+            colorPickerVC.selectedColor = .darkColor
+            colorPickerVC.delegate = self
+            present(colorPickerVC, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView,
@@ -78,6 +87,25 @@ extension SettingViewController: UITableViewDataSource {
         let title = SettingType.allCases[indexPath.row].title
         cell.configure(title: title)
         return cell
+    }
+    
+}
+
+extension SettingViewController: UIColorPickerViewControllerDelegate {
+    
+    func colorPickerViewController(_ viewController: UIColorPickerViewController,
+                                   didSelect color: UIColor,
+                                   continuously: Bool) {
+        UserDefaults.standard.save(color: color.withAlphaComponent(0.6), themeColorType: .lightColor)
+        UserDefaults.standard.save(color: color.withAlphaComponent(0.4), themeColorType: .moreLightColor)
+        UserDefaults.standard.save(color: color.withAlphaComponent(0.2), themeColorType: .mostLightColor)
+        UserDefaults.standard.save(color: color.withAlphaComponent(0.8), themeColorType: .darkColor)
+        UserDefaults.standard.save(color: color.withAlphaComponent(1), themeColorType: .moreDarkColor)
+        onColorSelected?()
+    }
+    
+    func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
+        dismiss(animated: true)
     }
     
 }
