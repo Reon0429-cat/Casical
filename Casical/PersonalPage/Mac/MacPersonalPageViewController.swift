@@ -64,6 +64,7 @@ final class MacPersonalPageViewController: UIViewController {
     
     var user: User!
     private var indicatorView = UIView()
+    private let cornerPoint: CGFloat = 40
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -136,22 +137,22 @@ private extension MacPersonalPageViewController {
         experienceLabel.text = "● " + user.convertExperienceToString()
         profileImageView.image = UIImage(data: user.gitHub.image)
         bioLabel.text = user.gitHub.description
-        personalDataBaseView.layer.cornerRadius = 50
-        personalDataGraphBaseView.layer.cornerRadius = 50
+        personalDataBaseView.layer.cornerRadius = cornerPoint
+        personalDataGraphBaseView.layer.cornerRadius = cornerPoint
     }
     
     func setupGitHubData() {
         githubAccountLabel.text = user.gitHub.name
-        githubDataBaseView.layer.cornerRadius = 50
+        githubDataBaseView.layer.cornerRadius = cornerPoint
     }
     
     func setupQiitaData() {
         qiitaAccountLabel.text = user.qiita.name
-        qiitaDataBaseView.layer.cornerRadius = 50
+        qiitaDataBaseView.layer.cornerRadius = cornerPoint
     }
     
     func setupSendMessage() {
-        sendMessageBaseView.layer.cornerRadius = 50
+        sendMessageBaseView.layer.cornerRadius = cornerPoint
     }
     
     func setupPieChartView() {
