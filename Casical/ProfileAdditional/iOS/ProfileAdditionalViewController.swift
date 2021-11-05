@@ -40,13 +40,6 @@ final class ProfileAdditionalViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
-        // MARK: - ToDo 消す
-        nameTextField.text = "REON"
-        houseTextField.text = "東京都"
-        experienceTextField.text = "1年"
-        employmentStatusTextField.text = "新卒"
-        gitHubTextField.text = "Reon0429-cat"
-        qiitaTextField.text = "REON"
         
     }
     
