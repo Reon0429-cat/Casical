@@ -37,6 +37,7 @@ final class HomeViewController: UIViewController {
     @IBOutlet private weak var filterButtonTopCenterConstraint: NSLayoutConstraint!
     @IBOutlet private weak var settingButton: UIButton!
     @IBOutlet private weak var separatorView: UIView!
+    @IBOutlet private weak var addButton: UIButton!
     
     private lazy var sortButtonFollowViewPosition: SortButtonFollowViewPosition = .register(sortRegisterButton)
     private var users = [User]()
@@ -60,7 +61,7 @@ final class HomeViewController: UIViewController {
     }
     private var rightSideMenuNavC: SideMenuNavigationController?
     private var listener: ListenerRegistration?
-  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -71,6 +72,8 @@ final class HomeViewController: UIViewController {
         setupUI()
         
     }
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -227,6 +230,12 @@ private extension HomeViewController {
         collectionView.indicatorStyle = .black
         settingButton.tintColor = .black
         sortButtonFollowView.backgroundColor = .darkColor
+        addButton.backgroundColor = .mostLightColor
+        addButton.setTitleColor(.darkColor, for: .normal)
+        let image = UIImage(systemName: "plus")!
+        let coloredImage = image.withTintColor(.darkColor, renderingMode: .alwaysOriginal)
+        addButton.setImage(coloredImage, for: .normal)
+        addButton.layer.cornerRadius = addButton.frame.height / 2
     }
     
     func setupCollectionView() {
@@ -246,6 +255,10 @@ private extension HomeViewController {
             ) as! SettingViewController
         rightSideMenuVC.onColorSelected = {
             self.sortButtonFollowView.backgroundColor = .darkColor
+            self.addButton.backgroundColor = .mostLightColor
+            let image = UIImage(systemName: "plus")!
+            let coloredImage = image.withTintColor(.darkColor, renderingMode: .alwaysOriginal)
+            self.addButton.setImage(coloredImage, for: .normal)
             self.collectionView.reloadData()
         }
         let rightSideMenuNavC = SideMenuNavigationController(rootViewController: rightSideMenuVC)
