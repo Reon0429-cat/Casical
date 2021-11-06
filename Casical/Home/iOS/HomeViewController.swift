@@ -65,6 +65,7 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        try! Auth.auth().signOut()
         let isNotLoggedIn = (Auth.auth().currentUser == nil)
         if isNotLoggedIn {
             presentLoginVC()

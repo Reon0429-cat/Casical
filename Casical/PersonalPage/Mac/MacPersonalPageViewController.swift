@@ -273,7 +273,7 @@ private extension MacPersonalPageViewController {
         
         barChartView.legend.enabled = false
         
-        AF.request("https://github.com/Reon0429-cat").responseString { response in
+        AF.request("https://github.com/\(user.gitHub.name)").responseString { response in
             switch response.result {
                 case .success(let value):
                     guard let doc = try? HTML(html: value, encoding: .utf8) else { return }
@@ -362,7 +362,7 @@ private extension MacPersonalPageViewController {
         radarChartView.legend.drawInside = true
         radarChartView.legend.textColor = .black
         
-        AF.request("https://github.com/Reon0429-cat").responseString { response in
+        AF.request("https://github.com/\(user.gitHub.name)").responseString { response in
             switch response.result {
                 case .success(let value):
                     guard let doc = try? HTML(html: value, encoding: .utf8) else { return }
