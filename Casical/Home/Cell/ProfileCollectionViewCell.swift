@@ -16,9 +16,11 @@ final class ProfileCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var houseLabel: UILabel!
     @IBOutlet private weak var experienceLabel: UILabel!
     @IBOutlet private weak var imageStackViewSpacing: NSLayoutConstraint!
-    @IBOutlet weak var checkButton: UIButton!
+    @IBOutlet private weak var checkButton: UIButton!
+    @IBOutlet private weak var memoButton: UIButton!
     
     var onTapCheckButton: ((Int) -> Void)?
+    var onTapMemoButton: ((Int) -> Void)?
     static var identifier: String { String(describing: self) }
     static var nib: UINib { UINib(nibName: String(describing: self), bundle: nil) }
     
@@ -61,8 +63,15 @@ final class ProfileCollectionViewCell: UICollectionViewCell {
         onTapCheckButton?(self.tag)
     }
     
-    func configure(model: User, onCheckButtonEvent: ((Int) -> Void)?) {
+    @IBAction func memoButtonDidTapped(_ sender: Any) {
+        onTapMemoButton?(self.tag)
+    }
+    
+    func configure(model: User,
+                   onCheckButtonEvent: ((Int) -> Void)?,
+                   onTapMemoButtonEvent: ((Int) -> Void)?) {
         self.onTapCheckButton = onCheckButtonEvent
+        self.onTapMemoButton = onTapMemoButtonEvent
         let starFillImage = UIImage(systemName: "star.fill")?.withTintColor(.orange,
                                                                             renderingMode: .alwaysOriginal)
         let starImage = UIImage(systemName: "star")?.withTintColor(.gray,

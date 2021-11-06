@@ -197,7 +197,8 @@ extension HomeViewController: UICollectionViewDataSource {
             for: indexPath
         ) as! ProfileCollectionViewCell
         let model = users[indexPath.row]
-        cell.configure(model: model) { index in
+        cell.configure(model: model,
+                       onCheckButtonEvent: { index in
             let user = self.users[index]
             Firestore.firestore().collection("users")
                 .whereField("name", isEqualTo: user.name).getDocuments { snapshot, error in
@@ -215,7 +216,8 @@ extension HomeViewController: UICollectionViewDataSource {
                         self.collectionView.reloadData()
                     }
                 }
-        }
+        }, onTapMemoButtonEvent: { index in
+        })
         return cell
     }
     

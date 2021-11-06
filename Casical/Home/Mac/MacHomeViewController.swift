@@ -179,7 +179,7 @@ extension MacHomeViewController: UICollectionViewDataSource {
         cell.tag = indexPath.item
         let model = filteredUsers()[indexPath.row]
         cell.configure(model: model) { index in
-            let user = self.users[index]
+            let user = self.filteredUsers()[index]
             Firestore.firestore().collection("users")
                 .whereField("name", isEqualTo: user.name).getDocuments { snapshot, error in
                     if let error = error {
@@ -196,6 +196,8 @@ extension MacHomeViewController: UICollectionViewDataSource {
                         self.profileCollectionView.reloadData()
                     }
                 }
+        } onTapMemoButtonEvent: { index in
+            print("DEBUG_PRINT: ", index)
         }
         return cell
     }

@@ -42,15 +42,6 @@ final class ProfileAdditionalViewController: UIViewController {
         
         setupUI()
         
-        // MARK: - ToDo 消す
-        nameTextField.text = "レオン\(Int.random(in: 0...100))"
-        houseTextField.text = "東京都"
-        experienceTextField.text = "1年0ヶ月"
-        employmentStatusTextField.text = "新卒"
-        qiitaTextField.text = "REON"
-        gitHubTextField.text = "Reon0429-cat"
-        changeRegisterButtonState()
-        
     }
     
     override func viewDidLayoutSubviews() {
