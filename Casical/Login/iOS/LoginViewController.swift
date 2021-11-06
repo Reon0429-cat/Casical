@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseAuth
 import PKHUD
+import Reachability
 
 final class LoginViewController: UIViewController {
     
@@ -49,6 +50,11 @@ final class LoginViewController: UIViewController {
     @IBAction private func loginButtonDidTapped(_ sender: Any) {
         guard let email = mailAddressTextField.text,
               let password = passwordTextField.text else { return }
+        let reachability = try! Reachability()
+        if reachability.connection == .unavailable {
+            print("DEBUG_PRINT: ", "通信環境が良くない")
+            return
+        }
         HUD.show(.progress)
         Auth.auth().signIn(withEmail: email,
                            password: password) { _, error in

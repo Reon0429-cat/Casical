@@ -16,6 +16,8 @@ target 'Casical' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
+  pod 'ReachabilitySwift'
+
 end
 
 catalyst_configuration do
