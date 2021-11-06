@@ -59,12 +59,7 @@ final class SortTableViewCell: UITableViewCell {
                 return UIMenu(title: "都道府県",
                               options: .displayInline,
                               children: actions)
-            case .experience:
-                break
-            case .github:
-                break
-            case .qiita:
-                break
+            default: break
         }
         return UIMenu()
     }

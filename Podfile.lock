@@ -490,6 +490,7 @@ PODS:
   - nanopb/encode (2.30908.0)
   - PKHUD (5.3.0)
   - PromisesObjC (2.0.0)
+  - ReachabilitySwift (5.0.0)
   - SideMenu (6.5.0)
 
 DEPENDENCIES:
@@ -502,6 +503,7 @@ DEPENDENCIES:
   - Kanna
   - lottie-ios
   - PKHUD
+  - ReachabilitySwift
   - SideMenu
 
 SPEC REPOS:
@@ -530,6 +532,7 @@ SPEC REPOS:
     - nanopb
     - PKHUD
     - PromisesObjC
+    - ReachabilitySwift
     - SideMenu
 
 SPEC CHECKSUMS:
@@ -557,8 +560,9 @@ SPEC CHECKSUMS:
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
 
-PODFILE CHECKSUM: 20b727f4fb74037641b7cfb13e5f5c386f932c74
+PODFILE CHECKSUM: 02b02e09bfc6b47e8f1c4190f6b1e2491e94eaf7
 
 COCOAPODS: 1.10.2

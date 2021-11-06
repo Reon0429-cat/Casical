@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1E09EE3AE8DFFBB9895B36D6 /* libPods-CasicalUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7114CBD50D481EF2B2F5D207 /* libPods-CasicalUITests.a */; };
 		3912D6BBEA1AAD1B71B4737C /* Pods_Casical.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C23EF24E5513308A7D6B25 /* Pods_Casical.framework */; };
+		AB08D2E527370B130004F2FC /* Memo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB08D2E427370B130004F2FC /* Memo.storyboard */; };
+		AB08D2E727370B1A0004F2FC /* MemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB08D2E627370B1A0004F2FC /* MemoViewController.swift */; };
 		AB12F0F8272D60CC00A0FA60 /* SortTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB12F0F6272D60CC00A0FA60 /* SortTableViewCell.swift */; };
 		AB12F0F9272D60CC00A0FA60 /* SortTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB12F0F7272D60CC00A0FA60 /* SortTableViewCell.xib */; };
 		AB15E725273035D000A99A8A /* GitHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB15E724273035D000A99A8A /* GitHub.swift */; };
@@ -82,6 +84,8 @@
 		9185A252401887A593CE2ABB /* Pods-Casical-CasicalUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Casical-CasicalUITests.release.xcconfig"; path = "Target Support Files/Pods-Casical-CasicalUITests/Pods-Casical-CasicalUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9775327F2E2D5F650BDF695F /* Pods-CasicalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CasicalTests.release.xcconfig"; path = "Target Support Files/Pods-CasicalTests/Pods-CasicalTests.release.xcconfig"; sourceTree = "<group>"; };
 		A5073874244670B9A4854F28 /* Pods-CasicalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CasicalTests.debug.xcconfig"; path = "Target Support Files/Pods-CasicalTests/Pods-CasicalTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AB08D2E427370B130004F2FC /* Memo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Memo.storyboard; sourceTree = "<group>"; };
+		AB08D2E627370B1A0004F2FC /* MemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewController.swift; sourceTree = "<group>"; };
 		AB12F0F6272D60CC00A0FA60 /* SortTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortTableViewCell.swift; sourceTree = "<group>"; };
 		AB12F0F7272D60CC00A0FA60 /* SortTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortTableViewCell.xib; sourceTree = "<group>"; };
 		AB15E724273035D000A99A8A /* GitHub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHub.swift; sourceTree = "<group>"; };
@@ -288,6 +292,8 @@
 			children = (
 				ABD46A94272BE524006AB17A /* Home.storyboard */,
 				ABD46A96272BE52D006AB17A /* HomeViewController.swift */,
+				AB08D2E427370B130004F2FC /* Memo.storyboard */,
+				AB08D2E627370B1A0004F2FC /* MemoViewController.swift */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -546,6 +552,7 @@
 				AB7AC67E272985BB007069BC /* Assets.xcassets in Resources */,
 				AB2E84E2272994580082999C /* GoogleService-Info.plist in Resources */,
 				AB558B4D272D9EFE00BC218A /* Setting.storyboard in Resources */,
+				AB08D2E527370B130004F2FC /* Memo.storyboard in Resources */,
 				ABF581A5272D4F320086D60E /* MacPersonalPage.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -673,6 +680,7 @@
 				ABD46A82272B03E5006AB17A /* LoginViewController.swift in Sources */,
 				AB12F0F8272D60CC00A0FA60 /* SortTableViewCell.swift in Sources */,
 				AB8F193D27301EBB004B0D99 /* GitHubAPIModel.swift in Sources */,
+				AB08D2E727370B1A0004F2FC /* MemoViewController.swift in Sources */,
 				AB8F193B27301EBB004B0D99 /* GitHubAPIClient.swift in Sources */,
 				AB7AC675272985BA007069BC /* AppDelegate.swift in Sources */,
 				AB558B4F272D9F0C00BC218A /* SettingViewController.swift in Sources */,

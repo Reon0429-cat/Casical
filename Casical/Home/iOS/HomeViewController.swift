@@ -65,7 +65,7 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        try! Auth.auth().signOut()
+        //        try! Auth.auth().signOut()
         let isNotLoggedIn = (Auth.auth().currentUser == nil)
         if isNotLoggedIn {
             presentLoginVC()
@@ -73,8 +73,6 @@ final class HomeViewController: UIViewController {
         setupUI()
         
     }
-    
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -199,7 +197,27 @@ extension HomeViewController: UICollectionViewDataSource {
             for: indexPath
         ) as! ProfileCollectionViewCell
         let model = users[indexPath.row]
-        cell.configure(model: model)
+        cell.configure(model: model,
+                       onCheckButtonEvent: { index in
+            let user = self.users[index]
+            Firestore.firestore().collection("users")
+                .whereField("name", isEqualTo: user.name).getDocuments { snapshot, error in
+                    if let error = error {
+                        print("DEBUG_PRINT: チェックの更新失敗", error.localizedDescription, #line)
+                        return
+                    }
+                    let id = snapshot?.documents.first?.documentID ?? ""
+                    let document = Firestore.firestore().collection("prefectures").document(id)
+                    Firestore.firestore().collection("users").document(document.documentID).updateData(["isChecked": !user.isChecked]) { error in
+                        if let error = error {
+                            print("DEBUG_PRINT: チェックの更新失敗", error.localizedDescription, #line)
+                            return
+                        }
+                        self.collectionView.reloadData()
+                    }
+                }
+        }, onTapMemoButtonEvent: { index in
+        })
         return cell
     }
     

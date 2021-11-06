@@ -17,6 +17,7 @@ struct User {
     let gitHub: GitHub
     let qiita: Qiita
     let skillScore: Int
+    let isChecked: Bool
 }
 
 extension User {
@@ -33,6 +34,7 @@ extension User {
         let qiitaDic = dic["qiita"] as! [String: Any]
         self.qiita = Qiita(dic: qiitaDic)
         self.skillScore = dic["skillScore"] as! Int
+        self.isChecked = dic["isChecked"] as! Bool
     }
     
 }
@@ -49,6 +51,7 @@ extension User {
             "gitHub": gitHub.toDic(),
             "qiita": qiita.toDic(),
             "skillScore": skillScore,
+            "isChecked": isChecked,
         ] as [String: Any]
     }
     

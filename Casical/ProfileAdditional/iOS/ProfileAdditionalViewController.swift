@@ -53,54 +53,70 @@ final class ProfileAdditionalViewController: UIViewController {
     
     @IBAction private func registerButtonDidTapped(_ sender: Any) {
         HUD.show(.progress)
-        searchGitHubUser(userName: gitHubName)
+        DispatchQueue.global().async {
+            if let gitHubUser = self.searchGitHubUser(),
+               let gitHubRepos = self.searchGitHubRepos(gitHubUser: gitHubUser),
+               let qiitaUser = self.searchQiitaUser(),
+               let user = self.scrapingQiita(gitHubUser: gitHubUser,
+                                             qiitaUser: qiitaUser,
+                                             repos: gitHubRepos) {
+                self.saveUser(user: user)
+            } else {
+                print("DEBUG_PRINT: 失敗", #function)
+            }
+            DispatchQueue.main.async {
+                HUD.flash(.success,
+                          onView: nil,
+                          delay: 0) { _ in
+                    self.dismiss(animated: true)
+                }
+            }
+        }
     }
     
-    private func searchGitHubUser(userName: String) {
-        GitHubAPIClient().searchUser(userName: userName) { result in
+    private func searchGitHubUser() -> GitHubUser? {
+        let semaphore = DispatchSemaphore(value: 0)
+        var _gitHubUser: GitHubUser?
+        GitHubAPIClient().searchUser(userName: gitHubName) { result in
             switch result {
                 case .failure(let title):
                     DispatchQueue.main.async {
                         HUD.flash(.error, onView: self.view)
                     }
                     print("DEBUG_PRINT: ", title, #function)
+                    semaphore.signal()
                 case .success(let gitHubUser):
-                    self.searchRepos(userName: userName,
-                                     gitHubUser: gitHubUser)
+                    _gitHubUser = gitHubUser
+                    semaphore.signal()
             }
         }
+        semaphore.wait()
+        return _gitHubUser
     }
     
-    private func searchRepos(userName: String,
-                             gitHubUser: GitHubUser) {
-        GitHubAPIClient().searchRepos(userName: userName) { result in
+    private func searchGitHubRepos(gitHubUser: GitHubUser) -> [GitHubRepoItem]? {
+        let semaphore = DispatchSemaphore(value: 0)
+        var items: [GitHubRepoItem]?
+        GitHubAPIClient().searchRepos(userName: gitHubName) { result in
             switch result {
                 case .failure(let title):
                     DispatchQueue.main.async {
                         HUD.flash(.error, onView: self.view)
                     }
                     print("DEBUG_PRINT: ", title, #function)
+                    semaphore.signal()
                 case .success(let repos):
-                    let avatarUrl = URL(string: gitHubUser.avatarUrl)!
-                    let image = try! Data(contentsOf: avatarUrl)
-                    let mostUsedLanguage = self.calculateUsedLanguage(repos: repos)[0]
-                    let secondMostUsedLanguage = self.calculateUsedLanguage(repos: repos)[1]
-                    let thirdMostUsedLanguage = self.calculateUsedLanguage(repos: repos)[2]
-                    let gitHub = GitHub(name: userName,
-                                        mostUsedLanguage: mostUsedLanguage,
-                                        secondMostUsedLanguage: secondMostUsedLanguage,
-                                        thirdMostUsedLanguage: thirdMostUsedLanguage,
-                                        followers: gitHubUser.followers,
-                                        description: gitHubUser.bio ?? "",
-                                        image: image)
-                    DispatchQueue.main.async {
-                        self.searchQiitaUser(gitHub: gitHub)
-                    }
+                    items = repos
+                    semaphore.signal()
             }
         }
+        semaphore.wait()
+        return items
     }
     
-    private func searchQiitaUser(gitHub: GitHub) {
+    private func searchQiitaUser() -> QiitaUser? {
+        let semaphore = DispatchSemaphore(value: 0)
+        var _qiitaUser: QiitaUser?
         QiitaAPIClient().searchUser(userName: qiitaName) { result in
             switch result {
                 case .failure(let title):
@@ -108,15 +124,31 @@ final class ProfileAdditionalViewController: UIViewController {
                         HUD.flash(.error, onView: self.view)
                     }
                     print("DEBUG_PRINT: ", title, #function)
+                    semaphore.signal()
                 case .success(let qiitaUser):
-                    DispatchQueue.main.async {
-                        self.scrapingQiita(qiitaUser: qiitaUser, gitHub: gitHub)
-                    }
+                    _qiitaUser = qiitaUser
+                    semaphore.signal()
             }
         }
+        semaphore.wait()
+        return _qiitaUser
     }
     
-    private func scrapingQiita(qiitaUser: QiitaUser, gitHub: GitHub) {
+    private func scrapingQiita(gitHubUser: GitHubUser, qiitaUser: QiitaUser, repos: [GitHubRepoItem]) -> User? {
+        let semaphore = DispatchSemaphore(value: 0)
+        var _user: User?
+        let avatarUrl = URL(string: gitHubUser.avatarUrl)!
+        let image = try! Data(contentsOf: avatarUrl)
+        let mostUsedLanguage = self.calculateUsedLanguage(repos: repos)[0]
+        let secondMostUsedLanguage = self.calculateUsedLanguage(repos: repos)[1]
+        let thirdMostUsedLanguage = self.calculateUsedLanguage(repos: repos)[2]
+        let gitHub = GitHub(name: gitHubName,
+                            mostUsedLanguage: mostUsedLanguage,
+                            secondMostUsedLanguage: secondMostUsedLanguage,
+                            thirdMostUsedLanguage: thirdMostUsedLanguage,
+                            followers: gitHubUser.followers,
+                            description: gitHubUser.bio ?? "",
+                            image: image)
         AF.request("https://qiita.com/\(qiitaName)").responseString { response in
             switch response.result {
                 case .success(let value):
@@ -153,14 +185,19 @@ final class ProfileAdditionalViewController: UIViewController {
                                             registrationDate: Date(),
                                             gitHub: gitHub,
                                             qiita: qiita,
-                                            skillScore: [1, 2, 3, 4, 5, 6, 7, 8, 9].randomElement()!)
-                            self.saveUser(user: user)
+                                            skillScore: [1, 2, 3, 4, 5, 6, 7, 8, 9].randomElement()!,
+                                            isChecked: false)
+                            _user = user
+                            semaphore.signal()
                         }
                     }
                 case .failure:
                     print("DEBUG_PRINT: Qiitaスクレイビング失敗")
+                    semaphore.signal()
             }
         }
+        semaphore.wait()
+        return _user
     }
     
     private func saveUser(user: User) {
@@ -170,12 +207,6 @@ final class ProfileAdditionalViewController: UIViewController {
                 if let error = error {
                     print("DEBUG_PRINT: ", error.localizedDescription)
                     return
-                }
-                print("DEBUG_PRINT: Firestoreに保存成功")
-                HUD.flash(.success,
-                          onView: nil,
-                          delay: 0) { _ in
-                    self.dismiss(animated: true)
                 }
             }
     }

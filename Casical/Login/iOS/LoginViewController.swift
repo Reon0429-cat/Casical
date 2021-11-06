@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseAuth
 import PKHUD
+import Reachability
 
 final class LoginViewController: UIViewController {
     
@@ -18,10 +19,12 @@ final class LoginViewController: UIViewController {
     @IBOutlet private weak var googleLoginButton: UIButton!
     @IBOutlet private weak var appleLoginButton: UIButton!
     @IBOutlet private weak var signUpButton: UIButton!
+    @IBOutlet private weak var iconImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        iconImageView.image = UIImage(named: "icon")
         mailAddressTextField.tintColor = .black
         passwordTextField.tintColor = .black
         passwordTextField.isSecureTextEntry = true
@@ -49,6 +52,11 @@ final class LoginViewController: UIViewController {
     @IBAction private func loginButtonDidTapped(_ sender: Any) {
         guard let email = mailAddressTextField.text,
               let password = passwordTextField.text else { return }
+        let reachability = try! Reachability()
+        if reachability.connection == .unavailable {
+            print("DEBUG_PRINT: ", "通信環境が良くない")
+            return
+        }
         HUD.show(.progress)
         Auth.auth().signIn(withEmail: email,
                            password: password) { _, error in

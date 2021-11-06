@@ -65,16 +65,46 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AxJ-gg-vVt">
+                                <rect key="frame" x="329" y="5" width="56" height="38"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="star" catalog="system" title="">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="checkButtonDidTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="hvk-Nb-v43"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Jh-0K-349">
+                                <rect key="frame" x="340" y="77" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="ANJ-7A-blX"/>
+                                    <constraint firstAttribute="width" secondItem="3Jh-0K-349" secondAttribute="height" id="PsD-fC-yY8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="" image="pencil" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17" scale="large" weight="black"/>
+                                </state>
+                                <connections>
+                                    <action selector="memoButtonDidTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Y1y-RR-3cU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="lightColor"/>
                         <constraints>
+                            <constraint firstItem="AxJ-gg-vVt" firstAttribute="top" secondItem="MD5-U4-sps" secondAttribute="top" constant="5" id="A6k-vg-zvx"/>
                             <constraint firstItem="heX-Jj-oL2" firstAttribute="top" secondItem="MD5-U4-sps" secondAttribute="top" constant="20" id="GYV-64-9VF"/>
                             <constraint firstItem="heX-Jj-oL2" firstAttribute="centerY" secondItem="MD5-U4-sps" secondAttribute="centerY" id="Ktc-GJ-UT8"/>
                             <constraint firstItem="h36-eS-JeK" firstAttribute="leading" secondItem="heX-Jj-oL2" secondAttribute="trailing" constant="20" id="NcR-pn-BdS"/>
                             <constraint firstAttribute="trailing" secondItem="h36-eS-JeK" secondAttribute="trailing" constant="20" id="Or0-AY-t8d"/>
+                            <constraint firstAttribute="trailing" secondItem="AxJ-gg-vVt" secondAttribute="trailing" id="SDj-cC-9pb"/>
+                            <constraint firstAttribute="bottom" secondItem="3Jh-0K-349" secondAttribute="bottom" id="dyt-l2-2fD"/>
                             <constraint firstItem="h36-eS-JeK" firstAttribute="centerY" secondItem="MD5-U4-sps" secondAttribute="centerY" id="fAH-Ac-gfc"/>
                             <constraint firstItem="h36-eS-JeK" firstAttribute="top" secondItem="MD5-U4-sps" secondAttribute="top" constant="15" id="hrv-AI-Y3q"/>
                             <constraint firstItem="heX-Jj-oL2" firstAttribute="leading" secondItem="MD5-U4-sps" secondAttribute="leading" constant="20" id="vqL-QW-YL7"/>
+                            <constraint firstAttribute="trailing" secondItem="3Jh-0K-349" secondAttribute="trailing" constant="5" id="yuK-vo-zST"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -90,10 +120,12 @@
             <size key="customSize" width="425" height="127"/>
             <connections>
                 <outlet property="baseView" destination="MD5-U4-sps" id="aSe-aO-tXa"/>
+                <outlet property="checkButton" destination="AxJ-gg-vVt" id="RD3-d4-b6c"/>
                 <outlet property="experienceLabel" destination="4yT-eJ-p8S" id="0CB-Gx-0QV"/>
                 <outlet property="houseLabel" destination="utH-XE-5fb" id="UY0-ai-qGk"/>
                 <outlet property="imageStackViewSpacing" destination="NcR-pn-BdS" id="bYa-y4-92T"/>
                 <outlet property="languageLabel" destination="HjB-Uu-Yeg" id="kh7-de-vmG"/>
+                <outlet property="memoButton" destination="3Jh-0K-349" id="RLf-jJ-3yR"/>
                 <outlet property="nameLabel" destination="Wt6-TF-XF2" id="AJT-b3-I3Z"/>
                 <outlet property="profileImageView" destination="heX-Jj-oL2" id="DyC-Yq-DD6"/>
             </connections>
@@ -101,6 +133,8 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="pencil" catalog="system" width="128" height="113"/>
+        <image name="star" catalog="system" width="128" height="116"/>
         <namedColor name="darkColor">
             <color red="0.4779999852180481" green="0.3059999942779541" blue="0.60399997234344482" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

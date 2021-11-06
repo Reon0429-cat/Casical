@@ -91,7 +91,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="T7w-yW-wrU">
-                                <rect key="frame" x="50" y="269.66666666666669" width="290" height="210"/>
+                                <rect key="frame" x="50" y="299.66666666666669" width="290" height="210"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="mail address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mOE-nW-ba0" customClass="CustomTextField" customModule="Casical" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="290" height="50"/>
@@ -121,37 +121,38 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Casical" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJ3-BP-2dD">
-                                <rect key="frame" x="10" y="104" width="370" height="88.333333333333314"/>
-                                <fontDescription key="fontDescription" name="SnellRoundhand-Bold" family="Snell Roundhand" pointSize="70"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GyW-C8-6n1">
+                                <rect key="frame" x="77.333333333333329" y="53.999999999999986" width="235.66666666666669" height="235.66666666666663"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="GyW-C8-6n1" secondAttribute="height" id="MIl-pa-uhD"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="GyW-C8-6n1" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="0PP-66-ANY"/>
                             <constraint firstItem="eNB-ke-cMG" firstAttribute="top" secondItem="CLW-Vm-KqX" secondAttribute="bottom" constant="60" id="0sj-3h-h38"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="eNB-ke-cMG" secondAttribute="bottom" constant="80" id="6rY-dW-Joc"/>
-                            <constraint firstItem="JJ3-BP-2dD" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="8OZ-Ln-F9v"/>
+                            <constraint firstItem="GyW-C8-6n1" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="CtS-6Z-CLY"/>
                             <constraint firstItem="T7w-yW-wrU" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="MnR-dP-tZa"/>
                             <constraint firstItem="CLW-Vm-KqX" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="50" id="XmG-LC-Gjh"/>
-                            <constraint firstItem="0hi-lK-feN" firstAttribute="top" secondItem="T7w-yW-wrU" secondAttribute="bottom" constant="70" id="cEh-K2-Ug4"/>
-                            <constraint firstItem="JJ3-BP-2dD" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="dmW-ii-ErK"/>
+                            <constraint firstItem="0hi-lK-feN" firstAttribute="top" secondItem="T7w-yW-wrU" secondAttribute="bottom" constant="40" id="cEh-K2-Ug4"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="eNB-ke-cMG" secondAttribute="trailing" constant="80" id="dxv-Bv-zMO"/>
                             <constraint firstItem="cye-eR-yGC" firstAttribute="centerY" secondItem="CLW-Vm-KqX" secondAttribute="centerY" id="jjn-ea-OgM"/>
-                            <constraint firstItem="JJ3-BP-2dD" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="60" id="jxU-cI-yHB"/>
                             <constraint firstItem="CLW-Vm-KqX" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="kqb-8P-j8b"/>
                             <constraint firstItem="cye-eR-yGC" firstAttribute="top" secondItem="0hi-lK-feN" secondAttribute="bottom" constant="20" id="lgv-hI-ZC9"/>
                             <constraint firstItem="0hi-lK-feN" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="rpE-sE-OtL"/>
                             <constraint firstItem="eNB-ke-cMG" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="tGf-Sb-Yoo"/>
                             <constraint firstItem="T7w-yW-wrU" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="50" id="v2x-1L-Q1F"/>
+                            <constraint firstItem="T7w-yW-wrU" firstAttribute="top" secondItem="GyW-C8-6n1" secondAttribute="bottom" constant="10" id="wAY-ts-dlU"/>
                             <constraint firstItem="cye-eR-yGC" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="yxd-76-RZY"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="appleLoginButton" destination="996-57-yn8" id="Koz-d1-aTn"/>
                         <outlet property="googleLoginButton" destination="uji-FK-ONh" id="npb-Il-TMe"/>
+                        <outlet property="iconImageView" destination="GyW-C8-6n1" id="cqW-i6-twb"/>
                         <outlet property="loginButton" destination="KEE-6P-pB3" id="ZWe-P4-x8Y"/>
                         <outlet property="mailAddressTextField" destination="mOE-nW-ba0" id="2y1-0A-aV0"/>
                         <outlet property="passwordTextField" destination="aV2-XR-d92" id="zDm-lT-9Ay"/>
