@@ -15,6 +15,7 @@ enum FilterType: Int, CaseIterable {
     case language
     case prefecture
     case experience
+    case check
     case github
     case qiita
     
@@ -23,6 +24,7 @@ enum FilterType: Int, CaseIterable {
             case .language: return "使用言語"
             case .prefecture: return "都道府県"
             case .experience: return "実務経験"
+            case .check: return "チェック"
             case .github: return "GitHub"
             case .qiita: return "Qiita"
         }
@@ -174,8 +176,27 @@ extension MacHomeViewController: UICollectionViewDataSource {
             withReuseIdentifier: ProfileCollectionViewCell.identifier,
             for: indexPath
         ) as! ProfileCollectionViewCell
+        cell.tag = indexPath.item
         let model = filteredUsers()[indexPath.row]
-        cell.configure(model: model)
+        cell.configure(model: model) { index in
+            let user = self.users[index]
+            Firestore.firestore().collection("users")
+                .whereField("name", isEqualTo: user.name).getDocuments { snapshot, error in
+                    if let error = error {
+                        print("DEBUG_PRINT: チェックの更新失敗", error.localizedDescription, #line)
+                        return
+                    }
+                    let id = snapshot?.documents.first?.documentID ?? ""
+                    let document = Firestore.firestore().collection("prefectures").document(id)
+                    Firestore.firestore().collection("users").document(document.documentID).updateData(["isChecked": !user.isChecked]) { error in
+                        if let error = error {
+                            print("DEBUG_PRINT: チェックの更新失敗", error.localizedDescription, #line)
+                            return
+                        }
+                        self.profileCollectionView.reloadData()
+                    }
+                }
+        }
         return cell
     }
     
@@ -246,6 +267,8 @@ extension MacHomeViewController: UITableViewDataSource {
                         UserDefaults.standard.set(title, forKey: self.selectedFilterPrefectureKey)
                     case .experience:
                         print("DEBUG_PRINT: experience")
+                    case .check:
+                        print("DEBUG_PRINT: ", "check")
                     case .github:
                         print("DEBUG_PRINT: github")
                     case .qiita:

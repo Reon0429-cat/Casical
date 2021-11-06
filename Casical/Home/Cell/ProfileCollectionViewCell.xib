@@ -65,13 +65,25 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AxJ-gg-vVt">
+                                <rect key="frame" x="324" y="5" width="56" height="38"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="star" catalog="system" title="">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="checkButtonDidTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="hvk-Nb-v43"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="lightColor"/>
                         <constraints>
+                            <constraint firstItem="AxJ-gg-vVt" firstAttribute="top" secondItem="MD5-U4-sps" secondAttribute="top" constant="5" id="A6k-vg-zvx"/>
                             <constraint firstItem="heX-Jj-oL2" firstAttribute="top" secondItem="MD5-U4-sps" secondAttribute="top" constant="20" id="GYV-64-9VF"/>
                             <constraint firstItem="heX-Jj-oL2" firstAttribute="centerY" secondItem="MD5-U4-sps" secondAttribute="centerY" id="Ktc-GJ-UT8"/>
                             <constraint firstItem="h36-eS-JeK" firstAttribute="leading" secondItem="heX-Jj-oL2" secondAttribute="trailing" constant="20" id="NcR-pn-BdS"/>
                             <constraint firstAttribute="trailing" secondItem="h36-eS-JeK" secondAttribute="trailing" constant="20" id="Or0-AY-t8d"/>
+                            <constraint firstAttribute="trailing" secondItem="AxJ-gg-vVt" secondAttribute="trailing" constant="5" id="SDj-cC-9pb"/>
                             <constraint firstItem="h36-eS-JeK" firstAttribute="centerY" secondItem="MD5-U4-sps" secondAttribute="centerY" id="fAH-Ac-gfc"/>
                             <constraint firstItem="h36-eS-JeK" firstAttribute="top" secondItem="MD5-U4-sps" secondAttribute="top" constant="15" id="hrv-AI-Y3q"/>
                             <constraint firstItem="heX-Jj-oL2" firstAttribute="leading" secondItem="MD5-U4-sps" secondAttribute="leading" constant="20" id="vqL-QW-YL7"/>
@@ -90,6 +102,7 @@
             <size key="customSize" width="425" height="127"/>
             <connections>
                 <outlet property="baseView" destination="MD5-U4-sps" id="aSe-aO-tXa"/>
+                <outlet property="checkButton" destination="AxJ-gg-vVt" id="RD3-d4-b6c"/>
                 <outlet property="experienceLabel" destination="4yT-eJ-p8S" id="0CB-Gx-0QV"/>
                 <outlet property="houseLabel" destination="utH-XE-5fb" id="UY0-ai-qGk"/>
                 <outlet property="imageStackViewSpacing" destination="NcR-pn-BdS" id="bYa-y4-92T"/>
@@ -101,6 +114,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="star" catalog="system" width="128" height="116"/>
         <namedColor name="darkColor">
             <color red="0.4779999852180481" green="0.3059999942779541" blue="0.60399997234344482" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -16,7 +16,9 @@ final class ProfileCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var houseLabel: UILabel!
     @IBOutlet private weak var experienceLabel: UILabel!
     @IBOutlet private weak var imageStackViewSpacing: NSLayoutConstraint!
+    @IBOutlet weak var checkButton: UIButton!
     
+    var onTapCheckButton: ((Int) -> Void)?
     static var identifier: String { String(describing: self) }
     static var nib: UINib { UINib(nibName: String(describing: self), bundle: nil) }
     
@@ -55,7 +57,18 @@ final class ProfileCollectionViewCell: UICollectionViewCell {
         
     }
     
-    func configure(model: User) {
+    @IBAction func checkButtonDidTapped(_ sender: Any) {
+        onTapCheckButton?(self.tag)
+    }
+    
+    func configure(model: User, onCheckButtonEvent: ((Int) -> Void)?) {
+        self.onTapCheckButton = onCheckButtonEvent
+        let starFillImage = UIImage(systemName: "star.fill")?.withTintColor(.orange,
+                                                                            renderingMode: .alwaysOriginal)
+        let starImage = UIImage(systemName: "star")?.withTintColor(.gray,
+                                                                   renderingMode: .alwaysOriginal)
+        let image = model.isChecked ? starFillImage : starImage
+        checkButton.setImage(image!, for: .normal)
         baseView.backgroundColor = .moreLightColor
         nameLabel.textColor = .darkColor
         profileImageView.image = UIImage(data: model.gitHub.image)
