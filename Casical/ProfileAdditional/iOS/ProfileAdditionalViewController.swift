@@ -42,6 +42,15 @@ final class ProfileAdditionalViewController: UIViewController {
         
         setupUI()
         
+        // MARK: - ToDo 消す
+        nameTextField.text = "レオン"
+        houseTextField.text = "東京都"
+        experienceTextField.text = "1年0ヶ月"
+        employmentStatusTextField.text = "新卒"
+        qiitaTextField.text = "REON"
+        gitHubTextField.text = "Reon0429-cat"
+        changeRegisterButtonState()
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -54,7 +63,7 @@ final class ProfileAdditionalViewController: UIViewController {
     @IBAction private func registerButtonDidTapped(_ sender: Any) {
         HUD.show(.progress)
         DispatchQueue.global().async {
-            if let gitHubUser = self.searchGitHubUser(userName: self.gitHubName),
+            if let gitHubUser = self.searchGitHubUser(),
                let gitHubRepos = self.searchGitHubRepos(gitHubUser: gitHubUser),
                let qiitaUser = self.searchQiitaUser(),
                let user = self.scrapingQiita(gitHubUser: gitHubUser,
@@ -64,20 +73,20 @@ final class ProfileAdditionalViewController: UIViewController {
             } else {
                 print("DEBUG_PRINT: 失敗", #function)
             }
-        }
-        DispatchQueue.main.async {
-            HUD.flash(.success,
-                      onView: nil,
-                      delay: 0) { _ in
-                self.dismiss(animated: true)
+            DispatchQueue.main.async {
+                HUD.flash(.success,
+                          onView: nil,
+                          delay: 0) { _ in
+                    self.dismiss(animated: true)
+                }
             }
         }
     }
     
-    private func searchGitHubUser(userName: String) -> GitHubUser? {
+    private func searchGitHubUser() -> GitHubUser? {
         let semaphore = DispatchSemaphore(value: 0)
         var _gitHubUser: GitHubUser?
-        GitHubAPIClient().searchUser(userName: userName) { result in
+        GitHubAPIClient().searchUser(userName: gitHubName) { result in
             switch result {
                 case .failure(let title):
                     DispatchQueue.main.async {
@@ -207,7 +216,6 @@ final class ProfileAdditionalViewController: UIViewController {
                     print("DEBUG_PRINT: ", error.localizedDescription)
                     return
                 }
-                print("DEBUG_PRINT: Firestoreに保存成功")
             }
     }
     
