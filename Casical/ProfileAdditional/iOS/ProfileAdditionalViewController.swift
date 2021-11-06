@@ -43,7 +43,7 @@ final class ProfileAdditionalViewController: UIViewController {
         setupUI()
         
         // MARK: - ToDo 消す
-        nameTextField.text = "レオン"
+        nameTextField.text = "レオン\(Int.random(in: 0...100))"
         houseTextField.text = "東京都"
         experienceTextField.text = "1年0ヶ月"
         employmentStatusTextField.text = "新卒"
@@ -194,7 +194,8 @@ final class ProfileAdditionalViewController: UIViewController {
                                             registrationDate: Date(),
                                             gitHub: gitHub,
                                             qiita: qiita,
-                                            skillScore: [1, 2, 3, 4, 5, 6, 7, 8, 9].randomElement()!)
+                                            skillScore: [1, 2, 3, 4, 5, 6, 7, 8, 9].randomElement()!,
+                                            isChecked: false)
                             _user = user
                             semaphore.signal()
                         }
