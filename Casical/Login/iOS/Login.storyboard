@@ -91,25 +91,25 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="T7w-yW-wrU">
-                                <rect key="frame" x="50" y="314.66666666666669" width="290" height="195"/>
+                                <rect key="frame" x="50" y="299.66666666666669" width="290" height="210"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="mail address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mOE-nW-ba0" customClass="CustomTextField" customModule="Casical" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="290" height="45"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="290" height="50"/>
                                         <color key="backgroundColor" name="lightColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="45" id="olg-os-9Wl"/>
+                                            <constraint firstAttribute="height" constant="50" id="olg-os-9Wl"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aV2-XR-d92" customClass="CustomTextField" customModule="Casical" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="75" width="290" height="45"/>
+                                        <rect key="frame" x="0.0" y="80" width="290" height="50"/>
                                         <color key="backgroundColor" name="lightColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KEE-6P-pB3">
-                                        <rect key="frame" x="0.0" y="150" width="290" height="45"/>
+                                        <rect key="frame" x="0.0" y="160" width="290" height="50"/>
                                         <color key="backgroundColor" name="darkColor"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -122,7 +122,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GyW-C8-6n1">
-                                <rect key="frame" x="67.333333333333329" y="53.999999999999986" width="255.66666666666669" height="255.66666666666663"/>
+                                <rect key="frame" x="77.333333333333329" y="53.999999999999986" width="235.66666666666669" height="235.66666666666663"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="GyW-C8-6n1" secondAttribute="height" id="MIl-pa-uhD"/>
                                 </constraints>
@@ -145,7 +145,7 @@
                             <constraint firstItem="0hi-lK-feN" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="rpE-sE-OtL"/>
                             <constraint firstItem="eNB-ke-cMG" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="tGf-Sb-Yoo"/>
                             <constraint firstItem="T7w-yW-wrU" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="50" id="v2x-1L-Q1F"/>
-                            <constraint firstItem="T7w-yW-wrU" firstAttribute="top" secondItem="GyW-C8-6n1" secondAttribute="bottom" constant="5" id="wAY-ts-dlU"/>
+                            <constraint firstItem="T7w-yW-wrU" firstAttribute="top" secondItem="GyW-C8-6n1" secondAttribute="bottom" constant="10" id="wAY-ts-dlU"/>
                             <constraint firstItem="cye-eR-yGC" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="yxd-76-RZY"/>
                         </constraints>
                     </view>

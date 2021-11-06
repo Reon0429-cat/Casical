@@ -69,7 +69,7 @@ final class ProfileCollectionViewCell: UICollectionViewCell {
                                                                    renderingMode: .alwaysOriginal)
         let image = model.isChecked ? starFillImage : starImage
         checkButton.setImage(image!, for: .normal)
-        baseView.backgroundColor = .moreLightColor
+        baseView.backgroundColor = .lightColor
         nameLabel.textColor = .darkColor
         profileImageView.image = UIImage(data: model.gitHub.image)
         nameLabel.text = model.name

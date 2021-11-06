@@ -554,9 +554,35 @@
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="enL-Cj-7TW" customClass="RadarChartView" customModule="Charts">
                                                         <rect key="frame" x="20" y="30" width="270" height="270"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GitHub" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0BQ-7x-rHR">
+                                                                <rect key="frame" x="104" y="-30" width="62" height="24"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Experience" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Vn-Kh-aJL">
+                                                                <rect key="frame" x="-30" y="201" width="97.5" height="24"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Qiita" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7AY-H4-Sbd">
+                                                                <rect key="frame" x="250" y="206" width="40.5" height="24"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="enL-Cj-7TW" secondAttribute="height" id="05X-2f-TpJ"/>
+                                                            <constraint firstItem="9Vn-Kh-aJL" firstAttribute="leading" secondItem="enL-Cj-7TW" secondAttribute="leading" constant="-30" id="CUy-g0-xvF"/>
+                                                            <constraint firstItem="0BQ-7x-rHR" firstAttribute="top" secondItem="enL-Cj-7TW" secondAttribute="top" constant="-30" id="CcN-3F-2Fu"/>
+                                                            <constraint firstItem="0BQ-7x-rHR" firstAttribute="centerX" secondItem="enL-Cj-7TW" secondAttribute="centerX" id="Jh4-yk-Jq8"/>
+                                                            <constraint firstAttribute="trailing" secondItem="7AY-H4-Sbd" secondAttribute="trailing" constant="-20" id="PTH-IO-sJJ"/>
+                                                            <constraint firstAttribute="bottom" secondItem="7AY-H4-Sbd" secondAttribute="bottom" constant="40" id="aT2-Eu-ae6"/>
+                                                            <constraint firstAttribute="bottom" secondItem="9Vn-Kh-aJL" secondAttribute="bottom" constant="45" id="fZi-ZR-h7p"/>
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40.3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdL-Gg-VpX">
