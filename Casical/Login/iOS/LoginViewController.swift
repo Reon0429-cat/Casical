@@ -19,10 +19,12 @@ final class LoginViewController: UIViewController {
     @IBOutlet private weak var googleLoginButton: UIButton!
     @IBOutlet private weak var appleLoginButton: UIButton!
     @IBOutlet private weak var signUpButton: UIButton!
+    @IBOutlet private weak var iconImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        iconImageView.image = UIImage(named: "icon")
         mailAddressTextField.tintColor = .black
         passwordTextField.tintColor = .black
         passwordTextField.isSecureTextEntry = true
