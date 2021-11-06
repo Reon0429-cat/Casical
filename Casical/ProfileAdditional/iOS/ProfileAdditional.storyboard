@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="P2G-X7-wQe">
-                                <rect key="frame" x="60" y="144" width="270" height="315"/>
+                                <rect key="frame" x="60" y="124" width="270" height="315"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="名前" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6nR-RR-ygh">
                                         <rect key="frame" x="0.0" y="0.0" width="270" height="40"/>
@@ -68,10 +68,12 @@
                                     <action selector="registerButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="R04-mO-hjJ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pzP-da-y6S">
-                                <rect key="frame" x="29.999999999999996" y="74" width="52.666666666666657" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="戻る"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pzP-da-y6S">
+                                <rect key="frame" x="30" y="64" width="18.333333333333329" height="26"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="" image="chevron.left" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
+                                </state>
                                 <connections>
                                     <action selector="dismissButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="CLV-fz-F9w"/>
                                 </connections>
@@ -80,17 +82,18 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="P2G-X7-wQe" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="100" id="HxU-5m-RaN"/>
+                            <constraint firstItem="P2G-X7-wQe" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="80" id="HxU-5m-RaN"/>
                             <constraint firstItem="Fdg-ud-V9k" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="IpR-oO-gec"/>
                             <constraint firstItem="P2G-X7-wQe" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="O3G-wu-EsO"/>
-                            <constraint firstItem="Fdg-ud-V9k" firstAttribute="top" secondItem="P2G-X7-wQe" secondAttribute="bottom" constant="100" id="Tpo-0u-E2w"/>
+                            <constraint firstItem="Fdg-ud-V9k" firstAttribute="top" secondItem="P2G-X7-wQe" secondAttribute="bottom" constant="120" id="Tpo-0u-E2w"/>
                             <constraint firstItem="Fdg-ud-V9k" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="60" id="YDj-EK-Kxp"/>
                             <constraint firstItem="P2G-X7-wQe" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="60" id="Yaj-tm-nvr"/>
                             <constraint firstItem="pzP-da-y6S" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="k4S-gY-obk"/>
-                            <constraint firstItem="pzP-da-y6S" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="30" id="rVr-g3-8yu"/>
+                            <constraint firstItem="pzP-da-y6S" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="rVr-g3-8yu"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="pzP-da-y6S" id="2Jz-sF-Hr5"/>
                         <outlet property="employmentStatusTextField" destination="5hr-bE-G30" id="9Oh-EX-bDV"/>
                         <outlet property="experienceTextField" destination="ZfI-GV-uIg" id="A7D-GA-cq7"/>
                         <outlet property="gitHubTextField" destination="L5C-9W-ZTp" id="8Q6-30-HGj"/>
@@ -106,6 +109,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
         <namedColor name="darkColor">
             <color red="0.4779999852180481" green="0.3059999942779541" blue="0.60399997234344482" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

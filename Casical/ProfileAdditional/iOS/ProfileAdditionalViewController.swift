@@ -21,6 +21,7 @@ final class ProfileAdditionalViewController: UIViewController {
     @IBOutlet private weak var employmentStatusTextField: UITextField!
     @IBOutlet private weak var gitHubTextField: UITextField!
     @IBOutlet private weak var qiitaTextField: UITextField!
+    @IBOutlet private weak var backButton: UIButton!
     
     private var housePickerView = UIPickerView()
     private var experiencePickerView = UIPickerView()
@@ -331,6 +332,9 @@ extension ProfileAdditionalViewController: UIPickerViewDataSource {
 private extension ProfileAdditionalViewController {
     
     func setupUI() {
+        registerButton.backgroundColor = .darkColor
+        backButton.tintColor = .darkColor
+        
         changeRegisterButtonState()
         housePickerView.dataSource = self
         housePickerView.delegate = self

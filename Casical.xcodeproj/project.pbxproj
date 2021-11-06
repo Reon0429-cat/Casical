@@ -37,6 +37,7 @@
 		AB8F193E27301EBB004B0D99 /* Prefecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8F193927301EBB004B0D99 /* Prefecture.swift */; };
 		AB8F193F27301EBB004B0D99 /* QiitaAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8F193A27301EBB004B0D99 /* QiitaAPIClient.swift */; };
 		AB8F194127301EC1004B0D99 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8F194027301EC1004B0D99 /* User.swift */; };
+		ABAEA60127359688009CCFDC /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAEA60027359688009CCFDC /* UserDefaults+Extension.swift */; };
 		ABD46A81272B03E5006AB17A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABD46A7F272B03E5006AB17A /* Login.storyboard */; };
 		ABD46A82272B03E5006AB17A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD46A80272B03E5006AB17A /* LoginViewController.swift */; };
 		ABD46A84272B2AD4006AB17A /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD46A83272B2AD4006AB17A /* UIColor+Extension.swift */; };
@@ -111,6 +112,7 @@
 		AB8F193927301EBB004B0D99 /* Prefecture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Prefecture.swift; sourceTree = "<group>"; };
 		AB8F193A27301EBB004B0D99 /* QiitaAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiitaAPIClient.swift; sourceTree = "<group>"; };
 		AB8F194027301EC1004B0D99 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		ABAEA60027359688009CCFDC /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		ABD46A7F272B03E5006AB17A /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		ABD46A80272B03E5006AB17A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		ABD46A83272B2AD4006AB17A /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				ABD46A83272B2AD4006AB17A /* UIColor+Extension.swift */,
 				ABD46A89272B2B1E006AB17A /* UITextField+Extension.swift */,
 				ABD46A9C272C21FA006AB17A /* UIResponder+Extension.swift */,
+				ABAEA60027359688009CCFDC /* UserDefaults+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -685,6 +688,7 @@
 				ABD46A97272BE52D006AB17A /* HomeViewController.swift in Sources */,
 				AB8F193F27301EBB004B0D99 /* QiitaAPIClient.swift in Sources */,
 				AB895E28272EF9B3004B6A3F /* ProfileAdditionalViewController.swift in Sources */,
+				ABAEA60127359688009CCFDC /* UserDefaults+Extension.swift in Sources */,
 				ABD46A88272B2AF4006AB17A /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
