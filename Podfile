@@ -7,16 +7,14 @@ target 'Casical' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   pod 'SideMenu'
-  pod 'BubbleTransition'
   pod 'Charts'
   pod 'PKHUD'
   pod 'Alamofire'
   pod 'Kanna'
-  pod 'lottie-ios'
+  pod 'ReachabilitySwift'
   pod 'Firebase/Analytics'
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
-  pod 'ReachabilitySwift'
 
 end
 
@@ -41,3 +39,15 @@ end
 post_install do |installer|
 	installer.configure_catalyst
 end
+
+
+
+
+
+
+
+
+
+
+
+

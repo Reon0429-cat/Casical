@@ -345,7 +345,6 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.7):
     - BoringSSL-GRPC/Interface (= 0.0.7)
   - BoringSSL-GRPC/Interface (0.0.7)
-  - BubbleTransition (4.0.0)
   - Charts (3.6.0):
     - Charts/Core (= 3.6.0)
   - Charts/Core (3.6.0)
@@ -482,7 +481,6 @@ PODS:
   - GTMSessionFetcher/Core (1.7.0)
   - Kanna (5.2.7)
   - leveldb-library (1.22.1)
-  - lottie-ios (3.2.3)
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
     - nanopb/encode (= 2.30908.0)
@@ -495,13 +493,11 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
-  - BubbleTransition
   - Charts
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Firestore
   - Kanna
-  - lottie-ios
   - PKHUD
   - ReachabilitySwift
   - SideMenu
@@ -511,7 +507,6 @@ SPEC REPOS:
     - abseil
     - Alamofire
     - BoringSSL-GRPC
-    - BubbleTransition
     - Charts
     - Firebase
     - FirebaseAnalytics
@@ -528,7 +523,6 @@ SPEC REPOS:
     - GTMSessionFetcher
     - Kanna
     - leveldb-library
-    - lottie-ios
     - nanopb
     - PKHUD
     - PromisesObjC
@@ -539,7 +533,6 @@ SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
   Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
-  BubbleTransition: 9d96f31375e0db46684e2060d3a601fa47d9f9c1
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   Firebase: 13d8d96499e2635428d5bf0ec675df21f95d9a95
   FirebaseAnalytics: 3a11ed901750e1ebcbe35e75915ff079878ea385
@@ -556,13 +549,12 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
   Kanna: 01cfbddc127f5ff0963692f285fcbc8a9d62d234
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
-  lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
 
-PODFILE CHECKSUM: 02b02e09bfc6b47e8f1c4190f6b1e2491e94eaf7
+PODFILE CHECKSUM: 5b1806a7329419b51352e38835a7056ea4133327
 
 COCOAPODS: 1.10.2
